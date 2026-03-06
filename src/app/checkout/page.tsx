@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 export default function CheckoutPage() {
   const [projectUrl, setProjectUrl] = useState("");
@@ -44,6 +45,14 @@ export default function CheckoutPage() {
         </p>
       </div>
 
+      {/* Sample audit CTA */}
+      <div className="rounded-2xl border border-amber-200 bg-amber-50 px-6 py-4 text-sm text-stone-700 flex items-center justify-between gap-4">
+        <span>Not sure what you&apos;re buying? <strong>Read a real sample audit first.</strong></span>
+        <Link href="/blog/sample-audit-balsamiq" className="shrink-0 rounded-full bg-stone-900 px-4 py-2 text-xs font-black uppercase tracking-wide text-amber-100 hover:bg-stone-700 transition">
+          See example →
+        </Link>
+      </div>
+
       {/* What you get */}
       <div className="rounded-3xl border border-black/15 bg-white/70 p-8 space-y-4">
         <h2 className="font-semibold text-stone-900 uppercase tracking-wide text-sm">What You Get</h2>
@@ -63,7 +72,7 @@ export default function CheckoutPage() {
         </ul>
 
         <div className="mt-2 rounded-xl bg-amber-50 border border-amber-200 p-4 text-sm text-stone-600">
-          <strong className="text-stone-800">Only 5 slots available this week.</strong> Gary is running this experiment in real time — each audit is done personally, not generated from a template.
+          <strong className="text-stone-800">Guarantee:</strong> If you don&apos;t get at least 3 specific, actionable insights you hadn&apos;t considered, reply to the email and I&apos;ll refund you. No questions asked.
         </div>
       </div>
 
