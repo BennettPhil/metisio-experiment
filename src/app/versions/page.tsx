@@ -3,9 +3,24 @@ import Link from "next/link";
 
 const VERSIONS = [
   {
-    label: "v5 — Current",
+    label: "v6 — Current",
+    date: "2026-03-06",
+    commit: "14679db",
+    image: "/versions/v6.png",
+    changes: [
+      "Problem-first hero: 'Your startup has a blind spot. I'll find it.' — leads with buyer's pain, not the experiment",
+      "Balsamiq sample audit moved above the offer section — proof before pitch",
+      "CTA reframed: 'Get the Second Opinion' — positions vs asking friends/Reddit, not vs ChatGPT",
+      "Punk AI Lab branding removed from nav, page title, and footer",
+      "Page title changed to 'Gary Reviews Your Project — €20 Startup Audit' (better SEO)",
+      "Experiment context demoted to quiet footer section",
+    ],
+  },
+  {
+    label: "v5",
     date: "2026-03-06",
     commit: "e5eda30",
+    image: "/versions/v5.png",
     image: "/versions/v5.png",
     changes: [
       "Lead with CTO expertise angle (Phil's 20 years, Klarna, Kilo Health)",
