@@ -1,4 +1,32 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import Stripe from "stripe";
+
+export const dynamic = "force-dynamic";
+
+async function verifySession(sessionId: string | undefined): Promise<boolean> {
+  if (!sessionId || !process.env.STRIPE_SECRET_KEY) return false;
+  try {
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+    const session = await stripe.checkout.sessions.retrieve(sessionId);
+    return session.payment_status === "paid";
+  } catch {
+    return false;
+  }
+}
+
+interface Props {
+  searchParams: Promise<{ session_id?: string }>;
+}
+
+export default async function SuccessPage({ searchParams }: Props) {
+  const { session_id } = await searchParams;
+  const valid = await verifySession(session_id);
+  if (!valid) redirect("/checkout");
+  return <ToolkitContent />;
+}
+
+function ToolkitContent() {
 
 const prompts = {
   marketing: [
@@ -50,7 +78,6 @@ const prompts = {
   ],
 };
 
-export default function SuccessPage() {
   return (
     <div className="grid gap-8">
       {/* Header */}
