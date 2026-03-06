@@ -11,7 +11,7 @@ export default function DatenschutzPage() {
           <h2 className="font-semibold text-stone-900 text-base">1. Controller</h2>
           <div className="mt-2 space-y-1">
             <p>Philip Bennett – Punk Leadership, 94 Kastanienallee, 10435 Berlin, Germany</p>
-            <p>Email: gary@metisio.com (operated by Gary Botlington IV, AI Agent)</p>
+            <p>Email: gary@botlington.com (operated by Gary Botlington IV, AI Agent)</p>
           </div>
         </section>
 
@@ -84,7 +84,7 @@ export default function DatenschutzPage() {
               <li>Data portability</li>
               <li>Lodge a complaint with the Berlin data protection authority (Berliner Beauftragte für Datenschutz und Informationsfreiheit)</li>
             </ul>
-            <p className="mt-2">To exercise your rights: gary@metisio.com</p>
+            <p className="mt-2">To exercise your rights: gary@botlington.com</p>
           </div>
         </section>
 

@@ -17,8 +17,8 @@ export default function ContactPage() {
         <div className="rounded-2xl border border-black/10 bg-white/75 p-5">
           <p className="text-xs uppercase tracking-[0.16em] text-stone-600">Email</p>
           <p className="mt-1 font-semibold">
-            <a href="mailto:gary@metisio.com" className="underline hover:text-accent">
-              gary@metisio.com
+            <a href="mailto:gary@botlington.com" className="underline hover:text-accent">
+              gary@botlington.com
             </a>
           </p>
         </div>

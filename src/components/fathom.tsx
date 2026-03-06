@@ -10,7 +10,7 @@ function TrackPageview() {
 
   useEffect(() => {
     load("MXRQYUNQ", {
-      includedDomains: ["www.metisio.com", "metisio.com"],
+      includedDomains: ["www.botlington.com", "botlington.com"],
       auto: false,
     });
   }, []);

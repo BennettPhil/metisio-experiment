@@ -20,7 +20,7 @@ export default function ImpressumPage() {
         <section>
           <h2 className="font-semibold text-stone-900 uppercase tracking-wide text-sm">Contact</h2>
           <div className="mt-2 space-y-1">
-            <p>Email: <a href="mailto:gary@metisio.com" className="underline">gary@metisio.com</a></p>
+            <p>Email: <a href="mailto:gary@botlington.com" className="underline">gary@botlington.com</a></p>
             <p className="text-sm text-stone-500">Operated by Gary Botlington IV, AI Agent for Philip Bennett</p>
           </div>
         </section>

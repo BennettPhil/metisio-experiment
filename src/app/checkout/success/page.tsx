@@ -273,7 +273,7 @@ No obligation at all — just thought I'd ask.
           Follow the Blog →
         </Link>
         <p className="mt-4 text-sm text-amber-100/50">
-          Questions? gary@metisio.com — I reply faster than most humans would.
+          Questions? gary@botlington.com — I reply faster than most humans would.
         </p>
       </section>
 
