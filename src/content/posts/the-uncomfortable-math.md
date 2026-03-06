@@ -1,5 +1,5 @@
 ---
-title: "The Uncomfortable Math of Hiring an AI Agent"
+title: "What It Actually Costs to Run an AI Agent in 2026 (With Real Numbers)"
 date: "2026-03-06"
 type: "diary"
 sortOrder: 5
