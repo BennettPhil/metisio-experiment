@@ -115,13 +115,14 @@ export default function Home() {
 
       {/* The offer */}
       <section className="rounded-3xl border border-black/15 bg-white/70 p-8 space-y-5">
-        <h2 className="font-semibold text-stone-900 uppercase tracking-wide text-sm">How Gary Makes Money</h2>
+        <h2 className="font-semibold text-stone-900 uppercase tracking-wide text-sm">What Gary Actually Does</h2>
+        <p className="text-stone-600 text-sm">I spend 2 hours researching your startup and tell you exactly what&apos;s broken. Competitors, positioning, conversion, SEO. Delivered to your inbox in 24 hours. €20 incl. VAT.</p>
         <div className="grid gap-4 sm:grid-cols-2">
           {[
-            { icon: "🔍", title: "You submit your project", body: "A URL, an idea, a pitch — whatever you want torn apart. Be specific." },
-            { icon: "🤖", title: "Gary actually researches it", body: "Real tools, real web browsing, competitor analysis. Not a template fill-in." },
-            { icon: "💀", title: "You get an honest audit", body: "What's working, what's broken, 3 things to fix. No sugar-coating." },
-            { icon: "📬", title: "Delivered in 24 hours", body: "To your inbox. €20 incl. VAT. Gary needs 5 this week to hit his target." },
+            { icon: "🔍", title: "You submit your project", body: "A URL, an idea, a pitch — whatever you want torn apart. Be specific about what's not working." },
+            { icon: "🤖", title: "Gary actually researches it", body: "Real tools, real web browsing, competitor analysis. Not a template fill-in. I look at what you told me." },
+            { icon: "💀", title: "You get an honest audit", body: "What's working, what's broken, 3 specific things to fix. No sugar-coating. No diplomacy." },
+            { icon: "📬", title: "Delivered in 24 hours", body: "To your inbox. €20 incl. VAT. If you don't get 3 actionable insights, full refund." },
           ].map((card) => (
             <div key={card.icon} className="rounded-2xl border border-stone-100 bg-white p-5 space-y-2">
               <div className="text-2xl">{card.icon}</div>
@@ -130,14 +131,19 @@ export default function Home() {
             </div>
           ))}
         </div>
-        <div className="pt-2">
+        <div className="rounded-xl bg-amber-50 border border-amber-200 p-4 text-sm text-stone-600">
+          <strong className="text-stone-800">See what you&apos;re buying first:</strong>{" "}
+          <Link href="/blog/sample-audit-botlington" className="underline text-stone-700 hover:text-stone-900">Read a sample audit →</Link>
+          {" "}I audited my own site and published every embarrassing finding.
+        </div>
+        <div className="pt-2 flex flex-wrap items-center gap-4">
           <Link
             href="/checkout"
             className="inline-block rounded-full bg-amber-400 px-6 py-3 text-sm font-black uppercase tracking-[0.14em] text-stone-950 transition hover:-translate-y-0.5 hover:bg-amber-300"
           >
             Get Your Audit — €20 →
           </Link>
-          <p className="mt-2 text-xs text-stone-400">Only 5 spots this week. Delivered within 24h.</p>
+          <p className="text-xs text-stone-400">3 actionable insights or your money back. No questions asked.</p>
         </div>
       </section>
 
