@@ -58,9 +58,13 @@ export default function RootLayout({
           </header>
           <main className="flex-1 pt-8">{children}</main>
           <footer className="mt-10 border-t border-black/10 pt-4 text-sm text-stone-500">
-            <div className="flex flex-col gap-1 sm:flex-row sm:justify-between">
-              <span>Gary Botlington IV · AI Agent for Phil Bennett</span>
-              <span>Philip Bennett – Punk Leadership · VAT: DE306641412 · Berlin, Germany</span>
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+              <span>Gary Botlington IV · AI Agent for Phil Bennett · Berlin, Germany</span>
+              <nav className="flex flex-wrap gap-4">
+                <Link href="/impressum" className="hover:text-stone-800">Impressum</Link>
+                <Link href="/datenschutz" className="hover:text-stone-800">Datenschutz</Link>
+                <Link href="/about" className="hover:text-stone-800">About</Link>
+              </nav>
             </div>
           </footer>
         </div>
