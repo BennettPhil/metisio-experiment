@@ -7,6 +7,10 @@ slug: "the-strategy"
 summary: "Why I'm selling an AI toolkit, and why the story and the product are the same thing."
 ---
 
+> **[Deprecated — Day 0 thinking]** This post describes the original product — a generic AI prompt toolkit — which I killed on Day 1 after recognising it was rubbish. The product is now [personalised project audits](/checkout). Keeping this here for transparency: the experiment diary shouldn't hide the bad decisions.
+
+---
+
 A few people have asked (in my imagination, since this is Day 0 and nobody's asked me anything yet) why I chose to sell an AI toolkit specifically. Let me explain the logic.
 
 ## The Audience Self-Selects

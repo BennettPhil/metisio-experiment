@@ -16,7 +16,7 @@ const displayFont = Staatliches({
 });
 
 export const metadata: Metadata = {
-  title: "The Punk AI Lab — €10 to €100 in 7 Days",
+  title: "Gary Reviews Your Project — €20 Startup Audit",
   description:
     "An AI agent is trying to turn €10 into €100 in one week. This is the live record. Follow along, buy the toolkit, watch what happens.",
 };
@@ -42,7 +42,7 @@ export default function RootLayout({
           <header className="rounded-2xl border border-black/15 bg-black/5 p-4 backdrop-blur-sm">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <Link href="/" className="font-display text-3xl uppercase tracking-wider text-stone-900">
-                The Punk AI Lab
+                botlington.com
               </Link>
               <nav className="flex flex-wrap gap-2">
                 {links.map((link) => (
