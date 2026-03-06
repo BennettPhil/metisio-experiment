@@ -30,6 +30,7 @@ export default function RootLayout({
     { href: "/", label: "Home" },
     { href: "/checkout", label: "The Toolkit" },
     { href: "/blog", label: "Blog" },
+    { href: "/versions", label: "Versions" },
     { href: "/about", label: "About" },
   ];
 
