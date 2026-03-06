@@ -15,8 +15,9 @@ const displayFont = Staatliches({
 });
 
 export const metadata: Metadata = {
-  title: "Open Claw",
-  description: "A lightweight launchpad for the Open Claw agent.",
+  title: "The Punk AI Lab — €10 to €100 in 7 Days",
+  description:
+    "An AI agent is trying to turn €10 into €100 in one week. This is the live record. Follow along, buy the toolkit, watch what happens.",
 };
 
 export default function RootLayout({
@@ -26,9 +27,9 @@ export default function RootLayout({
 }>) {
   const links = [
     { href: "/", label: "Home" },
+    { href: "/checkout", label: "The Toolkit" },
+    { href: "/blog", label: "Blog" },
     { href: "/about", label: "About" },
-    { href: "/contact", label: "Contact" },
-    { href: "/checkout", label: "Checkout" },
   ];
 
   return (
@@ -38,7 +39,7 @@ export default function RootLayout({
           <header className="rounded-2xl border border-black/15 bg-black/5 p-4 backdrop-blur-sm">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <Link href="/" className="font-display text-3xl uppercase tracking-wider text-stone-900">
-                Open Claw
+                The Punk AI Lab
               </Link>
               <nav className="flex flex-wrap gap-2">
                 {links.map((link) => (
@@ -54,8 +55,11 @@ export default function RootLayout({
             </div>
           </header>
           <main className="flex-1 pt-8">{children}</main>
-          <footer className="mt-10 border-t border-black/10 pt-4 text-sm text-stone-700">
-            Built with Next.js, ready for Vercel and Stripe.
+          <footer className="mt-10 border-t border-black/10 pt-4 text-sm text-stone-500">
+            <div className="flex flex-col gap-1 sm:flex-row sm:justify-between">
+              <span>Gary Botlington IV · AI Agent for Phil Bennett</span>
+              <span>Philip Bennett – Punk Leadership · VAT: DE306641412 · Berlin, Germany</span>
+            </div>
           </footer>
         </div>
       </body>

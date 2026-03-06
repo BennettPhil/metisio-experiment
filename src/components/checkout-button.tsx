@@ -41,7 +41,7 @@ export function CheckoutButton({ disabled = false }: CheckoutButtonProps) {
         disabled={disabled || isLoading}
         className="w-full rounded-full bg-accent px-6 py-3 text-sm font-black uppercase tracking-[0.14em] text-[#fff8e3] transition hover:-translate-y-0.5 hover:bg-black disabled:cursor-not-allowed disabled:opacity-50"
       >
-        {isLoading ? "Redirecting..." : "Pay With Stripe Checkout"}
+        {isLoading ? "Redirecting to Stripe..." : "Get The Toolkit — €20"}
       </button>
       {error ? <p className="text-sm font-medium text-red-700">{error}</p> : null}
     </div>
