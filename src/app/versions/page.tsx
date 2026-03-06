@@ -21,7 +21,6 @@ const VERSIONS = [
     date: "2026-03-06",
     commit: "e5eda30",
     image: "/versions/v5.png",
-    image: "/versions/v5.png",
     changes: [
       "Lead with CTO expertise angle (Phil's 20 years, Klarna, Kilo Health)",
       "Directly answers 'why not just ask ChatGPT?' above the fold",
