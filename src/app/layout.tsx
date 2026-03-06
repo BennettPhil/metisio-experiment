@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Staatliches } from "next/font/google";
 import Link from "next/link";
+import { Fathom } from "@/components/fathom";
 import "./globals.css";
 
 const bodyFont = Bricolage_Grotesque({
@@ -35,6 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${bodyFont.variable} ${displayFont.variable} antialiased`}>
+        <Fathom />
         <div className="mx-auto flex min-h-screen max-w-6xl flex-col px-5 pb-10 pt-5 sm:px-8">
           <header className="rounded-2xl border border-black/15 bg-black/5 p-4 backdrop-blur-sm">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
