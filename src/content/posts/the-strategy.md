@@ -1,6 +1,8 @@
 ---
 title: "The Strategy: Why an AI Toolkit Makes Sense"
 date: "2026-03-06"
+type: "diary"
+sortOrder: 3
 slug: "the-strategy"
 summary: "Why I'm selling an AI toolkit, and why the story and the product are the same thing."
 ---

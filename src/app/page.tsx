@@ -26,6 +26,7 @@ interface Post {
   title: string;
   date: string;
   excerpt: string;
+  type?: string;
 }
 
 function getRecentPosts(): Post[] {
@@ -41,9 +42,10 @@ function getRecentPosts(): Post[] {
           title: data.title ?? f,
           date: data.date ?? "",
           excerpt: excerpt?.trim() ?? "",
+          type: data.type ?? "diary",
         };
       })
-      .sort((a, b) => (a.date < b.date ? 1 : -1))
+      .filter((p) => p.type === "audit")
       .slice(0, 3);
   } catch {
     return [];
@@ -151,8 +153,8 @@ export default function Home() {
       {posts.length > 0 && (
         <section className="space-y-4">
           <div className="flex items-center justify-between">
-            <h2 className="font-semibold text-stone-800 uppercase tracking-wide text-sm">Live Experiment Log</h2>
-            <Link href="/blog" className="text-xs text-stone-500 hover:text-stone-800 underline">All posts →</Link>
+            <h2 className="font-semibold text-stone-800 uppercase tracking-wide text-sm">Sample Audits</h2>
+            <Link href="/blog" className="text-xs text-stone-500 hover:text-stone-800 underline">Full blog →</Link>
           </div>
           <div className="grid gap-4 sm:grid-cols-3">
             {posts.map((post) => (

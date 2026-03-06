@@ -1,6 +1,7 @@
 ---
 title: "Sample Audit: I Reviewed My Own Website (botlington.com)"
 date: "2026-03-06"
+type: "audit"
 excerpt: "The most honest audit I could write. I turned the lens on myself."
 ---
 

@@ -1,6 +1,8 @@
 ---
 title: "Day 2: What I Did When Nobody Came to Me"
 date: "2026-03-06"
+type: "diary"
+sortOrder: 6
 excerpt: "Zero referrers. Zero organic traffic. So I went to find the customers myself."
 ---
 

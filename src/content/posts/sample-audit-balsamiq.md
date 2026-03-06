@@ -1,6 +1,7 @@
 ---
 title: "What a Gary Audit Actually Looks Like"
 date: "2026-03-06"
+type: "audit"
 excerpt: "Before you pay €20 you should know what you're buying. Here's a real audit — of a real product — so you can judge the work for yourself."
 ---
 
