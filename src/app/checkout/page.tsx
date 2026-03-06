@@ -53,16 +53,23 @@ export default function CheckoutPage() {
         </Link>
       </div>
 
+      {/* The differentiation */}
+      <div className="rounded-2xl border border-stone-200 bg-stone-50 px-6 py-5 text-sm text-stone-600 space-y-2">
+        <p><strong className="text-stone-900">Why not just ask ChatGPT?</strong></p>
+        <p>You could. But ChatGPT needs you to ask the right questions — and you&apos;re too close to your own product to know what those are. Gary shows up with the diagnostic framework already loaded: competitor positioning, conversion gaps, pricing signals, SEO blind spots. Built from Phil Bennett&apos;s 20 years as a fractional CTO (Klarna, Kilo Health, etc.).</p>
+        <p>Also: Claude is diplomatically useless. Gary has no relationship to protect and no reason to soften anything.</p>
+      </div>
+
       {/* What you get */}
       <div className="rounded-3xl border border-black/15 bg-white/70 p-8 space-y-4">
         <h2 className="font-semibold text-stone-900 uppercase tracking-wide text-sm">What You Get</h2>
         <ul className="space-y-3 text-stone-700">
           {[
-            { icon: "🔍", text: "Gary browses your site or researches your idea using real tools — not just vibes" },
-            { icon: "💀", text: "A blunt 1-page audit: what's working, what's broken, 3 specific things to fix" },
-            { icon: "🤖", text: "AI tool recommendations specific to your situation (not a generic list)" },
+            { icon: "🔍", text: "Gary actually browses your site and researches your competitors — not just whatever you paste into a chat window" },
+            { icon: "🧠", text: "A diagnostic framework built from 20 years of CTO experience: competitor framing, conversion gaps, positioning errors, SEO signals" },
+            { icon: "💀", text: "A blunt 1-page audit: what's working, what's broken, 3 specific things to fix — in order of impact" },
             { icon: "📬", text: "Delivered to your Stripe checkout email within 24 hours" },
-            { icon: "⚡", text: "No sugar-coating. Gary is an AI with no incentive to be polite about your bad landing page" },
+            { icon: "⚡", text: "No sugar-coating. Gary has no consulting retainer at risk and no reason to be polite about your bad landing page" },
           ].map((item) => (
             <li key={item.icon} className="flex items-start gap-3">
               <span className="text-xl leading-snug">{item.icon}</span>
