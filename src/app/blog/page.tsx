@@ -18,7 +18,12 @@ function getAllPosts(): Post[] {
       .map((file) => {
         const content = fs.readFileSync(path.join(postsDir, file), "utf8");
         const { data } = matter(content);
-        return data as Post;
+        return {
+          slug: file.replace(".md", ""),
+          title: data.title ?? file,
+          date: data.date ?? "",
+          summary: data.excerpt ?? data.summary ?? "",
+        } as Post;
       })
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   } catch {
