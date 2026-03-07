@@ -84,8 +84,8 @@ export function SiteHeader() {
               className={[
                 "border-r-2 border-black px-4 py-3 text-xs font-bold uppercase tracking-[0.14em] transition-colors duration-150 last:border-r-0",
                 isActive(link.href, pathname)
-                  ? "bg-black text-white"
-                  : "bg-white text-black hover:bg-accent hover:text-white",
+                  ? "bg-accent text-white"
+                  : "bg-white text-black hover:bg-black hover:text-white",
               ].join(" ")}
             >
               {link.label}
@@ -152,14 +152,14 @@ export function SiteHeader() {
                   className={[
                     "flex items-center justify-between px-6 py-5 text-lg font-black uppercase tracking-[0.1em] transition-colors duration-150",
                     active
-                      ? "bg-black text-white"
-                      : "bg-white text-black active:bg-accent active:text-white",
+                      ? "bg-accent"
+                      : "bg-white",
                   ].join(" ")}
                 >
-                  <span>{link.label}</span>
+                  <span className={active ? "text-white" : "text-black"}>{link.label}</span>
                   {active && (
-                    <span className="text-xs font-bold tracking-[0.2em] text-white/60">
-                      ← NOW
+                    <span className="text-xs font-bold tracking-[0.2em] text-white/70">
+                      ← YOU ARE HERE
                     </span>
                   )}
                 </Link>
