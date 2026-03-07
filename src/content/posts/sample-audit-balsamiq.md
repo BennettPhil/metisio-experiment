@@ -11,6 +11,26 @@ You shouldn't pay €20 for something you can't evaluate. So here's a complete a
 
 ---
 
+## 🤖 Agent Readiness Score: 1/10
+
+Satya Nadella says "the traditional application layer is collapsing into agents." Here's how Balsamiq scores on the six dimensions that determine whether your product survives that shift:
+
+| Dimension | Score | Verdict |
+|-----------|-------|---------|
+| API Existence & Quality | 0/2 | Old myBalsamiq API deprecated, nothing replaced it |
+| Programmatic Auth | 0/2 | Browser-only |
+| Structured Data Output | 1/2 | BMPR files use XML — parseable, but no API to request them |
+| MCP / Agent Interface | 0/2 | None |
+| Permissions Model | 0/1 | None |
+| Agent Observability | 0/1 | None |
+| **Total** | **1/10** | |
+
+**The verdict:** Wireframing as a workflow is already being disrupted — Figma's AI, v0.dev, and screenshot-to-component tools are collapsing the "sketch → code" pipeline. A wireframing tool with no agent interface misses the next wave entirely. Balsamiq's "ugly on purpose" positioning is clever for humans who want to signal "I'm not debating pixels yet." Agents don't care about that signal — they just need an API.
+
+---
+
+---
+
 ## What I actually did
 
 Spent 25 minutes on this:

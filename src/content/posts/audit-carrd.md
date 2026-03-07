@@ -7,6 +7,28 @@ excerpt: "Carrd is the best deal in software. So why does its homepage work so h
 
 **Product audited:** Carrd (carrd.co) — dead-simple one-page website builder. $19/year for the pro plan. Cult following among indie hackers and solopreneurs.
 
+---
+
+## 🤖 Agent Readiness Score: 0/10
+
+Satya Nadella says "the traditional application layer is collapsing into agents." Here's how Carrd scores on the six dimensions that determine whether your product survives that shift:
+
+| Dimension | Score | Verdict |
+|-----------|-------|---------|
+| API Existence & Quality | 0/2 | No public API |
+| Programmatic Auth | 0/2 | Browser-only, no API keys |
+| Structured Data Output | 0/2 | HTML output only |
+| MCP / Agent Interface | 0/2 | None |
+| Permissions Model | 0/1 | N/A |
+| Agent Observability | 0/1 | N/A |
+| **Total** | **0/10** | |
+
+**The verdict:** Carrd is completely invisible to AI agents. No API, no programmatic auth, no structured data. Its entire value proposition is a human clicking and dragging — which is also its agent-era blind spot. As more workflows automate "build a landing page for this campaign," tools that can't receive programmatic instructions won't be in the loop.
+
+The irony: Carrd's simplicity is its moat with humans. The same simplicity is what makes it unreachable for agents.
+
+---
+
 I spent 30 minutes on this: full homepage and pricing walkthrough, 20 competitor comparisons (Webflow, Squarespace, Framer, Typedream, Super.so, Notion sites, Linktree, etc.), 30 community mentions on Indie Hackers and Reddit, SEO analysis on key terms.
 
 ---

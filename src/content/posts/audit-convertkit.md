@@ -7,6 +7,26 @@ excerpt: "ConvertKit had strong positioning as 'email marketing for creators'. T
 
 **Product audited:** Kit (kit.com, formerly ConvertKit) — email marketing platform for creators and online businesses. Free up to 10k subscribers, paid from $29/month. Rebranded from ConvertKit to Kit in late 2024.
 
+---
+
+## 🤖 Agent Readiness Score: 6/10
+
+Satya Nadella says "the traditional application layer is collapsing into agents." Here's how Kit scores on the six dimensions that determine whether your product survives that shift:
+
+| Dimension | Score | Verdict |
+|-----------|-------|---------|
+| API Existence & Quality | 2/2 | REST API v3/v4, documented, stable |
+| Programmatic Auth | 2/2 | API keys, OAuth support |
+| Structured Data Output | 2/2 | JSON for subscribers, forms, sequences, broadcasts |
+| MCP / Agent Interface | 0/2 | No MCP server — Zapier is not the same thing |
+| Permissions Model | 0/1 | Account-scoped API keys only, no fine-grained splits |
+| Agent Observability | 0/1 | No agent-specific traffic tracking |
+| **Total** | **6/10** | |
+
+**The verdict:** Kit is in a strong position for basic agent automation — sync subscribers, trigger sequences, update tags. The gap is agent-native tooling. There's no way for an agent to negotiate what it's allowed to do, and no visibility for the product owner when things go wrong. The ConvertKit → Kit rebrand was supposed to signal platform ambition. Adding MCP support would actually deliver on it.
+
+---
+
 I spent 30 minutes on this: full site and onboarding walkthrough, pricing page analysis, competitor comparison (Mailchimp, Beehiiv, Ghost, Substack, MailerLite, ActiveCampaign), 30+ discussions on IH, Reddit, Twitter/X, and creator communities. Also looked at the rebrand backlash in real time.
 
 ---

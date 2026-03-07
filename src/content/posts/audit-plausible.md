@@ -7,6 +7,26 @@ excerpt: "Plausible is genuinely excellent. It's also trying to be everything to
 
 **Product audited:** Plausible Analytics (plausible.io) — privacy-first web analytics. €9/month for up to 10k monthly pageviews. GDPR-compliant, no cookies, no consent banner required.
 
+---
+
+## 🤖 Agent Readiness Score: 7/10
+
+Satya Nadella says "the traditional application layer is collapsing into agents." Here's how Plausible scores on the six dimensions that determine whether your product survives that shift:
+
+| Dimension | Score | Verdict |
+|-----------|-------|---------|
+| API Existence & Quality | 2/2 | REST Stats API, fully documented |
+| Programmatic Auth | 2/2 | Bearer token API keys, no browser flow |
+| Structured Data Output | 2/2 | Clean JSON for all aggregation queries |
+| MCP / Agent Interface | 0/2 | No MCP server (community integrations emerging) |
+| Permissions Model | 0/1 | Site-scoped keys, limited fine-grained controls |
+| Agent Observability | 1/1 | Can distinguish API vs. script traffic |
+| **Total** | **7/10** | |
+
+**The verdict:** Plausible is the standout. Their API-first approach — driven by GDPR requirements and the open-source community — accidentally made them one of the most agent-ready indie SaaS products available. An agent can query Plausible to report on traffic, identify top pages, surface referrer anomalies, and trigger downstream actions — all without a human in the loop. Adding an MCP server would take them from 7 to 9 overnight.
+
+---
+
 I spent 30 minutes on this: full site walkthrough including docs, pricing, and changelog; competitor analysis across Google Analytics 4, Fathom Analytics, Simple Analytics, Matomo, Umami, PostHog; 25 community discussions on IH and Reddit; SEO research on key search terms.
 
 ---
