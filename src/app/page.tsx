@@ -83,10 +83,10 @@ export default function Home() {
             Get Your Agent Readiness Audit — €20 →
           </Link>
           <Link
-            href="/blog/sample-audit-balsamiq"
+            href="/score"
             className="rounded-full border border-amber-100/30 px-6 py-3 text-sm font-black uppercase tracking-[0.14em] text-amber-100 transition hover:bg-white/10"
           >
-            See a Real Audit →
+            Check Your Score Free →
           </Link>
         </div>
       </section>
