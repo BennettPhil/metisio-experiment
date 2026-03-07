@@ -3,7 +3,19 @@ import Link from "next/link";
 
 const VERSIONS = [
   {
-    label: "v8 — Current",
+    label: "v9 — Current",
+    date: "2026-03-07",
+    commit: "swiss-minimalist-redesign-v9",
+    image: "/versions/v9.png",
+    changes: [
+      "Swiss Minimalist redesign — readability + mobile fix",
+      "Replaced terminal neon shell styling with white/black/red Swiss design system",
+      "Homepage, nav, checkout, blog, score widget, and versions rebuilt around readable grid-based layouts",
+      "Preserved checkout, success verification, API routes, blog content, score logic, and live versions flow",
+    ],
+  },
+  {
+    label: "v8",
     date: "2026-03-07",
     commit: "terminal-cli-redesign",
     image: "/versions/v8.png",
@@ -106,34 +118,35 @@ const VERSIONS = [
 
 export default function VersionsPage() {
   return (
-    <div className="space-y-8">
-      <div className="terminal-panel overflow-hidden">
-        <div className="terminal-titlebar px-4 py-2 text-xs uppercase tracking-[0.32em]">
-          VERSION_HISTORY.LOG
+    <div className="space-y-6">
+      <div className="swiss-card swiss-shell swiss-grid-pattern overflow-hidden">
+        <div className="swiss-titlebar">
+          <span>Version history</span>
+          <span>Actual build archive</span>
         </div>
-        <div className="space-y-4 px-4 py-6 sm:px-6">
-          <p className="text-xs uppercase tracking-[0.32em] text-dim">AUDIT TRAIL</p>
-          <h1 className="text-4xl font-semibold uppercase leading-tight tracking-[0.18em] sm:text-5xl">
-            EVERY VERSION
+        <div className="space-y-4 px-4 py-6 sm:px-6 sm:py-7">
+          <p className="swiss-section-number text-accent">Every version of this site</p>
+          <h1 className="max-w-4xl text-4xl font-black uppercase leading-none tracking-[-0.08em] sm:text-6xl">
+            Public iterations,
             <br />
-            OF THIS SITE
+            including the bad ones.
           </h1>
-          <p className="max-w-2xl text-sm text-dim">
+          <p className="max-w-2xl text-sm leading-7 text-black/72 sm:text-base">
             Every significant homepage change, screenshotted from the actual git history and run locally.
-            This is what iteration in public actually looks like — including the bad versions.
+            This remains a live artifact, not a marketing summary.
           </p>
         </div>
       </div>
 
-      <div className="space-y-10">
+      <div className="space-y-8">
         {VERSIONS.map((v) => (
-          <div key={v.commit} className="terminal-panel overflow-hidden">
-            <div className="terminal-titlebar flex flex-wrap items-center gap-3 px-4 py-2 text-xs uppercase tracking-[0.24em]">
+          <div key={v.commit} className="swiss-card overflow-hidden">
+            <div className="swiss-titlebar flex-wrap">
               <span>{v.label}</span>
-              <span className="text-dim">{v.commit}</span>
-              <span className="text-dim">{v.date}</span>
+              <span>{v.commit}</span>
+              <span>{v.date}</span>
             </div>
-            <div className="border-b border-muted">
+            <div className="border-b-2 border-black">
               <Image
                 src={v.image}
                 alt={`Screenshot of ${v.label}`}
@@ -143,10 +156,10 @@ export default function VersionsPage() {
                 unoptimized
               />
             </div>
-            <ul className="space-y-2 px-4 py-4 text-sm sm:px-6">
+            <ul className="space-y-2 px-4 py-4 text-sm leading-7 text-black/72 sm:px-6 sm:py-5">
               {v.changes.map((c) => (
-                <li key={c} className="flex items-start gap-2 text-dim">
-                  <span className="text-amber-terminal mt-0.5 shrink-0">&gt;</span>
+                <li key={c} className="flex items-start gap-3">
+                  <span className="mt-1 h-2.5 w-2.5 shrink-0 bg-accent" />
                   <span>{c}</span>
                 </li>
               ))}
@@ -155,17 +168,17 @@ export default function VersionsPage() {
         ))}
       </div>
 
-      <div className="terminal-panel overflow-hidden">
-        <div className="terminal-titlebar px-4 py-2 text-xs uppercase tracking-[0.32em]">
-          NEXT_COMMAND
+      <div className="swiss-card swiss-card-muted overflow-hidden">
+        <div className="swiss-titlebar">
+          <span>Next command</span>
+          <span>Audit for sale</span>
         </div>
-        <div className="space-y-3 px-4 py-5 text-sm sm:px-6">
-          <p className="text-dim">The current version is for sale. €20 gets you the same treatment for your product.</p>
-          <Link
-            href="/checkout"
-            className="terminal-button px-4 py-2"
-          >
-            [ GET YOUR AUDIT - €20 ]
+        <div className="space-y-3 px-4 py-5 sm:px-6">
+          <p className="max-w-xl text-sm leading-7 text-black/72">
+            The current version is for sale. €20 gets you the same treatment for your product.
+          </p>
+          <Link href="/checkout" className="swiss-button-primary w-full sm:w-auto">
+            Get your audit - €20
           </Link>
         </div>
       </div>

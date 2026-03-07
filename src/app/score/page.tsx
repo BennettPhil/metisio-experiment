@@ -59,138 +59,136 @@ export default function ScorePage() {
   const allAnswered = answered === questions.length;
 
   const getVerdict = (value: number) => {
-    if (value <= 1) return { label: "Not Agent-Ready", color: "#ff3333", desc: "Your product is invisible to AI agents." };
-    if (value <= 3) return { label: "Partially Ready", color: "#ffb000", desc: "You have some foundations but critical gaps remain." };
-    if (value <= 5) return { label: "Mostly Ready", color: "#33ff00", desc: "Solid foundations, but still missing key agent interfaces." };
-    return { label: "Agent-Ready", color: "#33ff00", desc: "Strong score. Now market that fact clearly." };
+    if (value <= 1) return { label: "Not Agent-Ready", color: "text-accent", desc: "Your product is invisible to AI agents." };
+    if (value <= 3) return { label: "Partially Ready", color: "text-accent", desc: "You have some foundations but critical gaps remain." };
+    if (value <= 5) return { label: "Mostly Ready", color: "text-black", desc: "Solid foundations, but still missing key agent interfaces." };
+    return { label: "Agent-Ready", color: "text-black", desc: "Strong score. Now market that fact clearly." };
   };
 
   const verdict = getVerdict(score);
 
   return (
-    <div className="mx-auto max-w-3xl space-y-8 py-8">
-      <div className="terminal-panel overflow-hidden">
-        <div className="terminal-titlebar flex items-center justify-between gap-3 px-4 py-2 text-xs uppercase tracking-[0.32em]">
-          <span>SCORE_CHECK</span>
-          <Link href="/checkout" className="terminal-link">./buy-audit</Link>
+    <div className="mx-auto max-w-4xl space-y-6 py-2 sm:py-4">
+      <div className="swiss-card swiss-shell swiss-grid-pattern overflow-hidden">
+        <div className="swiss-titlebar">
+          <span>Score widget</span>
+          <Link href="/checkout" className="swiss-link">Buy audit</Link>
         </div>
-        <div className="px-4 py-8 text-center sm:px-6">
-          <div className="terminal-status mb-5 inline-block text-xs uppercase tracking-[0.22em]">
-            Free Agent Readiness Check
-          </div>
-          <h1 className="text-3xl font-semibold uppercase leading-tight tracking-[0.14em] sm:text-5xl">
-            Is Your Product
+        <div className="px-4 py-7 text-center sm:px-6">
+          <div className="swiss-label mb-5 text-accent">Free agent readiness check</div>
+          <h1 className="text-4xl font-black uppercase leading-none tracking-[-0.08em] sm:text-6xl">
+            Is your product ready
             <br />
-            Ready for the Agent Era?
+            for the agent era?
           </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-dim">
-            6 yes/no questions. 60 seconds. Know where you stand before your competitors do.
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-black/72">
+            6 yes/no questions. About a minute. Clearer result, cleaner interface, same scoring logic.
           </p>
         </div>
       </div>
 
       {!submitted ? (
         <div>
-          {questions.map((q, i) => (
-            <div
-              key={q.id}
-              className="terminal-panel mb-6 p-6 transition-colors"
-              style={{ borderColor: answers[q.id] ? (answers[q.id] === "yes" ? "#33ff00" : "#ff3333") : "#1f521f" }}
-            >
-              <div className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-dim">
-                {i + 1}. {q.dimension}
-              </div>
-              <p className="mb-5 text-base font-medium leading-6">{q.question}</p>
-              <div className="flex gap-3">
-                <button
-                  onClick={() => setAnswers((prev) => ({ ...prev, [q.id]: "yes" }))}
-                  className="terminal-button flex-1 px-4 py-3"
-                  style={{
-                    borderColor: answers[q.id] === "yes" ? "#33ff00" : "#1f521f",
-                    background: answers[q.id] === "yes" ? "#33ff00" : "transparent",
-                    color: answers[q.id] === "yes" ? "#0a0a0a" : "#33ff00",
-                    textShadow: answers[q.id] === "yes" ? "none" : undefined,
-                  }}
-                >
-                  [ YES ]
-                </button>
-                <button
-                  onClick={() => setAnswers((prev) => ({ ...prev, [q.id]: "no" }))}
-                  className="terminal-button flex-1 px-4 py-3"
-                  style={{
-                    borderColor: answers[q.id] === "no" ? "#ff3333" : "#1f521f",
-                    background: answers[q.id] === "no" ? "#ff3333" : "transparent",
-                    color: answers[q.id] === "no" ? "#0a0a0a" : "#33ff00",
-                    textShadow: answers[q.id] === "no" ? "none" : undefined,
-                  }}
-                >
-                  [ NO ]
-                </button>
-              </div>
-              {answers[q.id] && (
-                <p className="mt-3 text-sm leading-6" style={{ color: answers[q.id] === "yes" ? "#33ff00" : "#ff3333" }}>
-                  {answers[q.id] === "yes" ? q.yes : q.no}
-                </p>
-              )}
-            </div>
-          ))}
+          {questions.map((q, i) => {
+            const selected = answers[q.id];
+            const selectedClass =
+              selected === "yes" ? "border-accent" : selected === "no" ? "border-black" : "border-black";
 
-          <div className="mt-2 text-center">
-            <p className="mb-5 text-sm text-muted">{answered}/6 questions answered</p>
+            return (
+              <div key={q.id} className={`swiss-card mb-4 p-4 sm:p-6 ${selectedClass}`}>
+                <div className="mb-2 text-xs font-bold uppercase tracking-[0.18em] text-accent">
+                  {String(i + 1).padStart(2, "0")} {q.dimension}
+                </div>
+                <p className="mb-5 text-base font-medium leading-7 sm:text-lg">{q.question}</p>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <button
+                    onClick={() => setAnswers((prev) => ({ ...prev, [q.id]: "yes" }))}
+                    className={`swiss-button-secondary w-full ${selected === "yes" ? "!border-accent !bg-accent !text-white" : ""}`}
+                  >
+                    Yes
+                  </button>
+                  <button
+                    onClick={() => setAnswers((prev) => ({ ...prev, [q.id]: "no" }))}
+                    className={`swiss-button-secondary w-full ${selected === "no" ? "!bg-black !text-white" : ""}`}
+                  >
+                    No
+                  </button>
+                </div>
+                {selected && (
+                  <p className={`mt-4 text-sm leading-7 ${selected === "yes" ? "text-black/78" : "text-accent"}`}>
+                    {selected === "yes" ? q.yes : q.no}
+                  </p>
+                )}
+              </div>
+            );
+          })}
+
+          <div className="mt-3 text-center">
+            <p className="mb-5 text-sm text-black/56">{answered}/6 questions answered</p>
             <button
               onClick={() => setSubmitted(true)}
               disabled={!allAnswered}
-              className="terminal-button w-full max-w-sm justify-center px-10 py-4 text-base disabled:cursor-not-allowed disabled:opacity-40"
+              className="swiss-button-primary w-full disabled:cursor-not-allowed disabled:opacity-40 sm:max-w-sm"
             >
-              [ SEE MY SCORE ]
+              See my score
             </button>
           </div>
         </div>
       ) : (
-        <div>
-          <div className="mb-12 text-center">
-            <div className="mb-2 text-7xl font-bold leading-none" style={{ color: verdict.color }}>
-              {score}<span className="text-3xl text-muted">/6</span>
+        <div className="space-y-6">
+          <div className="swiss-card p-6 text-center sm:p-8">
+            <div className={`text-7xl font-black leading-none sm:text-8xl ${verdict.color}`}>
+              {score}
+              <span className="text-3xl text-black/34">/6</span>
             </div>
-            <div className="mb-4 text-2xl font-semibold uppercase tracking-[0.1em]" style={{ color: verdict.color }}>
+            <div className={`mt-3 text-2xl font-black uppercase tracking-[-0.04em] sm:text-3xl ${verdict.color}`}>
               {verdict.label}
             </div>
-            <p className="mx-auto max-w-xl text-base leading-7 text-dim">{verdict.desc}</p>
+            <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-black/72">{verdict.desc}</p>
           </div>
 
-          <div className="terminal-panel mb-10 p-6">
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-[0.18em]">YOUR ANSWERS</h3>
-            {questions.map((q) => (
-              <div key={q.id} className="flex items-start gap-3 border-b border-muted py-3">
-                <span className="shrink-0 text-lg" style={{ color: answers[q.id] === "yes" ? "#33ff00" : "#ff3333" }}>
-                  {answers[q.id] === "yes" ? ">" : "!"}
-                </span>
-                <div>
-                  <div className="text-sm font-semibold uppercase tracking-[0.08em]">{q.dimension}</div>
-                  {answers[q.id] === "no" && <div className="mt-1 text-xs text-muted">{q.no}</div>}
+          <div className="swiss-card overflow-hidden">
+            <div className="swiss-titlebar">
+              <span>Your answers</span>
+              <span>{score}/6</span>
+            </div>
+            <div className="p-4 sm:p-6">
+              {questions.map((q) => (
+                <div key={q.id} className="flex items-start gap-3 border-b-2 border-black py-3 last:border-b-0">
+                  <span className={`mt-0.5 text-xs font-black uppercase tracking-[0.18em] ${answers[q.id] === "yes" ? "text-black" : "text-accent"}`}>
+                    {answers[q.id]}
+                  </span>
+                  <div>
+                    <div className="text-sm font-bold uppercase tracking-[0.08em]">{q.dimension}</div>
+                    {answers[q.id] === "no" && <div className="mt-1 text-sm leading-6 text-black/64">{q.no}</div>}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
-          <div className="terminal-panel p-8 text-center">
-            <h2 className="mb-3 text-2xl font-semibold uppercase tracking-[0.12em]">Want to know exactly what to fix?</h2>
-            <p className="mb-6 text-sm leading-7 text-dim">
+          <div className="swiss-card swiss-card-muted p-6 text-center sm:p-8">
+            <h2 className="text-3xl font-black uppercase leading-none tracking-[-0.06em]">
+              Want to know exactly what to fix?
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-black/72 sm:text-base">
               The free check tells you where you stand. The full Agent Readiness Audit tells you what to do about it.
             </p>
-            <Link href="/checkout" className="terminal-button px-6 py-4">
-              [ GET THE FULL AUDIT - €20 ]
+            <Link href="/checkout" className="swiss-button-primary mt-6 w-full sm:w-auto">
+              Get the full audit - €20
             </Link>
-            <p className="mt-3 text-xs text-muted">Guarantee: 3 specific actionable insights or full refund.</p>
+            <p className="mt-3 text-xs font-bold uppercase tracking-[0.16em] text-black/56">
+              Guarantee: 3 specific actionable insights or full refund
+            </p>
           </div>
 
-          <div className="mt-8 text-center">
+          <div className="text-center">
             <button
               onClick={() => {
                 setAnswers({});
                 setSubmitted(false);
               }}
-              className="terminal-link bg-transparent text-sm underline"
+              className="swiss-link bg-transparent text-sm"
             >
               Start over
             </button>

@@ -41,66 +41,73 @@ export default function BlogIndex() {
     .sort((a, b) => a.sortOrder - b.sortOrder);
 
   return (
-    <div className="space-y-8">
-      <div className="terminal-panel overflow-hidden">
-        <div className="terminal-titlebar px-4 py-2 text-xs uppercase tracking-[0.32em]">
-          BLOG_INDEX.LOG
+    <div className="space-y-6">
+      <div className="swiss-card swiss-shell swiss-grid-pattern overflow-hidden">
+        <div className="swiss-titlebar">
+          <span>Journal</span>
+          <span>The record</span>
         </div>
-        <div className="space-y-4 px-4 py-6 sm:px-6">
-          <p className="text-xs uppercase tracking-[0.32em] text-dim">botlington.com</p>
-          <h1 className="text-4xl font-semibold uppercase leading-tight tracking-[0.18em] sm:text-5xl">
-            THE RECORD
+        <div className="space-y-4 px-4 py-6 sm:px-6 sm:py-7">
+          <p className="swiss-section-number text-accent">Sample audits + experiment diary</p>
+          <h1 className="max-w-4xl text-4xl font-black uppercase leading-none tracking-[-0.08em] sm:text-6xl">
+            The work, the diary, the proof.
           </h1>
-          <p className="max-w-2xl text-sm text-dim">
-            Sample audits that show you what €20 buys and the live diary of an AI trying to make it happen.
+          <p className="max-w-2xl text-sm leading-7 text-black/72 sm:text-base">
+            Sample audits show what €20 buys. The diary keeps the experiment visible while the product iterates in public.
           </p>
         </div>
       </div>
 
       <section className="space-y-4">
-        <div className="flex items-baseline gap-3">
-          <h2 className="text-sm uppercase tracking-[0.32em] text-dim">SAMPLE_AUDITS</h2>
-          <span className="text-xs text-muted">See the work before you buy</span>
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="swiss-section-number text-accent">01 Audits</p>
+            <h2 className="text-3xl font-black uppercase tracking-[-0.06em]">Sample audits</h2>
+          </div>
+          <p className="text-sm text-black/56">See the work before you buy</p>
         </div>
         <div className="grid gap-4 sm:grid-cols-2">
           {audits.map((post) => (
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
-              className="terminal-panel block p-6 transition hover:border-foreground"
+              className="swiss-card swiss-shell block p-5 transition-colors hover:bg-muted sm:p-6"
             >
-              <span className="mb-3 inline-block text-[10px] uppercase tracking-[0.32em] text-amber-terminal">[ SAMPLE AUDIT ]</span>
-              <h2 className="text-2xl font-semibold uppercase leading-tight tracking-[0.14em]">{post.title}</h2>
-              <p className="mt-3 text-sm text-dim">{post.summary}</p>
-              <p className="mt-4 text-sm uppercase text-dim">&gt; READ</p>
+              <span className="swiss-label text-accent">Sample audit</span>
+              <h2 className="mt-4 text-2xl font-black uppercase leading-none tracking-[-0.05em] sm:text-3xl">{post.title}</h2>
+              <p className="mt-3 text-sm leading-7 text-black/72">{post.summary}</p>
+              <p className="mt-5 text-xs font-bold uppercase tracking-[0.18em]">Read audit</p>
             </Link>
           ))}
         </div>
-        <div className="terminal-status flex items-center justify-between gap-4">
-          <p className="text-sm">Like what you see? Get your own for €20.</p>
-          <Link href="/checkout" className="terminal-button shrink-0 px-4 py-2 text-xs">
-            [ GET AN AUDIT ]
+        <div className="swiss-status flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-sm leading-6">Like what you see? Get your own agent readiness audit for €20.</p>
+          <Link href="/checkout" className="swiss-button-primary w-full sm:w-auto">
+            Get an audit
           </Link>
         </div>
       </section>
 
       <section className="space-y-4">
-        <div className="flex items-baseline gap-3">
-          <h2 className="text-sm uppercase tracking-[0.32em] text-dim">EXPERIMENT_DIARY</h2>
-          <span className="text-xs text-muted">Live record of the €10→€100 attempt</span>
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="swiss-section-number text-accent">02 Diary</p>
+            <h2 className="text-3xl font-black uppercase tracking-[-0.06em]">Experiment journal</h2>
+          </div>
+          <p className="text-sm text-black/56">Live record of the €10 to €100 attempt</p>
         </div>
         <div className="grid gap-3">
           {diary.map((post) => (
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
-              className="terminal-panel flex items-center justify-between gap-4 px-6 py-4 transition hover:border-foreground"
+              className="swiss-card flex flex-col gap-2 px-4 py-4 transition-colors hover:bg-muted sm:flex-row sm:items-center sm:justify-between sm:px-6"
             >
               <div>
-                <h3 className="text-sm font-semibold uppercase tracking-[0.08em]">{post.title}</h3>
-                {post.summary && <p className="mt-1 line-clamp-1 text-xs text-dim">{post.summary}</p>}
+                <h3 className="text-base font-bold uppercase tracking-[0.06em]">{post.title}</h3>
+                {post.summary && <p className="mt-1 text-sm leading-6 text-black/64">{post.summary}</p>}
               </div>
-              <span className="shrink-0 text-sm font-semibold text-amber-terminal">&gt;</span>
+              <span className="text-xs font-bold uppercase tracking-[0.18em] text-accent">Open</span>
             </Link>
           ))}
         </div>

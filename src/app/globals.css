@@ -1,42 +1,43 @@
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap");
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #33ff00;
-  --accent: #ffb000;
-  --muted: #1f521f;
-  --error: #ff3333;
-  --shadow-glow: 0 0 5px rgba(51, 255, 0, 0.5);
-  --font-mono: "JetBrains Mono";
+  --background: #ffffff;
+  --foreground: #000000;
+  --muted: #f2f2f2;
+  --accent: #ff3000;
+  --border: #000000;
+  --font-sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-accent: var(--accent);
   --color-muted: var(--muted);
-  --color-error: var(--error);
-  --font-sans: var(--font-mono);
+  --color-accent: var(--accent);
+  --color-border: var(--border);
+  --font-sans: var(--font-sans);
 }
 
 * {
-  border-radius: 0 !important;
   box-sizing: border-box;
+  border-radius: 0 !important;
 }
 
 html {
   background: var(--background);
+  color: var(--foreground);
 }
 
 body {
+  min-width: 320px;
   background:
-    radial-gradient(circle at top, rgba(51, 255, 0, 0.08), transparent 40%),
-    linear-gradient(180deg, rgba(31, 82, 31, 0.1), transparent 30%),
+    linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
     var(--background);
+  background-size: 24px 24px, 24px 24px, auto;
   color: var(--foreground);
-  font-family: var(--font-mono), monospace;
-  text-shadow: var(--shadow-glow);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
 }
 
 body::before {
@@ -44,17 +45,13 @@ body::before {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background:
-    repeating-linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.02) 0,
-      rgba(255, 255, 255, 0.02) 1px,
-      transparent 1px,
-      transparent 3px
-    );
+  background-image:
+    radial-gradient(rgba(0, 0, 0, 0.06) 0.5px, transparent 0.5px),
+    linear-gradient(45deg, rgba(0, 0, 0, 0.03) 25%, transparent 25%, transparent 50%, rgba(0, 0, 0, 0.03) 50%, rgba(0, 0, 0, 0.03) 75%, transparent 75%, transparent);
+  background-position: 0 0, 0 0;
+  background-size: 16px 16px, 48px 48px;
   opacity: 0.22;
-  mix-blend-mode: screen;
-  z-index: 30;
+  z-index: -1;
 }
 
 a {
@@ -69,134 +66,281 @@ textarea {
 }
 
 ::selection {
-  background: var(--foreground);
+  background: var(--accent);
   color: var(--background);
-  text-shadow: none;
 }
 
-.terminal-panel {
-  border: 1px solid var(--muted);
-  background: rgba(0, 0, 0, 0.78);
-  box-shadow:
-    inset 0 0 0 1px rgba(51, 255, 0, 0.04),
-    0 0 24px rgba(51, 255, 0, 0.06);
+.swiss-grid-pattern {
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
-.terminal-titlebar {
-  border-bottom: 1px solid var(--muted);
-  color: var(--accent);
+.swiss-dots {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+  background-size: 16px 16px;
 }
 
-.terminal-button {
+.swiss-diagonal {
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(0, 0, 0, 0.06) 0,
+    rgba(0, 0, 0, 0.06) 1px,
+    transparent 1px,
+    transparent 14px
+  );
+}
+
+.swiss-noise {
+  position: relative;
+}
+
+.swiss-noise::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.08) 0.5px, transparent 0.5px);
+  background-size: 8px 8px;
+  opacity: 0.12;
+}
+
+.swiss-shell {
+  position: relative;
+  overflow: clip;
+}
+
+.swiss-card {
+  border: 2px solid var(--border);
+  background: var(--background);
+}
+
+.swiss-card-muted {
+  background: var(--muted);
+}
+
+.swiss-titlebar {
+  border-bottom: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.swiss-label {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--muted);
-  background: transparent;
-  color: var(--foreground);
+  border: 2px solid var(--border);
+  padding: 0.35rem 0.55rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.swiss-button-primary,
+.swiss-button-secondary {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 2px solid var(--border);
   padding: 0.8rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-align: center;
   text-transform: uppercase;
   transition:
     background-color 150ms ease,
     color 150ms ease,
-    box-shadow 150ms ease,
-    transform 150ms ease;
+    border-color 150ms ease;
 }
 
-.terminal-button:hover {
+.swiss-button-primary {
   background: var(--foreground);
   color: var(--background);
-  text-shadow: none;
-  box-shadow: 0 0 12px rgba(51, 255, 0, 0.35);
-  animation: glitch 180ms linear 1;
 }
 
-.terminal-link {
-  color: var(--accent);
+.swiss-button-primary:hover {
+  background: var(--accent);
+  border-color: var(--accent);
 }
 
-.terminal-link:hover {
+.swiss-button-secondary {
+  background: var(--background);
   color: var(--foreground);
 }
 
-.terminal-input {
+.swiss-button-secondary:hover {
+  background: var(--muted);
+}
+
+.swiss-link {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.18em;
+}
+
+.swiss-input {
   width: 100%;
-  border: 1px solid var(--muted);
-  background: rgba(0, 0, 0, 0.82);
+  border: 2px solid var(--border);
+  background: var(--background);
   color: var(--foreground);
   padding: 0.9rem 1rem;
   outline: none;
 }
 
-.terminal-input::placeholder {
-  color: rgba(51, 255, 0, 0.45);
+.swiss-input::placeholder {
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.swiss-input:focus {
+  border-color: var(--accent);
+}
+
+.swiss-status {
+  border: 2px solid var(--border);
+  background: var(--muted);
+  padding: 0.9rem 1rem;
+}
+
+.swiss-section-number {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.swiss-prose h2,
+.swiss-prose h3,
+.swiss-prose strong {
+  color: var(--foreground);
+}
+
+.swiss-prose h2 {
+  margin: 2rem 0 0.75rem;
+  font-size: 1.65rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.swiss-prose h3 {
+  margin: 1.5rem 0 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+.swiss-prose p,
+.swiss-prose li {
+  color: rgba(0, 0, 0, 0.82);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.swiss-prose ul {
+  margin: 0.75rem 0;
+}
+
+.swiss-prose hr {
+  margin: 1.5rem 0;
+  border-color: var(--border);
+}
+
+.terminal-panel {
+  border: 2px solid var(--border);
+  background: var(--background);
+}
+
+.terminal-titlebar {
+  border-bottom: 2px solid var(--border);
+  color: var(--foreground);
+}
+
+.terminal-button {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--border);
+  background: var(--foreground);
+  color: var(--background);
+  padding: 0.8rem 1rem;
+  text-transform: uppercase;
+  transition:
+    background-color 150ms ease,
+    color 150ms ease,
+    border-color 150ms ease;
+}
+
+.terminal-button:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--background);
+}
+
+.terminal-link {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.18em;
+}
+
+.terminal-input {
+  width: 100%;
+  border: 2px solid var(--border);
+  background: var(--background);
+  color: var(--foreground);
+  padding: 0.9rem 1rem;
+  outline: none;
 }
 
 .terminal-input:focus {
-  border-color: var(--foreground);
-  box-shadow: 0 0 12px rgba(51, 255, 0, 0.16);
+  border-color: var(--accent);
 }
 
 .terminal-status {
-  border: 1px solid var(--muted);
-  background: rgba(10, 10, 10, 0.9);
-  color: var(--accent);
-  padding: 0.75rem 1rem;
+  border: 2px solid var(--border);
+  background: var(--muted);
+  color: var(--foreground);
+  padding: 0.9rem 1rem;
 }
 
-.terminal-divider {
-  color: rgba(51, 255, 0, 0.6);
-  letter-spacing: 0.2em;
-  overflow: hidden;
-  white-space: nowrap;
+.terminal-divider,
+.text-dim,
+.text-muted {
+  color: rgba(0, 0, 0, 0.62);
+}
+
+.text-amber-terminal,
+.text-error-terminal {
+  color: var(--accent);
 }
 
 .terminal-prose h2,
 .terminal-prose h3,
-.terminal-prose strong {
-  color: var(--accent);
-}
-
+.terminal-prose strong,
 .terminal-prose p,
-.terminal-prose li {
-  color: var(--foreground);
-}
-
+.terminal-prose li,
 .terminal-prose hr {
-  border-color: var(--muted);
-}
-
-.text-dim {
-  color: rgba(51, 255, 0, 0.7);
-}
-
-.text-muted {
-  color: rgba(51, 255, 0, 0.52);
-}
-
-.text-amber-terminal {
-  color: var(--accent);
-  text-shadow: 0 0 5px rgba(255, 176, 0, 0.35);
-}
-
-.text-error-terminal {
-  color: var(--error);
-  text-shadow: 0 0 5px rgba(255, 51, 51, 0.35);
+  color: inherit;
+  border-color: var(--border);
 }
 
 .animate-blink {
   animation: blink 1s steps(1, end) infinite;
-}
-
-.typewriter-line {
-  width: fit-content;
-  max-width: 100%;
-  overflow: hidden;
-  white-space: nowrap;
-  border-right: 0.12em solid var(--foreground);
-  animation:
-    typing 2.2s steps(28, end),
-    blink 1s steps(1, end) infinite;
 }
 
 @keyframes blink {
@@ -206,36 +350,6 @@ textarea {
   }
   50%,
   100% {
-    opacity: 0;
-  }
-}
-
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
-
-@keyframes glitch {
-  0% {
-    transform: translateX(0);
-  }
-  20% {
-    transform: translateX(-1px);
-  }
-  40% {
-    transform: translateX(1px);
-  }
-  60% {
-    transform: translateX(-1px);
-  }
-  80% {
-    transform: translateX(1px);
-  }
-  100% {
-    transform: translateX(0);
+    opacity: 0.2;
   }
 }

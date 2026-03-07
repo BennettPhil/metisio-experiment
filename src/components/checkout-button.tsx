@@ -6,7 +6,7 @@ export function CheckoutButton({ label = "[ INITIATE AUDIT — €20 ]", classNa
   const router = useRouter();
   return (
     <button
-      className={`terminal-button px-4 py-2 ${className}`}
+      className={`swiss-button-primary px-4 py-2 ${className}`}
       onClick={() => {
         trackCheckoutClick();
         router.push("/checkout");

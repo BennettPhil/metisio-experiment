@@ -23,16 +23,16 @@ function getPost(slug: string) {
 
 function renderMarkdown(md: string): string {
   return md
-    .replace(/^## (.+)$/gm, '<h2 class="mt-8 mb-3 text-2xl font-semibold uppercase tracking-[0.14em] text-[#ffb000]">$1</h2>')
-    .replace(/^### (.+)$/gm, '<h3 class="mt-6 mb-2 text-lg font-semibold uppercase tracking-[0.08em] text-[#ffb000]">$1</h3>')
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" class="terminal-link underline">$1</a>')
-    .replace(/^(?:\d+)\. (.+)$/gm, '<li class="ml-4 list-decimal text-[#33ff00]">$1</li>')
-    .replace(/^- (.+)$/gm, '<li class="ml-4 list-disc text-[#33ff00]">$1</li>')
+    .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+    .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" class="swiss-link">$1</a>')
+    .replace(/^(?:\d+)\. (.+)$/gm, '<li class="ml-5 list-decimal">$1</li>')
+    .replace(/^- (.+)$/gm, '<li class="ml-5 list-disc">$1</li>')
     .replace(/(<li[^>]*>.*<\/li>\n?)+/g, (m) => `<ul class="my-3 space-y-1">${m}</ul>`)
-    .replace(/^(?!<[hulo])(.+)$/gm, '<p class="my-3 leading-relaxed text-[#33ff00]">$1</p>')
-    .replace(/<p[^>]*>\s*<\/p>/g, "")
-    .replace(/^---$/gm, '<hr class="my-6 border-[#1f521f]" />');
+    .replace(/^(?!<[hulo])(.+)$/gm, "<p>$1</p>")
+    .replace(/<p>\s*<\/p>/g, "")
+    .replace(/^---$/gm, "<hr />");
 }
 
 export default async function BlogPost({ params }: Props) {
@@ -43,41 +43,43 @@ export default async function BlogPost({ params }: Props) {
   const { frontmatter, body } = post;
 
   return (
-    <div className="grid gap-6">
-      <div className="terminal-panel overflow-hidden">
-        <div className="terminal-titlebar px-4 py-2 text-xs uppercase tracking-[0.32em]">
-          POST_HEADER
+    <div className="grid gap-5">
+      <div className="swiss-card swiss-shell swiss-grid-pattern overflow-hidden">
+        <div className="swiss-titlebar">
+          <span>Post</span>
+          <span>{frontmatter.date}</span>
         </div>
-        <div className="px-4 py-6 sm:px-6">
-          <Link href="/blog" className="terminal-link text-sm uppercase">
-            &lt; ./blog
+        <div className="px-4 py-6 sm:px-6 sm:py-7">
+          <Link href="/blog" className="swiss-link text-sm font-bold uppercase tracking-[0.18em]">
+            Back to journal
           </Link>
-          <p className="mt-4 text-sm uppercase tracking-[0.24em] text-dim">{frontmatter.date}</p>
-          <h1 className="mt-2 text-4xl font-semibold uppercase leading-tight tracking-[0.14em] sm:text-5xl">
+          <p className="mt-5 text-xs font-bold uppercase tracking-[0.2em] text-accent">{frontmatter.date}</p>
+          <h1 className="mt-2 max-w-4xl text-4xl font-black uppercase leading-none tracking-[-0.08em] sm:text-6xl">
             {frontmatter.title}
           </h1>
           {frontmatter.excerpt && (
-            <p className="mt-3 max-w-3xl text-sm text-dim">{frontmatter.excerpt}</p>
+            <p className="mt-4 max-w-3xl text-sm leading-7 text-black/72 sm:text-base">{frontmatter.excerpt}</p>
           )}
         </div>
       </div>
 
       <article
-        className="terminal-panel terminal-prose p-8 text-base"
+        className="swiss-card swiss-prose p-5 sm:p-8"
         dangerouslySetInnerHTML={{ __html: renderMarkdown(body) }}
       />
 
-      <div className="terminal-panel overflow-hidden">
-        <div className="terminal-titlebar px-4 py-2 text-xs uppercase tracking-[0.32em]">
-          CALL_TO_ACTION
+      <div className="swiss-card overflow-hidden">
+        <div className="swiss-titlebar">
+          <span>Call to action</span>
+          <span>48h turnaround</span>
         </div>
         <div className="px-4 py-5 sm:px-6">
-          <p className="font-semibold uppercase tracking-[0.08em]">Want Gary to review your project?</p>
-          <p className="mt-1 text-sm text-dim">
-            €20 · Personalized audit · Delivered to your inbox within 48h
+          <p className="text-base font-black uppercase tracking-[0.02em]">Want Gary to review your project?</p>
+          <p className="mt-2 text-sm leading-7 text-black/72">
+            €20, personalized audit, delivered to your inbox within 48h.
           </p>
-          <Link href="/checkout" className="terminal-button mt-4 px-4 py-2">
-            [ GET YOUR AUDIT - €20 ]
+          <Link href="/checkout" className="swiss-button-primary mt-4 w-full sm:w-auto">
+            Get your audit - €20
           </Link>
         </div>
       </div>

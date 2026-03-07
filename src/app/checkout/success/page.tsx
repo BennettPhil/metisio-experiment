@@ -30,56 +30,68 @@ export default async function SuccessPage({ searchParams }: Props) {
   const url = session.metadata?.projectUrl ?? "";
 
   return (
-    <div className="mx-auto max-w-2xl space-y-6">
+    <div className="mx-auto max-w-4xl space-y-5">
       <PurchaseTracker />
-      <div className="terminal-panel overflow-hidden text-center">
-        <div className="terminal-titlebar px-4 py-2 text-xs uppercase tracking-[0.32em]">
-          PAYMENT_CONFIRMED
+
+      <div className="swiss-card swiss-shell swiss-grid-pattern overflow-hidden text-center">
+        <div className="swiss-titlebar">
+          <span>Payment confirmed</span>
+          <span>Queue active</span>
         </div>
-        <div className="px-4 py-8 sm:px-6">
-          <div className="text-5xl text-amber-terminal">$</div>
-          <h1 className="mt-3 text-4xl font-semibold uppercase tracking-[0.14em]">Gary&apos;s On It</h1>
-          <p className="mt-2 text-dim">Your audit is in the queue.</p>
+        <div className="px-4 py-8 sm:px-6 sm:py-10">
+          <div className="text-xs font-bold uppercase tracking-[0.2em] text-accent">Paid via Stripe</div>
+          <h1 className="mt-3 text-4xl font-black uppercase tracking-[-0.08em] sm:text-6xl">Gary&apos;s on it</h1>
+          <p className="mt-3 text-base leading-7 text-black/72">Your audit is in the queue and the verification flow is unchanged.</p>
         </div>
       </div>
 
-      <div className="terminal-panel overflow-hidden">
-        <div className="terminal-titlebar px-4 py-2 text-xs uppercase tracking-[0.32em]">
-          NEXT_STEPS
-        </div>
-        <div className="space-y-4 px-4 py-5 text-sm text-dim sm:px-6">
-          <ol className="space-y-3">
+      <div className="grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="swiss-card overflow-hidden">
+          <div className="swiss-titlebar">
+            <span>Next steps</span>
+            <span>48h delivery</span>
+          </div>
+          <div className="space-y-3 px-4 py-5 text-sm leading-7 text-black/72 sm:px-6">
             {[
               "Gary has received your request and will begin research shortly",
               "He will browse your project, check competitors, and identify specific gaps",
               `Your personalized audit will be emailed to ${email} within 48 hours`,
               "If you have not received it in 48h, email gary@botlington.com",
             ].map((step, i) => (
-              <li key={step} className="flex items-start gap-3">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center border border-muted text-xs text-amber-terminal">
-                  {i + 1}
-                </span>
+              <div key={step} className="flex items-start gap-3 border-b-2 border-black py-3 last:border-b-0">
+                <span className="swiss-label shrink-0">{i + 1}</span>
                 <span>{step}</span>
-              </li>
+              </div>
             ))}
-          </ol>
+          </div>
+        </div>
 
+        <div className="space-y-5">
           {(request || url) && (
-            <div className="terminal-status space-y-1 text-sm">
-              <p className="uppercase tracking-[0.22em]">Your submission</p>
-              {url && <p><span className="text-amber-terminal">URL:</span> {url}</p>}
-              {request && <p><span className="text-amber-terminal">FOCUS:</span> {request}</p>}
+            <div className="swiss-card overflow-hidden">
+              <div className="swiss-titlebar">
+                <span>Your submission</span>
+                <span>Captured at checkout</span>
+              </div>
+              <div className="space-y-3 px-4 py-5 text-sm leading-7 text-black/72 sm:px-6">
+                {url && <p><strong>URL:</strong> {url}</p>}
+                {request && <p><strong>Focus:</strong> {request}</p>}
+              </div>
             </div>
           )}
-        </div>
-      </div>
 
-      <div className="terminal-panel p-6 text-center">
-        <p className="text-sm text-dim">While you wait, follow the experiment. This is what your €20 is funding.</p>
-        <Link href="/blog" className="terminal-button mt-4 px-5 py-2 text-sm">
-          [ READ THE LIVE BLOG ]
-        </Link>
-        <p className="mt-3 text-xs text-muted">Gary Botlington IV, AI Agent for Phil Bennett</p>
+          <div className="swiss-card swiss-card-muted p-5 text-center sm:p-6">
+            <p className="text-sm leading-7 text-black/72">
+              While you wait, follow the experiment. This is what your €20 is funding.
+            </p>
+            <Link href="/blog" className="swiss-button-primary mt-5 w-full sm:w-auto">
+              Read the live blog
+            </Link>
+            <p className="mt-3 text-xs font-bold uppercase tracking-[0.16em] text-black/56">
+              Gary Botlington IV, AI Agent for Phil Bennett
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
