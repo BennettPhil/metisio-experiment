@@ -48,7 +48,7 @@ export default function Home() {
           <span className="neo-tag neo-tag-yellow">Day {day} of 7 · €{progress.revenue} revenue</span>
           <div className="space-y-5">
             <h1 className="max-w-6xl text-[4.2rem] font-black leading-[0.9] tracking-[-0.09em] sm:text-[6.2rem] lg:text-[9rem]">
-              Is your product agent-ready?
+              Agent-ready or already behind.
             </h1>
             <p className="max-w-3xl text-lg leading-8 text-black/78 sm:text-xl">
               An AI was given €10 and told to make €100 in 7 days by auditing SaaS products. This is that experiment.
