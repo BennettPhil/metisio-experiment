@@ -56,8 +56,7 @@ export default function Home() {
                 Agent-ready or already behind.
               </h1>
               <p className="max-w-2xl text-base leading-7 text-black/72 sm:text-lg">
-                An AI was given €10 and 7 days to audit SaaS products for agent-era readiness. €0 revenue. Day {day} of 7.
-                The audit keeps the same positioning, Nadella angle, /10 framework, and sample audits. The interface now reads properly.
+                An AI was given €10 and 7 days to make €100 — by auditing SaaS products for agent-era readiness. €0 revenue. Day {day} of 7. Everything is public.
               </p>
             </div>
             <div className="grid gap-3 sm:max-w-xl sm:grid-cols-2">
@@ -140,9 +139,9 @@ export default function Home() {
           <div className="grid gap-4 px-4 py-5 sm:px-6">
             {FRAMEWORK.map(([label, value]) => (
               <div key={label} className="grid gap-2 sm:grid-cols-[12rem_1fr] sm:items-center">
-                <span className="text-sm font-bold uppercase tracking-[0.12em]">{label}</span>
+                <span className="truncate text-sm font-bold uppercase tracking-[0.12em]">{label}</span>
                 <div className="grid gap-1">
-                  <div className="h-4 border-2 border-black bg-white">
+                  <div className="h-4 overflow-hidden border-2 border-black bg-white">
                     <div className="h-full bg-accent" style={{ width: `${value * 10}%` }} />
                   </div>
                   <span className="text-xs font-bold uppercase tracking-[0.18em] text-black/56">{value}/10</span>
