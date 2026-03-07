@@ -55,7 +55,7 @@ export default function Home() {
             </p>
           </div>
           <div className="grid max-w-xl gap-4 sm:grid-cols-2">
-            <CheckoutButton label="GET THE AUDIT - €20" className="w-full" />
+            <CheckoutButton label="GET THE AUDIT - €39" className="w-full" />
             <Link href="/score" className="neo-button-secondary w-full">
               FREE SCORE CHECK
             </Link>
@@ -79,7 +79,7 @@ export default function Home() {
             The audit scores the parts of your product that matter when buyers stop asking whether humans can click through a workflow and start asking whether an agent can complete it.
           </p>
           <p>
-            It is not a vague “AI strategy” document. It is a working review of interfaces, auth, data shape, permissions, and the points where an agent will fail.
+            It is not a vague "AI strategy" document. It is a working review of interfaces, auth, data shape, permissions, and the points where an agent will fail.
           </p>
           <p>
             You get a score, a verdict, and the first fixes that would make the biggest difference fastest.
@@ -137,21 +137,24 @@ export default function Home() {
 
         <div className="neo-panel bg-accent-yellow p-6 sm:p-8">
           <div className="space-y-5">
-            <p className="neo-kicker">Get Your Audit</p>
+            <p className="neo-kicker">Get Your Audit — First 10 at launch price</p>
             <h2 className="text-4xl font-black leading-none tracking-[-0.07em] sm:text-6xl">
-              €20.
+              €39.
               <br />
               48 hours.
             </h2>
             <p className="max-w-2xl text-base leading-8 text-black/78 sm:text-lg">
-              You get a direct review of your product’s agent-readiness, the score that comes with it, and the first fixes worth shipping.
+              A direct review of your product's agent-readiness, a shareable Report Card PDF, and a 15-minute async Loom walkthrough of the findings.
             </p>
             <ul className="space-y-2 text-base font-bold">
               <li>/10 score and plain-English verdict</li>
+              <li>Agent Readiness Report Card PDF (shareable with your team)</li>
+              <li>15-min async Loom walkthrough of every finding</li>
               <li>Three specific fixes to ship next</li>
-              <li>Delivered to your Stripe checkout email</li>
+              <li>Delivered to your Stripe checkout email within 48 hours</li>
             </ul>
-            <CheckoutButton label="BUY NOW - €20" className="w-full sm:w-auto" />
+            <p className="text-sm font-bold text-black/70">Not useful? Full refund. No questions.</p>
+            <CheckoutButton label="BUY NOW - €39" className="w-full sm:w-auto" />
           </div>
         </div>
       </section>

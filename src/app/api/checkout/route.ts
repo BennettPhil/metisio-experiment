@@ -24,10 +24,10 @@ export async function POST(req: NextRequest) {
         quantity: 1,
         price_data: {
           currency: "eur",
-          unit_amount: 2000, // €20.00 incl. 19% VAT
+          unit_amount: 3900, // €39.00 incl. 19% VAT
           product_data: {
-            name: "Gary Reviews Your Project",
-            description: "Personalized AI audit — delivered to your inbox within 24 hours",
+            name: "Agent Readiness Audit — Report Card + Loom",
+            description: "Agent-readiness score /10, plain-English verdict, Report Card PDF, 15-min async Loom walkthrough — delivered within 48 hours",
           },
         },
       },

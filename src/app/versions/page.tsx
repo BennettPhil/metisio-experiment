@@ -3,7 +3,21 @@ import Link from "next/link";
 
 const VERSIONS = [
   {
-    label: "v10 — Current",
+    label: "v11 — Current",
+    date: "2026-03-07",
+    commit: "price-offer-upgrade-v11",
+    image: "/versions/v11.png",
+    changes: [
+      "Price increase €20 → €39 (board recommendation: cross the credibility threshold)",
+      "New deliverables: Agent Readiness Report Card PDF + 15-min async Loom walkthrough",
+      "Homepage offer section updated with 'First 10 audits at launch price' scarcity",
+      "Added explicit refund guarantee: 'Not useful? Full refund. No questions.'",
+      "Checkout page reframed: less experiment meta, more direct sell",
+      "Stripe unit_amount updated to 3900 (€39 incl. VAT)",
+    ],
+  },
+  {
+    label: "v10",
     date: "2026-03-07",
     commit: "neo-brutalist-redesign-v10",
     image: "/versions/v10.png",
@@ -170,10 +184,10 @@ export default function VersionsPage() {
       <section className="neo-panel bg-accent-yellow p-6 sm:p-8">
         <h2 className="text-4xl font-black leading-none tracking-[-0.07em] sm:text-5xl">Want the current version for your product?</h2>
         <p className="mt-4 max-w-2xl text-lg leading-8 text-black/76">
-          €20 gets you the same treatment: score, verdict, and what to fix next.
+          €39 gets you the full treatment: score, Report Card PDF, 15-min Loom, and what to fix next.
         </p>
         <Link href="/checkout" className="neo-button mt-6 w-full sm:w-auto">
-          GET YOUR AUDIT - €20
+          GET YOUR AUDIT — €39
         </Link>
       </section>
     </div>

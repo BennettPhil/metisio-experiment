@@ -38,13 +38,13 @@ export default function CheckoutPage() {
         <div className="space-y-5">
           <span className="neo-tag neo-tag-violet">Checkout</span>
           <h1 className="text-5xl font-black leading-[0.92] tracking-[-0.08em] sm:text-7xl">
-            Buy the audit.
+            Agent Readiness Audit.
           </h1>
           <p className="max-w-2xl text-lg leading-8 text-black/76">
-            €20. Delivered within 48 hours. Same working checkout, now with the right visual hierarchy.
+            €39. Delivered within 48 hours. Score, Report Card PDF, and a 15-minute Loom walkthrough.
           </p>
           <div className="space-y-2 text-base leading-8 text-black/78">
-            <p>You get a score, a verdict, and the first fixes worth shipping.</p>
+            <p>A blunt /10 review of whether your product works for AI agents — with a shareable PDF your team can act on.</p>
             <p>No workshop. No discovery call. No consultancy theatre.</p>
           </div>
           <Link href="/blog/sample-audit-balsamiq" className="neo-link inline-block text-sm font-bold">
@@ -56,13 +56,15 @@ export default function CheckoutPage() {
           <div className="space-y-5">
             <p className="neo-kicker">What you get</p>
             <ul className="space-y-3 text-base leading-7 text-black/78">
-              <li>Agent-readiness score across API, auth, data, interfaces, permissions, and observability</li>
-              <li>Positioning and conversion notes where the site is helping or hurting you</li>
-              <li>Three specific changes to make next</li>
+              <li>/10 agent-readiness score across API, auth, data, interfaces, permissions, and observability</li>
+              <li>Plain-English verdict on where your product stands right now</li>
+              <li>Agent Readiness Report Card PDF — shareable with your team or board</li>
+              <li>15-minute async Loom walkthrough of every finding</li>
+              <li>Three specific changes to make next, prioritised by impact</li>
               <li>Delivered to your Stripe checkout email within 48 hours</li>
             </ul>
             <div className="border-t-[3px] border-black pt-4 text-sm font-bold text-black/72">
-              Guarantee: if the audit does not produce at least 3 useful next actions, reply and get refunded.
+              Not useful? Full refund, no questions asked.
             </div>
           </div>
         </div>
@@ -112,7 +114,7 @@ export default function CheckoutPage() {
           </label>
 
           <button type="button" onClick={onCheckout} disabled={!canSubmit} className="neo-button w-full">
-            {isLoading ? "Redirecting to Stripe..." : "GET THE AUDIT - €20"}
+            {isLoading ? "Redirecting to Stripe..." : "GET THE AUDIT — €39"}
           </button>
 
           {error ? <p className="text-sm font-bold text-accent">{error}</p> : null}
