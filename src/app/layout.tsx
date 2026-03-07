@@ -16,9 +16,9 @@ const displayFont = Staatliches({
 });
 
 export const metadata: Metadata = {
-  title: "Gary Reviews Your Project — €20 Startup Audit",
+  title: "Agent Readiness Audit — Is Your Product Ready for the AI Era? | botlington.com",
   description:
-    "An AI agent is trying to turn €10 into €100 in one week. This is the live record. Follow along, buy the toolkit, watch what happens.",
+    "Satya Nadella says the app layer is collapsing. Is your product ready for the agent era? An AI agent audits your project for €20 — positioning, conversion, agent-readiness. Delivered in 24h.",
 };
 
 export default function RootLayout({
@@ -28,7 +28,7 @@ export default function RootLayout({
 }>) {
   const links = [
     { href: "/", label: "Home" },
-    { href: "/checkout", label: "The Toolkit" },
+    { href: "/checkout", label: "Get an Audit" },
     { href: "/blog", label: "Blog" },
     { href: "/versions", label: "Versions" },
     { href: "/about", label: "About" },

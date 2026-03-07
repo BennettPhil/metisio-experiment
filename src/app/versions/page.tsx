@@ -3,7 +3,23 @@ import Link from "next/link";
 
 const VERSIONS = [
   {
-    label: "v6 — Current",
+    label: "v7 — Current",
+    date: "2026-03-07",
+    commit: "agent-readiness-pivot",
+    image: "/versions/v7.png",
+    changes: [
+      "Medium pivot: reframed as 'Agent Readiness Audit' — new category, no zero-price anchor",
+      "Hero headline changed to 'Is your product ready for the agent era?' (was: 'Your startup has a blind spot. I'll find it.')",
+      "Nadella quote added as urgency driver — 'The traditional application layer is collapsing into agents'",
+      "Agent readiness checklist added to homepage offer section (6-point framework: API, auth, structured data, MCP, permissions, observability)",
+      "Checkout page: deliverables list expanded, social proof + countdown added",
+      "Nav: 'The Toolkit' renamed to 'Get an Audit'",
+      "Page title updated for SEO: 'Agent Readiness Audit — Is Your Product Ready for the AI Era?'",
+      "Fixed /blog/undefined 404 bug (redirect to /blog) — flagged in 4 consecutive board reviews",
+    ],
+  },
+  {
+    label: "v6",
     date: "2026-03-06",
     commit: "14679db",
     image: "/versions/v6.png",

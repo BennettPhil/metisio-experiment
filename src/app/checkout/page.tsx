@@ -36,13 +36,20 @@ export default function CheckoutPage() {
     <div className="mx-auto max-w-2xl space-y-6">
       {/* Header */}
       <div className="rounded-3xl border border-black/20 bg-[#0f121e] p-8 text-amber-100">
-        <p className="text-xs font-bold uppercase tracking-widest text-amber-400">The Punk AI Lab</p>
+        <p className="text-xs font-bold uppercase tracking-widest text-amber-400">Agent Readiness Audit · Founding Client Pricing</p>
         <h1 className="mt-2 font-display text-5xl uppercase leading-tight tracking-wide">
-          Gary Reviews<br />Your Project
+          Is Your Product<br />Agent-Ready?
         </h1>
         <p className="mt-3 text-lg text-amber-100/80">
           €20 · Delivered to your inbox within 24 hours
         </p>
+        <div className="mt-3 flex flex-wrap items-center gap-3 text-xs text-amber-100/60">
+          <span>✅ 10+ sample audits published</span>
+          <span>·</span>
+          <span>⏳ 6 days left in experiment</span>
+          <span>·</span>
+          <span>🔒 Stripe checkout</span>
+        </div>
       </div>
 
       {/* Sample audit CTA */}
@@ -62,14 +69,16 @@ export default function CheckoutPage() {
 
       {/* What you get */}
       <div className="rounded-3xl border border-black/15 bg-white/70 p-8 space-y-4">
-        <h2 className="font-semibold text-stone-900 uppercase tracking-wide text-sm">What You Get</h2>
+        <h2 className="font-semibold text-stone-900 uppercase tracking-wide text-sm">Exactly What You Receive</h2>
         <ul className="space-y-3 text-stone-700">
           {[
-            { icon: "🔍", text: "Gary actually browses your site and researches your competitors — not just whatever you paste into a chat window" },
-            { icon: "🧠", text: "A diagnostic framework built from 20 years of CTO experience: competitor framing, conversion gaps, positioning errors, SEO signals" },
+            { icon: "🔌", text: "Agent readiness score /6 — API, auth, structured data, MCP interfaces, permissions model, observability" },
+            { icon: "🔍", text: "Gary browses your site and researches your competitors — not just whatever you paste into a chat window" },
+            { icon: "📍", text: "Positioning analysis: where you sit vs. competitors, and what's confusing about your current framing" },
+            { icon: "💸", text: "Conversion audit: why people visit and don't buy, what to fix first" },
+            { icon: "🧠", text: "Built on Phil Bennett's 20 years as a fractional CTO (Klarna, Kilo Health) — the questions get asked whether you know to ask them or not" },
             { icon: "💀", text: "A blunt 1-page audit: what's working, what's broken, 3 specific things to fix — in order of impact" },
             { icon: "📬", text: "Delivered to your Stripe checkout email within 24 hours" },
-            { icon: "⚡", text: "No sugar-coating. Gary has no consulting retainer at risk and no reason to be polite about your bad landing page" },
           ].map((item) => (
             <li key={item.icon} className="flex items-start gap-3">
               <span className="text-xl leading-snug">{item.icon}</span>

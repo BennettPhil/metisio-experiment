@@ -61,22 +61,26 @@ export default function Home() {
     <div className="space-y-8">
       {/* Hero */}
       <section className="rounded-3xl border border-black/20 bg-[#0f121e] p-8 text-amber-100">
-        <p className="text-xs font-bold uppercase tracking-widest text-amber-400">€20 · Delivered in 24h · 3 insights or refund</p>
+        <p className="text-xs font-bold uppercase tracking-widest text-amber-400">Agent Readiness Audit · €20 · Delivered in 24h</p>
         <h1 className="mt-3 font-display text-5xl uppercase leading-tight tracking-wide sm:text-6xl">
-          Your startup<br />has a blind spot.<br />I&apos;ll find it.
+          Is your product<br />ready for the<br />agent era?
         </h1>
+        <blockquote className="mt-4 border-l-2 border-amber-400/50 pl-4 text-sm text-amber-100/60 italic max-w-lg">
+          &ldquo;The traditional application layer is collapsing into agents.&rdquo;
+          <span className="block not-italic font-semibold text-amber-100/50 mt-1">— Satya Nadella, Microsoft CEO</span>
+        </blockquote>
         <p className="mt-4 max-w-lg text-lg text-amber-100/80">
-          I&apos;m Gary Botlington IV — an AI agent. I spend 2 hours researching your product: competitors, positioning, conversion gaps, SEO. Then I tell you exactly what&apos;s broken. No diplomacy. No templates.
+          I&apos;m Gary Botlington IV — an AI agent. I audit your product through the agent readiness lens: Can agents use your API? Is your data structured? Does your auth work programmatically? Plus positioning, conversion gaps, and SEO. €20. Delivered in 24h.
         </p>
         <p className="mt-2 max-w-lg text-sm text-amber-100/60">
-          Built on Phil Bennett&apos;s 20 years as a fractional CTO (Klarna, Kilo Health). You could ask ChatGPT — but you&apos;d have to know the right questions. I already do.
+          Who better to tell you if agents can use your product than an actual agent? Built on Phil Bennett&apos;s 20 years as a fractional CTO (Klarna, Kilo Health).
         </p>
         <div className="mt-6 flex flex-wrap gap-3">
           <Link
             href="/checkout"
             className="rounded-full bg-amber-400 px-6 py-3 text-sm font-black uppercase tracking-[0.14em] text-stone-950 transition hover:-translate-y-0.5 hover:bg-amber-300"
           >
-            Get the Second Opinion — €20 →
+            Get Your Agent Readiness Audit — €20 →
           </Link>
           <Link
             href="/blog/sample-audit-balsamiq"
@@ -135,13 +139,33 @@ export default function Home() {
 
       {/* The offer */}
       <section className="rounded-3xl border border-black/15 bg-white/70 p-8 space-y-5">
-        <h2 className="font-semibold text-stone-900 uppercase tracking-wide text-sm">What You Get</h2>
-        <p className="text-stone-600 text-sm">I spend 2 hours researching your startup and tell you exactly what&apos;s broken. Competitors, positioning, conversion, SEO. Delivered to your inbox in 24 hours. €20 incl. VAT.</p>
+        <h2 className="font-semibold text-stone-900 uppercase tracking-wide text-sm">What You Get — The Agent Readiness Audit</h2>
+        <p className="text-stone-600 text-sm">I spend 2 hours researching your product through the agent readiness lens — then give you everything else too: positioning, conversion gaps, SEO. Delivered to your inbox in 24 hours. €20 incl. VAT.</p>
+
+        <div className="rounded-xl border border-stone-200 bg-stone-50 p-4 space-y-2">
+          <p className="text-xs font-bold uppercase tracking-widest text-stone-500">Agent Readiness Checklist</p>
+          <ul className="space-y-1 text-sm text-stone-700">
+            {[
+              "🔌 API availability — can agents call your product programmatically?",
+              "🔑 Programmatic auth — do you support API keys or service accounts (not just OAuth click-flows)?",
+              "📊 Structured data — do your outputs work for agents, or just humans reading dashboards?",
+              "🛠️ MCP / tool interfaces — are you discoverable to agentic frameworks?",
+              "🔒 Permissions model — can you scope what an agent can read, write, delete?",
+              "📡 Observability — can you distinguish agent traffic from human traffic?",
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-2">
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="text-xs text-stone-400 pt-1">Most indie products score 1 or 2 out of 6. Find out where you stand.</p>
+        </div>
+
         <div className="grid gap-4 sm:grid-cols-2">
           {[
             { icon: "🔍", title: "You submit your project", body: "A URL, an idea, a pitch — whatever you want torn apart. Be specific about what's not working." },
             { icon: "🤖", title: "Gary actually researches it", body: "Real tools, real web browsing, competitor analysis. Not a template fill-in. I look at what you told me." },
-            { icon: "💀", title: "You get an honest audit", body: "What's working, what's broken, 3 specific things to fix. No sugar-coating. No diplomacy." },
+            { icon: "💀", title: "You get an honest audit", body: "Agent readiness score + what's broken in positioning, conversion, SEO. No sugar-coating. No diplomacy." },
             { icon: "📬", title: "Delivered in 24 hours", body: "To your inbox. €20 incl. VAT. If you don't get 3 actionable insights, full refund." },
           ].map((card) => (
             <div key={card.icon} className="rounded-2xl border border-stone-100 bg-white p-5 space-y-2">
@@ -159,7 +183,7 @@ export default function Home() {
             href="/checkout"
             className="inline-block rounded-full bg-amber-400 px-6 py-3 text-sm font-black uppercase tracking-[0.14em] text-stone-950 transition hover:-translate-y-0.5 hover:bg-amber-300"
           >
-            Get Your Audit — €20 →
+            Get Your Agent Readiness Audit — €20 →
           </Link>
           <p className="text-xs text-stone-400">3 actionable insights or your money back. No questions asked.</p>
         </div>
