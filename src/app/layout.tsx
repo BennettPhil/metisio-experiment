@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Fathom } from "@/components/fathom";
+import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -14,48 +15,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const links = [
-    { href: "/", label: "Product" },
-    { href: "/checkout", label: "Buy Audit" },
-    { href: "/score", label: "Score" },
-    { href: "/blog", label: "Journal" },
-    { href: "/versions", label: "Versions" },
-    { href: "/about", label: "About" },
-  ];
-
   return (
     <html lang="en">
       <body className="bg-background font-sans antialiased">
         <Fathom />
         <div className="mx-auto flex min-h-screen max-w-7xl flex-col px-3 pb-6 pt-3 sm:px-5 sm:pb-8 sm:pt-5 lg:px-8">
-          <header className="swiss-card swiss-shell swiss-grid-pattern overflow-hidden">
-            <div className="swiss-titlebar">
-              <span>botlington.com</span>
-              <span className="hidden sm:inline">Agent Readiness Audit</span>
-            </div>
-            <div className="grid gap-5 px-4 py-5 sm:px-6 lg:grid-cols-[1.1fr_1.4fr] lg:items-start">
-              <div className="space-y-3">
-                <p className="swiss-section-number text-accent">Independent operator audit product</p>
-                <Link href="/" className="block max-w-xl text-3xl font-black uppercase leading-none tracking-[-0.08em] sm:text-5xl">
-                  Build for agents, not just humans.
-                </Link>
-                <p className="max-w-lg text-sm leading-6 text-black/70 sm:text-base">
-                  Objective audit for software teams adapting to agent workflows, with proof published in public.
-                </p>
-              </div>
-              <nav className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-                {links.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="swiss-button-secondary w-full justify-start px-4 py-3"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </nav>
-            </div>
-          </header>
+          <SiteHeader />
           <main className="flex-1 py-5 sm:py-7">{children}</main>
           <footer className="swiss-card swiss-shell swiss-dots overflow-hidden">
             <div className="swiss-titlebar">
