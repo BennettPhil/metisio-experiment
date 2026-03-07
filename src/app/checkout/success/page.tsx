@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import Stripe from "stripe";
+import { PurchaseTracker } from "@/components/purchase-tracker";
 
 export const dynamic = "force-dynamic";
 
@@ -30,6 +31,7 @@ export default async function SuccessPage({ searchParams }: Props) {
 
   return (
     <div className="mx-auto max-w-2xl space-y-6">
+      <PurchaseTracker />
       <div className="terminal-panel overflow-hidden text-center">
         <div className="terminal-titlebar px-4 py-2 text-xs uppercase tracking-[0.32em]">
           PAYMENT_CONFIRMED

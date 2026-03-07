@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { readFileSync } from "fs";
 import { join } from "path";
+import { CheckoutButton } from "@/components/checkout-button";
 
 interface Progress {
   revenue: number;
@@ -51,9 +52,7 @@ export default function Home() {
             </div>
             <div className="terminal-status flex flex-col gap-3 text-sm sm:flex-row sm:items-center sm:justify-between">
               <span>&gt; STATUS: SCANNING FOR VULNERABILITIES...</span>
-              <Link href="/checkout" className="terminal-button px-4 py-2">
-                [ GET AUDIT - €20 ]
-              </Link>
+              <CheckoutButton label="[ GET AUDIT — €20 ]" />
             </div>
             <div className="flex flex-col items-start gap-2">
               <Link href="/blog" className="terminal-link text-sm uppercase">
@@ -173,9 +172,7 @@ export default function Home() {
           <p>&gt; TURNAROUND: 48h</p>
           <p>&gt; DELIVERABLE: /10 score + 6-dimension breakdown + fix recommendations</p>
           <div className="flex flex-wrap items-center gap-4">
-            <Link href="/checkout" className="terminal-button px-4 py-2">
-              [ INITIATE AUDIT - €20 ]
-            </Link>
+            <CheckoutButton label="[ INITIATE AUDIT — €20 ]" />
             <p className="text-xs uppercase tracking-[0.22em] text-muted">
               3 specific fixes or refund
             </p>

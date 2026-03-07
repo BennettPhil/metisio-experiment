@@ -1,8 +1,14 @@
 "use client";
 
-import { load, trackPageview } from "fathom-client";
+import { load, trackPageview, trackEvent } from "fathom-client";
 import { useEffect, Suspense } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
+
+// Fathom event tracking helpers — call these from any client component
+export const trackCheckoutClick = () => trackEvent("checkout_initiated");
+export const trackScoreCompleted = (score: number) => trackEvent(`score_completed_${score}`);
+export const trackSampleAuditViewed = (slug: string) => trackEvent(`sample_audit_viewed_${slug}`);
+export const trackPurchaseCompleted = () => trackEvent("purchase_completed");
 
 function TrackPageview() {
   const pathname = usePathname();
