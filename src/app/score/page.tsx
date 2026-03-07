@@ -148,7 +148,7 @@ export default function ScorePage() {
               The free score tells you where you stand. The paid audit tells you what to change next.
             </p>
             <Link href="/checkout" className="neo-button mt-6 w-full sm:w-auto">
-              GET THE FULL AUDIT - €20
+              GET THE FULL AUDIT — €39
             </Link>
           </div>
 
