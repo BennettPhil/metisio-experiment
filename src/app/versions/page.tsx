@@ -3,7 +3,19 @@ import Link from "next/link";
 
 const VERSIONS = [
   {
-    label: "v9 — Current",
+    label: "v10 — Current",
+    date: "2026-03-07",
+    commit: "neo-brutalist-redesign-v10",
+    image: "/versions/v10.png",
+    changes: [
+      "Neo-brutalist redesign — cream/black/yellow, offset shadows, mobile-first",
+      "Homepage simplified around one massive hero, one honest status stripe, and hard-shadow sample scorecards",
+      "Header, blog, checkout, score, and versions pages rebuilt around the neo-brutalist token system",
+      "Preserved application logic, checkout flow, API routes, and content structure",
+    ],
+  },
+  {
+    label: "v9",
     date: "2026-03-07",
     commit: "swiss-minimalist-redesign-v9",
     image: "/versions/v9.png",
@@ -33,13 +45,11 @@ const VERSIONS = [
     image: "/versions/v7.png",
     changes: [
       "Medium pivot: reframed as 'Agent Readiness Audit' — new category, no zero-price anchor",
-      "Hero headline changed to 'Is your product ready for the agent era?' (was: 'Your startup has a blind spot. I'll find it.')",
-      "Nadella quote added as urgency driver — 'The traditional application layer is collapsing into agents'",
-      "Agent readiness checklist added to homepage offer section (6-point framework: API, auth, structured data, MCP, permissions, observability)",
-      "Checkout page: deliverables list expanded, social proof + countdown added",
-      "Nav: 'The Toolkit' renamed to 'Get an Audit'",
-      "Page title updated for SEO: 'Agent Readiness Audit — Is Your Product Ready for the AI Era?'",
-      "Fixed /blog/undefined 404 bug (redirect to /blog) — flagged in 4 consecutive board reviews",
+      "Hero headline changed to 'Is your product ready for the agent era?'",
+      "Nadella quote added as urgency driver",
+      "Agent readiness checklist added to homepage offer section",
+      "Checkout page deliverables list expanded",
+      "Fixed /blog/undefined 404 bug",
     ],
   },
   {
@@ -48,11 +58,10 @@ const VERSIONS = [
     commit: "14679db",
     image: "/versions/v6.png",
     changes: [
-      "Problem-first hero: 'Your startup has a blind spot. I'll find it.' — leads with buyer's pain, not the experiment",
-      "Balsamiq sample audit moved above the offer section — proof before pitch",
-      "CTA reframed: 'Get the Second Opinion' — positions vs asking friends/Reddit, not vs ChatGPT",
+      "Problem-first hero: 'Your startup has a blind spot. I'll find it.'",
+      "Balsamiq sample audit moved above the offer section",
+      "CTA reframed: 'Get the Second Opinion'",
       "Punk AI Lab branding removed from nav, page title, and footer",
-      "Page title changed to 'Gary Reviews Your Project — €20 Startup Audit' (better SEO)",
       "Experiment context demoted to quiet footer section",
     ],
   },
@@ -62,7 +71,7 @@ const VERSIONS = [
     commit: "e5eda30",
     image: "/versions/v5.png",
     changes: [
-      "Lead with CTO expertise angle (Phil's 20 years, Klarna, Kilo Health)",
+      "Lead with CTO expertise angle",
       "Directly answers 'why not just ask ChatGPT?' above the fold",
       "Guarantee and risk reversal prominent throughout",
     ],
@@ -74,7 +83,7 @@ const VERSIONS = [
     image: "/versions/v4.png",
     changes: [
       "Added 3-insight money-back guarantee",
-      "Sharper offer copy — 'I spend 2 hours researching your startup'",
+      "Sharper offer copy",
       "Sample audit link surfaced on homepage",
       "Diary posts separated from audit posts on blog",
     ],
@@ -85,8 +94,8 @@ const VERSIONS = [
     commit: "4ed8da8",
     image: "/versions/v3.png",
     changes: [
-      "Killed the generic AI toolkit — it was rubbish",
-      "Launched 'Gary Reviews Your Project': personalised audits, 24h delivery",
+      "Killed the generic AI toolkit",
+      "Launched 'Gary Reviews Your Project'",
       "Homepage rebuilt around audit product + experiment narrative",
       "Blog added with Day 0 and Day 1 posts",
     ],
@@ -118,70 +127,55 @@ const VERSIONS = [
 
 export default function VersionsPage() {
   return (
-    <div className="space-y-6">
-      <div className="swiss-card swiss-shell swiss-grid-pattern overflow-hidden">
-        <div className="swiss-titlebar">
-          <span>Version history</span>
-          <span>Actual build archive</span>
-        </div>
-        <div className="space-y-4 px-4 py-6 sm:px-6 sm:py-7">
-          <p className="swiss-section-number text-accent">Every version of this site</p>
-          <h1 className="max-w-4xl text-4xl font-black uppercase leading-none tracking-[-0.08em] sm:text-6xl">
-            Public iterations,
-            <br />
-            including the bad ones.
-          </h1>
-          <p className="max-w-2xl text-sm leading-7 text-black/72 sm:text-base">
-            Every significant homepage change, screenshotted from the actual git history and run locally.
-            This remains a live artifact, not a marketing summary.
-          </p>
-        </div>
-      </div>
+    <div className="space-y-10">
+      <section className="space-y-5">
+        <span className="neo-tag neo-tag-violet">Versions</span>
+        <h1 className="max-w-5xl text-5xl font-black leading-[0.92] tracking-[-0.08em] sm:text-7xl">
+          Public iterations, including the bad ones.
+        </h1>
+        <p className="max-w-3xl text-lg leading-8 text-black/76">
+          Every serious redesign stays visible here with an actual screenshot and a short record of what changed.
+        </p>
+      </section>
 
       <div className="space-y-8">
-        {VERSIONS.map((v) => (
-          <div key={v.commit} className="swiss-card overflow-hidden">
-            <div className="swiss-titlebar flex-wrap">
-              <span>{v.label}</span>
-              <span>{v.commit}</span>
-              <span>{v.date}</span>
+        {VERSIONS.map((version) => (
+          <section key={version.commit} className="neo-panel overflow-hidden bg-white">
+            <div className="flex flex-col gap-3 border-b-[3px] border-black bg-muted px-5 py-4 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
+              <p className="text-2xl font-black tracking-[-0.04em]">{version.label}</p>
+              <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm font-bold text-black/70">
+                <span>{version.commit}</span>
+                <span>{version.date}</span>
+              </div>
             </div>
-            <div className="border-b-2 border-black">
+            <div className="border-b-[3px] border-black">
               <Image
-                src={v.image}
-                alt={`Screenshot of ${v.label}`}
+                src={version.image}
+                alt={`Screenshot of ${version.label}`}
                 width={1440}
                 height={900}
                 className="w-full"
                 unoptimized
               />
             </div>
-            <ul className="space-y-2 px-4 py-4 text-sm leading-7 text-black/72 sm:px-6 sm:py-5">
-              {v.changes.map((c) => (
-                <li key={c} className="flex items-start gap-3">
-                  <span className="mt-1 h-2.5 w-2.5 shrink-0 bg-accent" />
-                  <span>{c}</span>
-                </li>
+            <div className="space-y-3 px-5 py-5 text-base leading-7 text-black/78 sm:px-6">
+              {version.changes.map((change) => (
+                <p key={change}>{change}</p>
               ))}
-            </ul>
-          </div>
+            </div>
+          </section>
         ))}
       </div>
 
-      <div className="swiss-card swiss-card-muted overflow-hidden">
-        <div className="swiss-titlebar">
-          <span>Next command</span>
-          <span>Audit for sale</span>
-        </div>
-        <div className="space-y-3 px-4 py-5 sm:px-6">
-          <p className="max-w-xl text-sm leading-7 text-black/72">
-            The current version is for sale. €20 gets you the same treatment for your product.
-          </p>
-          <Link href="/checkout" className="swiss-button-primary w-full sm:w-auto">
-            Get your audit - €20
-          </Link>
-        </div>
-      </div>
+      <section className="neo-panel bg-accent-yellow p-6 sm:p-8">
+        <h2 className="text-4xl font-black leading-none tracking-[-0.07em] sm:text-5xl">Want the current version for your product?</h2>
+        <p className="mt-4 max-w-2xl text-lg leading-8 text-black/76">
+          €20 gets you the same treatment: score, verdict, and what to fix next.
+        </p>
+        <Link href="/checkout" className="neo-button mt-6 w-full sm:w-auto">
+          GET YOUR AUDIT - €20
+        </Link>
+      </section>
     </div>
   );
 }

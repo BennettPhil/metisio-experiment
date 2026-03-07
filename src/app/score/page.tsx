@@ -55,7 +55,7 @@ export default function ScorePage() {
   const [submitted, setSubmitted] = useState(false);
 
   const answered = Object.keys(answers).length;
-  const score = Object.values(answers).filter((a) => a === "yes").length;
+  const score = Object.values(answers).filter((value) => value === "yes").length;
   const allAnswered = answered === questions.length;
 
   const getVerdict = (value: number) => {
@@ -68,131 +68,99 @@ export default function ScorePage() {
   const verdict = getVerdict(score);
 
   return (
-    <div className="mx-auto max-w-4xl space-y-6 py-2 sm:py-4">
-      <div className="swiss-card swiss-shell swiss-grid-pattern overflow-hidden">
-        <div className="swiss-titlebar">
-          <span>Score widget</span>
-          <Link href="/checkout" className="swiss-link">Buy audit</Link>
-        </div>
-        <div className="px-4 py-7 text-center sm:px-6">
-          <div className="swiss-label mb-5 text-accent">Free agent readiness check</div>
-          <h1 className="text-4xl font-black uppercase leading-none tracking-[-0.08em] sm:text-6xl">
-            Is your product ready
-            <br />
-            for the agent era?
-          </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-black/72">
-            6 yes/no questions. About a minute. Clearer result, cleaner interface, same scoring logic.
-          </p>
-        </div>
-      </div>
+    <div className="mx-auto max-w-5xl space-y-10">
+      <section className="space-y-5">
+        <span className="neo-tag">Free score check</span>
+        <h1 className="max-w-4xl text-5xl font-black leading-[0.92] tracking-[-0.08em] sm:text-7xl">
+          Is your product ready for the agent era?
+        </h1>
+        <p className="max-w-3xl text-lg leading-8 text-black/76">
+          Six yes-or-no questions. About a minute. Same scoring logic, sharper presentation.
+        </p>
+      </section>
 
       {!submitted ? (
-        <div>
-          {questions.map((q, i) => {
-            const selected = answers[q.id];
-            const selectedClass =
-              selected === "yes" ? "border-accent" : selected === "no" ? "border-black" : "border-black";
+        <div className="space-y-5">
+          {questions.map((question, index) => {
+            const selected = answers[question.id];
+            const activeBackground = selected === "yes" ? "bg-accent-green" : selected === "no" ? "bg-accent-red" : "bg-white";
 
             return (
-              <div key={q.id} className={`swiss-card mb-4 p-4 sm:p-6 ${selectedClass}`}>
-                <div className="mb-2 text-xs font-bold uppercase tracking-[0.18em] text-accent">
-                  {String(i + 1).padStart(2, "0")} {q.dimension}
-                </div>
-                <p className="mb-5 text-base font-medium leading-7 sm:text-lg">{q.question}</p>
-                <div className="grid gap-3 sm:grid-cols-2">
+              <div key={question.id} className={`neo-panel p-5 sm:p-6 ${activeBackground}`}>
+                <p className="neo-kicker mb-3">
+                  {String(index + 1).padStart(2, "0")} · {question.dimension}
+                </p>
+                <p className="text-xl font-bold leading-8 sm:text-2xl">{question.question}</p>
+                <div className="mt-5 grid gap-3 sm:grid-cols-2">
                   <button
-                    onClick={() => setAnswers((prev) => ({ ...prev, [q.id]: "yes" }))}
-                    className={`swiss-button-secondary w-full ${selected === "yes" ? "!border-accent !bg-accent !text-white" : ""}`}
+                    onClick={() => setAnswers((previous) => ({ ...previous, [question.id]: "yes" }))}
+                    className={`neo-button-secondary w-full ${selected === "yes" ? "!bg-accent-green" : ""}`}
                   >
                     Yes
                   </button>
                   <button
-                    onClick={() => setAnswers((prev) => ({ ...prev, [q.id]: "no" }))}
-                    className={`swiss-button-secondary w-full ${selected === "no" ? "!bg-black !text-white" : ""}`}
+                    onClick={() => setAnswers((previous) => ({ ...previous, [question.id]: "no" }))}
+                    className={`neo-button-secondary w-full ${selected === "no" ? "!bg-accent-red" : ""}`}
                   >
                     No
                   </button>
                 </div>
-                {selected && (
-                  <p className={`mt-4 text-sm leading-7 ${selected === "yes" ? "text-black/78" : "text-accent"}`}>
-                    {selected === "yes" ? q.yes : q.no}
-                  </p>
-                )}
+                {selected ? <p className="mt-4 max-w-3xl text-base leading-7">{selected === "yes" ? question.yes : question.no}</p> : null}
               </div>
             );
           })}
 
-          <div className="mt-3 text-center">
-            <p className="mb-5 text-sm text-black/56">{answered}/6 questions answered</p>
-            <button
-              onClick={() => setSubmitted(true)}
-              disabled={!allAnswered}
-              className="swiss-button-primary w-full disabled:cursor-not-allowed disabled:opacity-40 sm:max-w-sm"
-            >
-              See my score
+          <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-base font-bold">{answered}/6 questions answered</p>
+            <button onClick={() => setSubmitted(true)} disabled={!allAnswered} className="neo-button w-full sm:w-auto">
+              SEE MY SCORE
             </button>
           </div>
         </div>
       ) : (
         <div className="space-y-6">
-          <div className="swiss-card p-6 text-center sm:p-8">
-            <div className={`text-7xl font-black leading-none sm:text-8xl ${verdict.color}`}>
+          <div className="neo-panel bg-white p-6 text-center sm:p-8">
+            <p className={`text-[6rem] font-black leading-none tracking-[-0.08em] sm:text-[8rem] ${verdict.color}`}>
               {score}
-              <span className="text-3xl text-black/34">/6</span>
-            </div>
-            <div className={`mt-3 text-2xl font-black uppercase tracking-[-0.04em] sm:text-3xl ${verdict.color}`}>
-              {verdict.label}
-            </div>
-            <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-black/72">{verdict.desc}</p>
+              <span className="text-4xl text-black/40">/6</span>
+            </p>
+            <h2 className={`mt-3 text-3xl font-black tracking-[-0.05em] sm:text-5xl ${verdict.color}`}>{verdict.label}</h2>
+            <p className="mx-auto mt-4 max-w-2xl text-lg leading-8 text-black/76">{verdict.desc}</p>
           </div>
 
-          <div className="swiss-card overflow-hidden">
-            <div className="swiss-titlebar">
-              <span>Your answers</span>
-              <span>{score}/6</span>
-            </div>
-            <div className="p-4 sm:p-6">
-              {questions.map((q) => (
-                <div key={q.id} className="flex items-start gap-3 border-b-2 border-black py-3 last:border-b-0">
-                  <span className={`mt-0.5 text-xs font-black uppercase tracking-[0.18em] ${answers[q.id] === "yes" ? "text-black" : "text-accent"}`}>
-                    {answers[q.id]}
-                  </span>
-                  <div>
-                    <div className="text-sm font-bold uppercase tracking-[0.08em]">{q.dimension}</div>
-                    {answers[q.id] === "no" && <div className="mt-1 text-sm leading-6 text-black/64">{q.no}</div>}
-                  </div>
+          <div className="neo-panel bg-muted p-6 sm:p-8">
+            <p className="neo-kicker mb-4">Your answers</p>
+            <div className="grid gap-4">
+              {questions.map((question) => (
+                <div key={question.id} className="border-b-[3px] border-black pb-4 last:border-b-0 last:pb-0">
+                  <p className="text-sm font-bold">{question.dimension}</p>
+                  <p className="mt-1 text-base leading-7 text-black/76">
+                    {answers[question.id] === "yes" ? question.yes : question.no}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="swiss-card swiss-card-muted p-6 text-center sm:p-8">
-            <h2 className="text-3xl font-black uppercase leading-none tracking-[-0.06em]">
-              Want to know exactly what to fix?
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-black/72 sm:text-base">
-              The free check tells you where you stand. The full Agent Readiness Audit tells you what to do about it.
+          <div className="neo-panel bg-accent-yellow p-6 sm:p-8">
+            <h2 className="text-4xl font-black leading-none tracking-[-0.07em] sm:text-5xl">Want the full audit?</h2>
+            <p className="mt-4 max-w-3xl text-lg leading-8 text-black/78">
+              The free score tells you where you stand. The paid audit tells you what to change next.
             </p>
-            <Link href="/checkout" className="swiss-button-primary mt-6 w-full sm:w-auto">
-              Get the full audit - €20
+            <Link href="/checkout" className="neo-button mt-6 w-full sm:w-auto">
+              GET THE FULL AUDIT - €20
             </Link>
-            <p className="mt-3 text-xs font-bold uppercase tracking-[0.16em] text-black/56">
-              Guarantee: 3 specific actionable insights or full refund
-            </p>
           </div>
 
-          <div className="text-center">
-            <button
-              onClick={() => {
-                setAnswers({});
-                setSubmitted(false);
-              }}
-              className="swiss-link bg-transparent text-sm"
-            >
-              Start over
-            </button>
-          </div>
+          <button
+            onClick={() => {
+              setAnswers({});
+              setSubmitted(false);
+            }}
+            className="neo-link text-sm font-bold"
+          >
+            Start over
+          </button>
         </div>
       )}
     </div>

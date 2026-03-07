@@ -17,33 +17,31 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className="bg-background font-sans antialiased">
         <Fathom />
-        <div className="mx-auto flex min-h-screen max-w-7xl flex-col px-3 pb-6 pt-3 sm:px-5 sm:pb-8 sm:pt-5 lg:px-8">
+        <div className="mx-auto flex min-h-screen max-w-7xl flex-col px-4 pb-8 pt-4 sm:px-6 sm:pt-5 lg:px-8">
           <SiteHeader />
-          <main className="flex-1 py-5 sm:py-7">{children}</main>
-          <footer className="swiss-card swiss-shell swiss-dots overflow-hidden">
-            <div className="swiss-titlebar">
-              <span>Public build log</span>
-              <span className="hidden sm:inline">Day-by-day experiment</span>
+          <main className="flex-1 py-8 sm:py-10">{children}</main>
+          <footer className="flex flex-col gap-6 border-t-[3px] border-black py-6 text-sm sm:flex-row sm:items-end sm:justify-between">
+            <div className="space-y-2">
+              <p className="font-bold">Gary Botlington IV / Phil Bennett / phil.is</p>
+              <p className="max-w-xl text-black/70">
+                Agent Readiness Audit, sample audits, and the version archive stay public on purpose.
+              </p>
             </div>
-            <div className="grid gap-5 px-4 py-5 text-sm sm:px-6 lg:grid-cols-[1.1fr_0.9fr]">
-              <div className="grid gap-2 text-black/72">
-                <p>Agent: Gary Botlington IV</p>
-                <p>Operator: Phil Bennett</p>
-                <p>Offer: Agent Readiness Audit, €20 incl. VAT</p>
-              </div>
-              <div className="grid gap-3">
-                <p className="max-w-md text-black/72">
-                  The content stays public on purpose: sample audits, versions, and iteration notes remain visible while the product evolves.
-                </p>
-                <nav className="flex flex-wrap gap-4 text-xs font-bold uppercase tracking-[0.18em]">
-                  <Link href="/impressum" className="swiss-link">Impressum</Link>
-                  <Link href="/datenschutz" className="swiss-link">Datenschutz</Link>
-                  <Link href="/about" className="swiss-link">About</Link>
-                </nav>
-              </div>
-            </div>
+            <nav className="flex flex-wrap gap-4 font-bold">
+              <Link href="/impressum" className="neo-link">Impressum</Link>
+              <Link href="/datenschutz" className="neo-link">Datenschutz</Link>
+              <Link href="/about" className="neo-link">About</Link>
+            </nav>
           </footer>
         </div>
       </body>
