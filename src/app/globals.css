@@ -1,35 +1,241 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap");
 @import "tailwindcss";
 
 :root {
-  --paper: #f7f1e4;
-  --ink: #17181e;
-  --accent: #f23b2f;
-  --accent-soft: #ffd36f;
+  --background: #0a0a0a;
+  --foreground: #33ff00;
+  --accent: #ffb000;
+  --muted: #1f521f;
+  --error: #ff3333;
+  --shadow-glow: 0 0 5px rgba(51, 255, 0, 0.5);
+  --font-mono: "JetBrains Mono";
 }
 
 @theme inline {
-  --color-background: var(--paper);
-  --color-foreground: var(--ink);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
   --color-accent: var(--accent);
-  --color-accent-soft: var(--accent-soft);
-  --font-sans: var(--font-body);
-  --font-display: var(--font-display);
+  --color-muted: var(--muted);
+  --color-error: var(--error);
+  --font-sans: var(--font-mono);
+}
+
+* {
+  border-radius: 0 !important;
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--background);
 }
 
 body {
   background:
-    radial-gradient(circle at 15% 10%, #ffe8a8 0%, transparent 38%),
-    radial-gradient(circle at 85% 20%, #ffb3a2 0%, transparent 32%),
-    var(--paper);
-  color: var(--ink);
-  font-family: var(--font-body), sans-serif;
+    radial-gradient(circle at top, rgba(51, 255, 0, 0.08), transparent 40%),
+    linear-gradient(180deg, rgba(31, 82, 31, 0.1), transparent 30%),
+    var(--background);
+  color: var(--foreground);
+  font-family: var(--font-mono), monospace;
+  text-shadow: var(--shadow-glow);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.02) 0,
+      rgba(255, 255, 255, 0.02) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+  opacity: 0.22;
+  mix-blend-mode: screen;
+  z-index: 30;
 }
 
 a {
+  color: inherit;
   text-decoration: none;
 }
 
+button,
+input,
+textarea {
+  font: inherit;
+}
+
 ::selection {
-  background: #f23b2f;
-  color: #fff5d6;
+  background: var(--foreground);
+  color: var(--background);
+  text-shadow: none;
+}
+
+.terminal-panel {
+  border: 1px solid var(--muted);
+  background: rgba(0, 0, 0, 0.78);
+  box-shadow:
+    inset 0 0 0 1px rgba(51, 255, 0, 0.04),
+    0 0 24px rgba(51, 255, 0, 0.06);
+}
+
+.terminal-titlebar {
+  border-bottom: 1px solid var(--muted);
+  color: var(--accent);
+}
+
+.terminal-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--muted);
+  background: transparent;
+  color: var(--foreground);
+  padding: 0.8rem 1rem;
+  text-transform: uppercase;
+  transition:
+    background-color 150ms ease,
+    color 150ms ease,
+    box-shadow 150ms ease,
+    transform 150ms ease;
+}
+
+.terminal-button:hover {
+  background: var(--foreground);
+  color: var(--background);
+  text-shadow: none;
+  box-shadow: 0 0 12px rgba(51, 255, 0, 0.35);
+  animation: glitch 180ms linear 1;
+}
+
+.terminal-link {
+  color: var(--accent);
+}
+
+.terminal-link:hover {
+  color: var(--foreground);
+}
+
+.terminal-input {
+  width: 100%;
+  border: 1px solid var(--muted);
+  background: rgba(0, 0, 0, 0.82);
+  color: var(--foreground);
+  padding: 0.9rem 1rem;
+  outline: none;
+}
+
+.terminal-input::placeholder {
+  color: rgba(51, 255, 0, 0.45);
+}
+
+.terminal-input:focus {
+  border-color: var(--foreground);
+  box-shadow: 0 0 12px rgba(51, 255, 0, 0.16);
+}
+
+.terminal-status {
+  border: 1px solid var(--muted);
+  background: rgba(10, 10, 10, 0.9);
+  color: var(--accent);
+  padding: 0.75rem 1rem;
+}
+
+.terminal-divider {
+  color: rgba(51, 255, 0, 0.6);
+  letter-spacing: 0.2em;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.terminal-prose h2,
+.terminal-prose h3,
+.terminal-prose strong {
+  color: var(--accent);
+}
+
+.terminal-prose p,
+.terminal-prose li {
+  color: var(--foreground);
+}
+
+.terminal-prose hr {
+  border-color: var(--muted);
+}
+
+.text-dim {
+  color: rgba(51, 255, 0, 0.7);
+}
+
+.text-muted {
+  color: rgba(51, 255, 0, 0.52);
+}
+
+.text-amber-terminal {
+  color: var(--accent);
+  text-shadow: 0 0 5px rgba(255, 176, 0, 0.35);
+}
+
+.text-error-terminal {
+  color: var(--error);
+  text-shadow: 0 0 5px rgba(255, 51, 51, 0.35);
+}
+
+.animate-blink {
+  animation: blink 1s steps(1, end) infinite;
+}
+
+.typewriter-line {
+  width: fit-content;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 0.12em solid var(--foreground);
+  animation:
+    typing 2.2s steps(28, end),
+    blink 1s steps(1, end) infinite;
+}
+
+@keyframes blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes glitch {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-1px);
+  }
+  40% {
+    transform: translateX(1px);
+  }
+  60% {
+    transform: translateX(-1px);
+  }
+  80% {
+    transform: translateX(1px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }

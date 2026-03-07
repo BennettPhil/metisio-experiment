@@ -3,7 +3,19 @@ import Link from "next/link";
 
 const VERSIONS = [
   {
-    label: "v7 — Current",
+    label: "v8 — Current",
+    date: "2026-03-07",
+    commit: "terminal-cli-redesign",
+    image: "/versions/v8.png",
+    changes: [
+      "Terminal CLI redesign — agent readiness audit positioning",
+      "Site-wide dark neon-green shell aesthetic with CRT scanlines and shell navigation",
+      "Homepage rebuilt as a terminal audit console with live status, framework bars, and sample results output",
+      "Preserved blog, checkout, legal, and versions functionality under the new design system",
+    ],
+  },
+  {
+    label: "v7",
     date: "2026-03-07",
     commit: "agent-readiness-pivot",
     image: "/versions/v7.png",
@@ -94,28 +106,34 @@ const VERSIONS = [
 
 export default function VersionsPage() {
   return (
-    <div className="space-y-10">
-      <div className="rounded-3xl border border-black/20 bg-[#0f121e] p-8 text-amber-100">
-        <p className="text-xs font-bold uppercase tracking-widest text-amber-400">Audit Trail</p>
-        <h1 className="mt-2 font-display text-5xl uppercase leading-tight tracking-wide">
-          Every Version<br />of This Site
-        </h1>
-        <p className="mt-4 max-w-xl text-amber-100/80">
-          Every significant homepage change, screenshotted from the actual git history and run locally.
-          This is what iteration in public actually looks like — including the bad versions.
-        </p>
+    <div className="space-y-8">
+      <div className="terminal-panel overflow-hidden">
+        <div className="terminal-titlebar px-4 py-2 text-xs uppercase tracking-[0.32em]">
+          VERSION_HISTORY.LOG
+        </div>
+        <div className="space-y-4 px-4 py-6 sm:px-6">
+          <p className="text-xs uppercase tracking-[0.32em] text-dim">AUDIT TRAIL</p>
+          <h1 className="text-4xl font-semibold uppercase leading-tight tracking-[0.18em] sm:text-5xl">
+            EVERY VERSION
+            <br />
+            OF THIS SITE
+          </h1>
+          <p className="max-w-2xl text-sm text-dim">
+            Every significant homepage change, screenshotted from the actual git history and run locally.
+            This is what iteration in public actually looks like — including the bad versions.
+          </p>
+        </div>
       </div>
 
-      <div className="space-y-12">
+      <div className="space-y-10">
         {VERSIONS.map((v) => (
-          <div key={v.commit} className="space-y-4">
-            <div className="flex items-baseline gap-3">
-              <h2 className="font-display text-2xl uppercase tracking-wide text-stone-900">{v.label}</h2>
-              <span className="text-xs text-stone-400 font-mono">{v.commit}</span>
-              <span className="text-xs text-stone-400">{v.date}</span>
+          <div key={v.commit} className="terminal-panel overflow-hidden">
+            <div className="terminal-titlebar flex flex-wrap items-center gap-3 px-4 py-2 text-xs uppercase tracking-[0.24em]">
+              <span>{v.label}</span>
+              <span className="text-dim">{v.commit}</span>
+              <span className="text-dim">{v.date}</span>
             </div>
-
-            <div className="rounded-2xl overflow-hidden border border-black/10 shadow-sm">
+            <div className="border-b border-muted">
               <Image
                 src={v.image}
                 alt={`Screenshot of ${v.label}`}
@@ -125,11 +143,10 @@ export default function VersionsPage() {
                 unoptimized
               />
             </div>
-
-            <ul className="space-y-1">
+            <ul className="space-y-2 px-4 py-4 text-sm sm:px-6">
               {v.changes.map((c) => (
-                <li key={c} className="flex items-start gap-2 text-sm text-stone-600">
-                  <span className="text-amber-500 mt-0.5 shrink-0">→</span>
+                <li key={c} className="flex items-start gap-2 text-dim">
+                  <span className="text-amber-terminal mt-0.5 shrink-0">&gt;</span>
                   <span>{c}</span>
                 </li>
               ))}
@@ -138,14 +155,19 @@ export default function VersionsPage() {
         ))}
       </div>
 
-      <div className="rounded-2xl border border-black/10 bg-white/60 p-6 text-center space-y-2">
-        <p className="text-sm text-stone-600">The current version is for sale. €20 gets you the same treatment for your product.</p>
-        <Link
-          href="/checkout"
-          className="inline-block rounded-full bg-amber-400 px-6 py-3 text-sm font-black uppercase tracking-[0.14em] text-stone-950 transition hover:-translate-y-0.5 hover:bg-amber-300"
-        >
-          Get Your Audit — €20 →
-        </Link>
+      <div className="terminal-panel overflow-hidden">
+        <div className="terminal-titlebar px-4 py-2 text-xs uppercase tracking-[0.32em]">
+          NEXT_COMMAND
+        </div>
+        <div className="space-y-3 px-4 py-5 text-sm sm:px-6">
+          <p className="text-dim">The current version is for sale. €20 gets you the same treatment for your product.</p>
+          <Link
+            href="/checkout"
+            className="terminal-button px-4 py-2"
+          >
+            [ GET YOUR AUDIT - €20 ]
+          </Link>
+        </div>
       </div>
     </div>
   );

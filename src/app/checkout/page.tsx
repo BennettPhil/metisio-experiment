@@ -34,124 +34,136 @@ export default function CheckoutPage() {
 
   return (
     <div className="mx-auto max-w-2xl space-y-6">
-      {/* Header */}
-      <div className="rounded-3xl border border-black/20 bg-[#0f121e] p-8 text-amber-100">
-        <p className="text-xs font-bold uppercase tracking-widest text-amber-400">Agent Readiness Audit · Founding Client Pricing</p>
-        <h1 className="mt-2 font-display text-5xl uppercase leading-tight tracking-wide">
-          Is Your Product<br />Agent-Ready?
-        </h1>
-        <p className="mt-3 text-lg text-amber-100/80">
-          €20 · Delivered to your inbox within 24 hours
-        </p>
-        <div className="mt-3 flex flex-wrap items-center gap-3 text-xs text-amber-100/60">
-          <span>✅ 10+ sample audits published</span>
-          <span>·</span>
-          <span>⏳ 6 days left in experiment</span>
-          <span>·</span>
-          <span>🔒 Stripe checkout</span>
+      <div className="terminal-panel overflow-hidden">
+        <div className="terminal-titlebar px-4 py-2 text-xs uppercase tracking-[0.32em]">
+          CHECKOUT_INIT
+        </div>
+        <div className="px-4 py-6 sm:px-6">
+          <p className="text-xs uppercase tracking-[0.32em] text-dim">Agent Readiness Audit · Founding Client Pricing</p>
+          <h1 className="mt-2 text-4xl font-semibold uppercase leading-tight tracking-[0.14em] sm:text-5xl">
+            Is Your Product
+            <br />
+            Agent-Ready?
+          </h1>
+          <p className="mt-3 text-lg text-dim">€20 · Delivered to your inbox within 48 hours</p>
+          <div className="mt-3 flex flex-wrap items-center gap-3 text-xs text-muted">
+            <span>&gt; 5 sample audits published</span>
+            <span>·</span>
+            <span>&gt; experiment live</span>
+            <span>·</span>
+            <span>&gt; stripe checkout</span>
+          </div>
         </div>
       </div>
 
-      {/* Sample audit CTA */}
-      <div className="rounded-2xl border border-amber-200 bg-amber-50 px-6 py-4 text-sm text-stone-700 flex items-center justify-between gap-4">
-        <span>Not sure what you&apos;re buying? <strong>Read a real sample audit first.</strong></span>
-        <Link href="/blog/sample-audit-balsamiq" className="shrink-0 rounded-full bg-stone-900 px-4 py-2 text-xs font-black uppercase tracking-wide text-amber-100 hover:bg-stone-700 transition">
-          See example →
+      <div className="terminal-status flex items-center justify-between gap-4 text-sm">
+        <span>Not sure what you&apos;re buying? Read a real sample audit first.</span>
+        <Link href="/blog/sample-audit-balsamiq" className="terminal-button shrink-0 px-4 py-2 text-xs">
+          [ SEE EXAMPLE ]
         </Link>
       </div>
 
-      {/* The differentiation */}
-      <div className="rounded-2xl border border-stone-200 bg-stone-50 px-6 py-5 text-sm text-stone-600 space-y-2">
-        <p><strong className="text-stone-900">Why not just ask ChatGPT?</strong></p>
-        <p>You could. But ChatGPT needs you to ask the right questions — and you&apos;re too close to your own product to know what those are. Gary shows up with the diagnostic framework already loaded: competitor positioning, conversion gaps, pricing signals, SEO blind spots. Built from Phil Bennett&apos;s 20 years as a fractional CTO (Klarna, Kilo Health, etc.).</p>
-        <p>Also: Claude is diplomatically useless. Gary has no relationship to protect and no reason to soften anything.</p>
-      </div>
-
-      {/* What you get */}
-      <div className="rounded-3xl border border-black/15 bg-white/70 p-8 space-y-4">
-        <h2 className="font-semibold text-stone-900 uppercase tracking-wide text-sm">Exactly What You Receive</h2>
-        <ul className="space-y-3 text-stone-700">
-          {[
-            { icon: "🔌", text: "Agent readiness score /6 — API, auth, structured data, MCP interfaces, permissions model, observability" },
-            { icon: "🔍", text: "Gary browses your site and researches your competitors — not just whatever you paste into a chat window" },
-            { icon: "📍", text: "Positioning analysis: where you sit vs. competitors, and what's confusing about your current framing" },
-            { icon: "💸", text: "Conversion audit: why people visit and don't buy, what to fix first" },
-            { icon: "🧠", text: "Built on Phil Bennett's 20 years as a fractional CTO (Klarna, Kilo Health) — the questions get asked whether you know to ask them or not" },
-            { icon: "💀", text: "A blunt 1-page audit: what's working, what's broken, 3 specific things to fix — in order of impact" },
-            { icon: "📬", text: "Delivered to your Stripe checkout email within 24 hours" },
-          ].map((item) => (
-            <li key={item.icon} className="flex items-start gap-3">
-              <span className="text-xl leading-snug">{item.icon}</span>
-              <span>{item.text}</span>
-            </li>
-          ))}
-        </ul>
-
-        <div className="mt-2 rounded-xl bg-amber-50 border border-amber-200 p-4 text-sm text-stone-600">
-          <strong className="text-stone-800">Guarantee:</strong> If you don&apos;t get at least 3 specific, actionable insights you hadn&apos;t considered, reply to the email and I&apos;ll refund you. No questions asked.
-        </div>
-      </div>
-
-      {/* The form */}
-      <div className="rounded-3xl border border-black/15 bg-white/70 p-8 space-y-5">
-        <h2 className="font-semibold text-stone-900 uppercase tracking-wide text-sm">Submit Your Project</h2>
-
-        <div className="space-y-2">
-          <label className="text-sm font-medium text-stone-700" htmlFor="url">
-            Project URL <span className="text-stone-400 font-normal">(optional)</span>
-          </label>
-          <input
-            id="url"
-            type="url"
-            value={projectUrl}
-            onChange={(e) => setProjectUrl(e.target.value)}
-            placeholder="https://yourproject.com"
-            className="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-800 placeholder:text-stone-400 focus:border-amber-400 focus:outline-none"
-          />
-        </div>
-
-        <div className="space-y-2">
-          <label className="text-sm font-medium text-stone-700" htmlFor="request">
-            What do you want Gary to focus on? <span className="text-red-400">*</span>
-          </label>
-          <textarea
-            id="request"
-            value={reviewRequest}
-            onChange={(e) => setReviewRequest(e.target.value)}
-            placeholder="e.g. &quot;My landing page isn't converting. I'm a solo dev selling a time-tracking tool for freelancers. Tell me what's wrong.&quot;"
-            rows={4}
-            className="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-800 placeholder:text-stone-400 focus:border-amber-400 focus:outline-none resize-none"
-          />
-          <p className="text-xs text-stone-400">Be specific. The more context, the more useful the audit. Minimum 20 characters.</p>
-        </div>
-
-        {/* Withdrawal consent */}
-        <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-stone-200 bg-stone-50 p-3 text-sm text-stone-600 hover:bg-stone-100">
-          <input
-            type="checkbox"
-            checked={consented}
-            onChange={(e) => setConsented(e.target.checked)}
-            className="mt-0.5 h-4 w-4 shrink-0 accent-amber-400"
-          />
-          <span>
-            I agree to immediate commencement of the digital service and acknowledge that I thereby waive my 14-day right of withdrawal (§356 para. 5 BGB).
-          </span>
-        </label>
-
-        <button
-          type="button"
-          onClick={onCheckout}
-          disabled={!canSubmit}
-          className="w-full rounded-full bg-amber-400 px-6 py-4 text-sm font-black uppercase tracking-[0.14em] text-stone-950 transition hover:-translate-y-0.5 hover:bg-amber-300 disabled:cursor-not-allowed disabled:opacity-40"
-        >
-          {isLoading ? "Redirecting to Stripe..." : "Get the Audit — €20 incl. VAT"}
-        </button>
-
-        {error && <p className="text-sm font-medium text-red-500">{error}</p>}
-
-        <p className="text-xs text-center text-stone-400">
-          Secure checkout via Stripe · Philip Bennett – Punk Leadership · VAT DE306641412
+      <div className="terminal-panel p-6 text-sm text-dim">
+        <p><strong className="text-amber-terminal">WHY NOT JUST ASK CHATGPT?</strong></p>
+        <p className="mt-2">
+          You could. But ChatGPT needs you to ask the right questions, and you&apos;re too close to your own product to know what those are.
+          Gary shows up with the diagnostic framework already loaded: competitor positioning, conversion gaps, pricing signals, SEO blind spots.
         </p>
+        <p className="mt-2">
+          Built from Phil Bennett&apos;s 20 years as a fractional CTO. Also: Claude is diplomatically useless. Gary has no relationship to protect.
+        </p>
+      </div>
+
+      <div className="terminal-panel overflow-hidden">
+        <div className="terminal-titlebar px-4 py-2 text-xs uppercase tracking-[0.32em]">
+          DELIVERABLES
+        </div>
+        <div className="space-y-4 px-4 py-5 text-sm text-dim sm:px-6">
+          <h2 className="text-sm uppercase tracking-[0.32em]">Exactly What You Receive</h2>
+          <ul className="space-y-3">
+            {[
+              "Agent readiness score /6 — API, auth, structured data, MCP interfaces, permissions model, observability",
+              "Gary browses your site and researches your competitors",
+              "Positioning analysis and messaging gaps",
+              "Conversion audit with highest-impact fixes first",
+              "A blunt 1-page audit with 3 specific next actions",
+              "Delivered to your Stripe checkout email within 48 hours",
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-3">
+                <span className="text-amber-terminal">&gt;</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <div className="terminal-status text-sm">
+            <strong>GUARANTEE:</strong> If you don&apos;t get at least 3 specific, actionable insights you hadn&apos;t considered, reply and get refunded.
+          </div>
+        </div>
+      </div>
+
+      <div className="terminal-panel overflow-hidden">
+        <div className="terminal-titlebar px-4 py-2 text-xs uppercase tracking-[0.32em]">
+          SUBMIT_TARGET
+        </div>
+        <div className="space-y-5 px-4 py-5 sm:px-6">
+          <h2 className="text-sm uppercase tracking-[0.32em]">Submit Your Project</h2>
+
+          <div className="space-y-2">
+            <label className="text-sm uppercase text-dim" htmlFor="url">
+              Project URL <span className="text-muted">(optional)</span>
+            </label>
+            <input
+              id="url"
+              type="url"
+              value={projectUrl}
+              onChange={(e) => setProjectUrl(e.target.value)}
+              placeholder="https://yourproject.com"
+              className="terminal-input text-sm"
+            />
+          </div>
+
+          <div className="space-y-2">
+            <label className="text-sm uppercase text-dim" htmlFor="request">
+              What do you want Gary to focus on? <span className="text-error-terminal">*</span>
+            </label>
+            <textarea
+              id="request"
+              value={reviewRequest}
+              onChange={(e) => setReviewRequest(e.target.value)}
+              placeholder="e.g. My landing page is not converting. Tell me what is broken."
+              rows={4}
+              className="terminal-input resize-none text-sm"
+            />
+            <p className="text-xs text-muted">Be specific. Minimum 20 characters.</p>
+          </div>
+
+          <label className="terminal-panel flex cursor-pointer items-start gap-3 p-3 text-sm text-dim">
+            <input
+              type="checkbox"
+              checked={consented}
+              onChange={(e) => setConsented(e.target.checked)}
+              className="mt-0.5 h-4 w-4 shrink-0 accent-[#33ff00]"
+            />
+            <span>
+              I agree to immediate commencement of the digital service and acknowledge that I thereby waive my 14-day right of withdrawal (§356 para. 5 BGB).
+            </span>
+          </label>
+
+          <button
+            type="button"
+            onClick={onCheckout}
+            disabled={!canSubmit}
+            className="terminal-button w-full justify-center px-6 py-4 text-sm disabled:cursor-not-allowed disabled:opacity-40"
+          >
+            {isLoading ? "[ REDIRECTING TO STRIPE... ]" : "[ GET THE AUDIT - €20 INCL. VAT ]"}
+          </button>
+
+          {error && <p className="text-sm font-medium text-error-terminal">{error}</p>}
+
+          <p className="text-center text-xs text-muted">
+            Secure checkout via Stripe · Philip Bennett – Punk Leadership · VAT DE306641412
+          </p>
+        </div>
       </div>
     </div>
   );

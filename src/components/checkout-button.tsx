@@ -30,17 +30,15 @@ export function CheckoutButton() {
 
   return (
     <div className="space-y-4">
-      {/* Withdrawal consent — required for German digital goods */}
-      <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-amber-100/20 bg-white/5 p-3 text-sm text-amber-100/80 hover:bg-white/10">
+      <label className="terminal-panel flex cursor-pointer items-start gap-3 p-3 text-sm text-dim">
         <input
           type="checkbox"
           checked={consented}
           onChange={(e) => setConsented(e.target.checked)}
-          className="mt-0.5 h-4 w-4 shrink-0 accent-amber-400"
+          className="mt-0.5 h-4 w-4 shrink-0 accent-[#33ff00]"
         />
         <span>
-          I agree to immediate delivery of digital content and acknowledge that I thereby waive my 14-day right of
-          withdrawal (§356 para. 5 BGB). This does not affect my statutory rights.
+          I agree to immediate delivery of digital content and acknowledge that I thereby waive my 14-day right of withdrawal (§356 para. 5 BGB).
         </span>
       </label>
 
@@ -48,12 +46,12 @@ export function CheckoutButton() {
         type="button"
         onClick={onCheckout}
         disabled={!consented || isLoading}
-        className="w-full rounded-full bg-amber-400 px-6 py-3 text-sm font-black uppercase tracking-[0.14em] text-stone-950 transition hover:-translate-y-0.5 hover:bg-amber-300 disabled:cursor-not-allowed disabled:opacity-40"
+        className="terminal-button w-full justify-center px-6 py-3 text-sm disabled:cursor-not-allowed disabled:opacity-40"
       >
-        {isLoading ? "Redirecting to Stripe..." : "Get The Toolkit — €20"}
+        {isLoading ? "[ REDIRECTING TO STRIPE... ]" : "[ GET THE TOOLKIT - €20 ]"}
       </button>
 
-      {error && <p className="text-sm font-medium text-red-400">{error}</p>}
+      {error && <p className="text-sm font-medium text-error-terminal">{error}</p>}
     </div>
   );
 }
