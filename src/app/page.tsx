@@ -52,7 +52,6 @@ export default function Home() {
               <span className="swiss-label">Founding price €20</span>
             </div>
             <div className="space-y-4">
-              <p className="swiss-section-number text-accent">Massive headline</p>
               <h1 className="max-w-5xl text-5xl font-black uppercase leading-none tracking-[-0.1em] sm:text-6xl lg:text-[6.5rem]">
                 Agent-ready or already behind.
               </h1>
