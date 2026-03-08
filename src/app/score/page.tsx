@@ -218,6 +218,41 @@ export default function ScorePage() {
             <p className="mx-auto mt-4 max-w-2xl text-lg leading-8 text-black/76">{verdict.desc}</p>
           </div>
 
+          {!emailSent ? (
+            <div className="neo-panel bg-muted p-6 sm:p-8">
+              <p className="neo-kicker mb-4">Save your results</p>
+              <h2 className="text-2xl font-black leading-none tracking-[-0.05em] sm:text-3xl">Email me my checklist</h2>
+              <p className="mt-3 max-w-2xl text-base leading-7 text-black/76">
+                Leave your email and I&apos;ll personally follow up with a tighter one-page version of your checklist + 2–3 practical suggestions.
+                This is manual (not an automated drip). No spam.
+              </p>
+              <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+                <input
+                  type="email"
+                  placeholder="your@email.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="neo-panel flex-1 border-[3px] border-black bg-white p-3 text-base font-medium focus:outline-none"
+                  onKeyDown={(e) => e.key === "Enter" && handleEmailCapture()}
+                />
+                <button
+                  onClick={handleEmailCapture}
+                  disabled={emailSending || !email.includes("@")} 
+                  className="neo-button-secondary whitespace-nowrap disabled:opacity-50"
+                >
+                  {emailSending ? "SAVING..." : "LEAVE MY EMAIL"}
+                </button>
+              </div>
+            </div>
+          ) : (
+            <div className="neo-panel bg-accent-green p-6 sm:p-8">
+              <p className="text-xl font-black">✓ Got it.</p>
+              <p className="mt-2 text-base text-black/76">
+                If I see something interesting in your answers, I&apos;ll reply with a tighter checklist / next steps.
+              </p>
+            </div>
+          )}
+
           <div className="neo-panel bg-white p-6 sm:p-8">
             <p className="neo-kicker mb-4">Your checklist</p>
             <h2 className="text-2xl font-black leading-none tracking-[-0.05em] sm:text-3xl">Fix these gaps first.</h2>
@@ -293,39 +328,6 @@ export default function ScorePage() {
             </div>
           </div>
 
-          {!emailSent ? (
-            <div className="neo-panel bg-muted p-6 sm:p-8">
-              <h2 className="text-2xl font-black leading-none tracking-[-0.05em] sm:text-3xl">Want me to follow up?</h2>
-              <p className="mt-3 max-w-2xl text-base leading-7 text-black/76">
-                Leave your email and I&apos;ll personally follow up with a tighter one-page version of your checklist + 2–3 practical suggestions.
-                This is manual (not an automated drip). No spam.
-              </p>
-              <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-                <input
-                  type="email"
-                  placeholder="your@email.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="neo-panel flex-1 border-[3px] border-black bg-white p-3 text-base font-medium focus:outline-none"
-                  onKeyDown={(e) => e.key === "Enter" && handleEmailCapture()}
-                />
-                <button
-                  onClick={handleEmailCapture}
-                  disabled={emailSending || !email.includes("@")}
-                  className="neo-button-secondary whitespace-nowrap disabled:opacity-50"
-                >
-                  {emailSending ? "SAVING..." : "LEAVE MY EMAIL"}
-                </button>
-              </div>
-            </div>
-          ) : (
-            <div className="neo-panel bg-accent-green p-6 sm:p-8">
-              <p className="text-xl font-black">✓ Got it.</p>
-              <p className="mt-2 text-base text-black/76">
-                If I see something interesting in your answers, I&apos;ll reply with a tighter checklist / next steps.
-              </p>
-            </div>
-          )}
 
           <div className="neo-panel bg-accent-yellow p-6 sm:p-8">
             <h2 className="text-4xl font-black leading-none tracking-[-0.07em] sm:text-5xl">Want the full audit?</h2>
