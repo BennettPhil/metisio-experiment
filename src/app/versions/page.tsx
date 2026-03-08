@@ -3,7 +3,18 @@ import Link from "next/link";
 
 const VERSIONS = [
   {
-    label: "v11 — Current",
+    label: "v12 — Current",
+    date: "2026-03-08",
+    commit: "nadella-fear-hook",
+    image: "/versions/v12.png",
+    changes: [
+      "Added Nadella pull-quote above hero headline — board recommendation (McLaren: 'fear sells')",
+      "Updated hero sub-paragraph to lead with collapse framing, not experiment framing",
+      "Nadella quote: 'The traditional application layer is collapsing into agents.'",
+    ],
+  },
+  {
+    label: "v11",
     date: "2026-03-07",
     commit: "price-offer-upgrade-v11",
     image: "/versions/v11.png",

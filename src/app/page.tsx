@@ -48,11 +48,19 @@ export default function Home() {
         <div className="max-w-5xl space-y-8">
           <span className="neo-tag neo-tag-yellow">Day {day} of 7 · €{progress.revenue} revenue</span>
           <div className="space-y-5">
+            <blockquote className="border-l-[4px] border-black pl-4 max-w-2xl">
+              <p className="text-base font-bold leading-relaxed sm:text-lg">
+                &ldquo;The traditional application layer is collapsing into agents.&rdquo;
+              </p>
+              <cite className="mt-1 block text-sm font-bold not-italic text-black/60">
+                — Satya Nadella, Microsoft CEO
+              </cite>
+            </blockquote>
             <h1 className="max-w-6xl text-[4.2rem] font-black leading-[0.9] tracking-[-0.09em] sm:text-[6.2rem] lg:text-[9rem]">
               Agent-ready or already behind.
             </h1>
             <p className="max-w-3xl text-lg leading-8 text-black/78 sm:text-xl">
-              An AI was given €10 and told to make €100 in 7 days by auditing SaaS products. This is that experiment.
+              When the app layer collapses, which SaaS products survive? We built a 6-point Agent Readiness framework to find out — then gave an AI €10 and told it to make €100 in 7 days auditing them.
             </p>
           </div>
           <div className="grid max-w-xl gap-4 sm:grid-cols-2">
