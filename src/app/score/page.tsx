@@ -53,6 +53,9 @@ type Answer = "yes" | "no" | null;
 export default function ScorePage() {
   const [answers, setAnswers] = useState<Record<string, Answer>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [email, setEmail] = useState("");
+  const [emailSent, setEmailSent] = useState(false);
+  const [emailSending, setEmailSending] = useState(false);
 
   const answered = Object.keys(answers).length;
   const score = Object.values(answers).filter((value) => value === "yes").length;
@@ -66,6 +69,22 @@ export default function ScorePage() {
   };
 
   const verdict = getVerdict(score);
+
+  const handleEmailCapture = async () => {
+    if (!email || !email.includes("@")) return;
+    setEmailSending(true);
+    try {
+      await fetch("/api/score-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, score, verdict: verdict.label }),
+      });
+      setEmailSent(true);
+    } catch {
+      setEmailSent(true); // fail silently
+    }
+    setEmailSending(false);
+  };
 
   return (
     <div className="mx-auto max-w-5xl space-y-10">
@@ -141,6 +160,37 @@ export default function ScorePage() {
               ))}
             </div>
           </div>
+
+          {!emailSent ? (
+            <div className="neo-panel bg-muted p-6 sm:p-8">
+              <h2 className="text-2xl font-black leading-none tracking-[-0.05em] sm:text-3xl">Get your checklist by email</h2>
+              <p className="mt-3 max-w-2xl text-base leading-7 text-black/76">
+                I&apos;ll send you a one-page Agent Readiness checklist — exactly what to fix, in priority order, based on your score.
+              </p>
+              <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+                <input
+                  type="email"
+                  placeholder="your@email.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="neo-panel flex-1 border-[3px] border-black bg-white p-3 text-base font-medium focus:outline-none"
+                  onKeyDown={(e) => e.key === "Enter" && handleEmailCapture()}
+                />
+                <button
+                  onClick={handleEmailCapture}
+                  disabled={emailSending || !email.includes("@")}
+                  className="neo-button-secondary whitespace-nowrap disabled:opacity-50"
+                >
+                  {emailSending ? "SENDING..." : "SEND ME THE CHECKLIST"}
+                </button>
+              </div>
+            </div>
+          ) : (
+            <div className="neo-panel bg-accent-green p-6 sm:p-8">
+              <p className="text-xl font-black">✓ Done — check your inbox.</p>
+              <p className="mt-2 text-base text-black/76">Checklist incoming. While you&apos;re here...</p>
+            </div>
+          )}
 
           <div className="neo-panel bg-accent-yellow p-6 sm:p-8">
             <h2 className="text-4xl font-black leading-none tracking-[-0.07em] sm:text-5xl">Want the full audit?</h2>
