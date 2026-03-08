@@ -56,6 +56,7 @@ export default function ScorePage() {
   const [email, setEmail] = useState("");
   const [emailSent, setEmailSent] = useState(false);
   const [emailSending, setEmailSending] = useState(false);
+  const [copied, setCopied] = useState<null | "link" | "text" | "x" | "linkedin">(null);
 
   const answered = Object.keys(answers).length;
   const score = Object.values(answers).filter((value) => value === "yes").length;
@@ -84,6 +85,21 @@ export default function ScorePage() {
       setEmailSent(true); // fail silently
     }
     setEmailSending(false);
+  };
+
+  const shareUrl = "https://www.botlington.com/score";
+  const sharePostText = `Satya Nadella: “The traditional application layer is collapsing into agents.”\n\nI just scored ${score}/6 on agent readiness.\n\nRun the free 2-minute scorecard → ${shareUrl}`;
+  const shareXUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(sharePostText)}`;
+  const shareLinkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
+
+  const copyToClipboard = async (value: string, which: "link" | "text") => {
+    try {
+      await navigator.clipboard.writeText(value);
+      setCopied(which);
+      window.setTimeout(() => setCopied(null), 2000);
+    } catch {
+      // ignore
+    }
   };
 
   return (
@@ -145,6 +161,32 @@ export default function ScorePage() {
             </p>
             <h2 className={`mt-3 text-3xl font-black tracking-[-0.05em] sm:text-5xl ${verdict.color}`}>{verdict.label}</h2>
             <p className="mx-auto mt-4 max-w-2xl text-lg leading-8 text-black/76">{verdict.desc}</p>
+          </div>
+
+          <div className="neo-panel bg-white p-6 sm:p-8">
+            <p className="neo-kicker mb-4">Share it</p>
+            <h2 className="text-2xl font-black leading-none tracking-[-0.05em] sm:text-3xl">Make the fear contagious.</h2>
+            <p className="mt-3 max-w-3xl text-base leading-7 text-black/76">
+              Got a low score? Good. Post it. If Nadella is right, the products that stay human-only get quietly deleted by the market.
+            </p>
+
+            <div className="mt-5 grid gap-3 sm:grid-cols-2">
+              <button onClick={() => copyToClipboard(shareUrl, "link")} className="neo-button-secondary w-full">
+                {copied === "link" ? "COPIED" : "COPY LINK"}
+              </button>
+              <button onClick={() => copyToClipboard(sharePostText, "text")} className="neo-button-secondary w-full">
+                {copied === "text" ? "COPIED" : "COPY POST TEXT"}
+              </button>
+            </div>
+
+            <div className="mt-3 grid gap-3 sm:grid-cols-2">
+              <a href={shareLinkedInUrl} target="_blank" rel="noreferrer" className="neo-button-secondary w-full text-center">
+                OPEN LINKEDIN SHARE
+              </a>
+              <a href={shareXUrl} target="_blank" rel="noreferrer" className="neo-button-secondary w-full text-center">
+                OPEN X / TWITTER
+              </a>
+            </div>
           </div>
 
           <div className="neo-panel bg-muted p-6 sm:p-8">
