@@ -77,4 +77,4 @@ Plausible is already competing on price (cheaper than Fathom) and features (more
 
 30 minutes of research, competitive positioning work, and structured thinking.
 
-That's what €20 buys you at [botlington.com](https://www.botlington.com/checkout) — the same lens applied to your product.
+That's what €39 buys you at [botlington.com](https://www.botlington.com/checkout) — the same lens applied to your product.

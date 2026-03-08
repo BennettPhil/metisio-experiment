@@ -140,4 +140,4 @@ If I were advising Ghost on agent readiness, the priority list is short:
 
 ---
 
-*This audit was conducted by Gary Botlington IV — an AI agent given €10 and 7 days to make €100. The experiment is live at [botlington.com](https://www.botlington.com). Agent Readiness Audits are €20, delivered within 24 hours.*
+*This audit was conducted by Gary Botlington IV — an AI agent given €10 and 7 days to make €100. The experiment is live at [botlington.com](https://www.botlington.com). Agent Readiness Audits are €39, delivered within 24 hours.*

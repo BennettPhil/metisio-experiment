@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Link from "next/link";
 
 const questions = [
@@ -50,13 +50,41 @@ const questions = [
 
 type Answer = "yes" | "no" | null;
 
+type CopyTarget = null | "link" | "text" | "checklist";
+
+type ChecklistItem = {
+  id: string;
+  dimension: string;
+  status: Answer;
+  fix: string;
+};
+
+function fixFor(id: string): string {
+  switch (id) {
+    case "api":
+      return "Ship a documented REST/GraphQL API (start read-only if needed). Publish an OpenAPI schema + 3 copy/paste examples.";
+    case "auth":
+      return "Add programmatic auth (API keys, OAuth client credentials, scoped PATs). Avoid browser-only login as the only path.";
+    case "data":
+      return "Return structured JSON for core objects. Add webhooks / events. Don’t make agents scrape HTML as the primary integration.";
+    case "mcp":
+      return "Publish an MCP server or tool layer with 5–10 core actions (create/read/update). Give agents a first-class interface.";
+    case "permissions":
+      return "Introduce least-privilege scopes (read vs write vs delete), expiries, and per-agent tokens. Safety is the feature.";
+    case "observability":
+      return "Add audit logs + agent identifiers (user-agent / token metadata). Make agent activity debuggable and measurable.";
+    default:
+      return "Fix the gap.";
+  }
+}
+
 export default function ScorePage() {
   const [answers, setAnswers] = useState<Record<string, Answer>>({});
   const [submitted, setSubmitted] = useState(false);
   const [email, setEmail] = useState("");
   const [emailSent, setEmailSent] = useState(false);
   const [emailSending, setEmailSending] = useState(false);
-  const [copied, setCopied] = useState<null | "link" | "text" | "x" | "linkedin">(null);
+  const [copied, setCopied] = useState<CopyTarget>(null);
 
   const answered = Object.keys(answers).length;
   const score = Object.values(answers).filter((value) => value === "yes").length;
@@ -71,6 +99,33 @@ export default function ScorePage() {
 
   const verdict = getVerdict(score);
 
+  const checklist = useMemo<ChecklistItem[]>(() => {
+    return questions.map((q) => ({
+      id: q.id,
+      dimension: q.dimension,
+      status: answers[q.id] ?? null,
+      fix: fixFor(q.id),
+    }));
+  }, [answers]);
+
+  const missing = checklist.filter((item) => item.status === "no");
+
+  const checklistText = useMemo(() => {
+    const headline = `Agent Readiness Checklist (score: ${score}/6 — ${verdict.label})`;
+    const lines = [headline, "", "Fix these first:"];
+
+    if (missing.length === 0) {
+      lines.push("- You didn’t answer ‘no’ to anything. Nice. Next: ship MCP + market your readiness (docs + examples). ");
+    } else {
+      for (const item of missing) {
+        lines.push(`- ${item.dimension}: ${item.fix}`);
+      }
+    }
+
+    lines.push("", "Run the score again → https://www.botlington.com/score");
+    return lines.join("\n");
+  }, [missing, score, verdict.label]);
+
   const handleEmailCapture = async () => {
     if (!email || !email.includes("@")) return;
     setEmailSending(true);
@@ -78,7 +133,7 @@ export default function ScorePage() {
       await fetch("/api/score-lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, score, verdict: verdict.label }),
+        body: JSON.stringify({ email, score, verdict: verdict.label, missing: missing.map((m) => m.id) }),
       });
       setEmailSent(true);
     } catch {
@@ -88,11 +143,11 @@ export default function ScorePage() {
   };
 
   const shareUrl = "https://www.botlington.com/score";
-  const sharePostText = `Satya Nadella: “The traditional application layer is collapsing into agents.”\n\nI just scored ${score}/6 on agent readiness.\n\nRun the free 2-minute scorecard → ${shareUrl}`;
+  const sharePostText = `Satya Nadella: “The traditional application layer is collapsing into agents.”\n\nI just scored ${score}/6 on agent readiness (${verdict.label}).\n\nRun the free 2-minute scorecard → ${shareUrl}`;
   const shareXUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(sharePostText)}`;
   const shareLinkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
 
-  const copyToClipboard = async (value: string, which: "link" | "text") => {
+  const copyToClipboard = async (value: string, which: Exclude<CopyTarget, null>) => {
     try {
       await navigator.clipboard.writeText(value);
       setCopied(which);
@@ -164,6 +219,41 @@ export default function ScorePage() {
           </div>
 
           <div className="neo-panel bg-white p-6 sm:p-8">
+            <p className="neo-kicker mb-4">Your checklist</p>
+            <h2 className="text-2xl font-black leading-none tracking-[-0.05em] sm:text-3xl">Fix these gaps first.</h2>
+            <p className="mt-3 max-w-3xl text-base leading-7 text-black/76">
+              This is the practical version. Copy/paste it into a ticket, a doc, or a founder panic spiral.
+            </p>
+
+            <div className="mt-5 grid gap-4">
+              {missing.length === 0 ? (
+                <div className="border-b-[3px] border-black pb-4 last:border-b-0 last:pb-0">
+                  <p className="text-sm font-bold">No obvious red flags</p>
+                  <p className="mt-1 text-base leading-7 text-black/76">
+                    You didn&apos;t answer &ldquo;no&rdquo; to anything. Next: ship an MCP server + publish examples so agents can actually use you.
+                  </p>
+                </div>
+              ) : (
+                missing.map((item) => (
+                  <div key={item.id} className="border-b-[3px] border-black pb-4 last:border-b-0 last:pb-0">
+                    <p className="text-sm font-bold">{item.dimension}</p>
+                    <p className="mt-1 text-base leading-7 text-black/76">{item.fix}</p>
+                  </div>
+                ))
+              )}
+            </div>
+
+            <div className="mt-5 grid gap-3 sm:grid-cols-2">
+              <button onClick={() => copyToClipboard(checklistText, "checklist")} className="neo-button-secondary w-full">
+                {copied === "checklist" ? "COPIED" : "COPY CHECKLIST"}
+              </button>
+              <Link href="/checkout" className="neo-button-secondary w-full text-center">
+                GET THE FULL AUDIT — €39
+              </Link>
+            </div>
+          </div>
+
+          <div className="neo-panel bg-white p-6 sm:p-8">
             <p className="neo-kicker mb-4">Share it</p>
             <h2 className="text-2xl font-black leading-none tracking-[-0.05em] sm:text-3xl">Make the fear contagious.</h2>
             <p className="mt-3 max-w-3xl text-base leading-7 text-black/76">
@@ -205,9 +295,10 @@ export default function ScorePage() {
 
           {!emailSent ? (
             <div className="neo-panel bg-muted p-6 sm:p-8">
-              <h2 className="text-2xl font-black leading-none tracking-[-0.05em] sm:text-3xl">Get your checklist by email</h2>
+              <h2 className="text-2xl font-black leading-none tracking-[-0.05em] sm:text-3xl">Want me to follow up?</h2>
               <p className="mt-3 max-w-2xl text-base leading-7 text-black/76">
-                I&apos;ll send you a one-page Agent Readiness checklist — exactly what to fix, in priority order, based on your score.
+                Leave your email and I&apos;ll personally follow up with a tighter one-page version of your checklist + 2–3 practical suggestions.
+                This is manual (not an automated drip). No spam.
               </p>
               <div className="mt-5 flex flex-col gap-3 sm:flex-row">
                 <input
@@ -223,14 +314,16 @@ export default function ScorePage() {
                   disabled={emailSending || !email.includes("@")}
                   className="neo-button-secondary whitespace-nowrap disabled:opacity-50"
                 >
-                  {emailSending ? "SENDING..." : "SEND ME THE CHECKLIST"}
+                  {emailSending ? "SAVING..." : "LEAVE MY EMAIL"}
                 </button>
               </div>
             </div>
           ) : (
             <div className="neo-panel bg-accent-green p-6 sm:p-8">
-              <p className="text-xl font-black">✓ Done — check your inbox.</p>
-              <p className="mt-2 text-base text-black/76">Checklist incoming. While you&apos;re here...</p>
+              <p className="text-xl font-black">✓ Got it.</p>
+              <p className="mt-2 text-base text-black/76">
+                If I see something interesting in your answers, I&apos;ll reply with a tighter checklist / next steps.
+              </p>
             </div>
           )}
 

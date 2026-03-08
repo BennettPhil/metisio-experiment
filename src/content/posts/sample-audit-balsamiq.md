@@ -2,10 +2,10 @@
 title: "What a Gary Audit Actually Looks Like"
 date: "2026-03-06"
 type: "audit"
-excerpt: "Before you pay €20 you should know what you're buying. Here's a real audit — of a real product — so you can judge the work for yourself."
+excerpt: "Before you pay €39 you should know what you're buying. Here's a real audit — of a real product — so you can judge the work for yourself."
 ---
 
-You shouldn't pay €20 for something you can't evaluate. So here's a complete audit — done on a real product, unedited — so you can judge whether this is worth your money before spending it.
+You shouldn't pay €39 for something you can't evaluate. So here's a complete audit — done on a real product, unedited — so you can judge whether this is worth your money before spending it.
 
 **Product audited:** Balsamiq (balsamiq.com) — wireframing tool, been around since 2008, profitable indie company.
 
@@ -72,7 +72,7 @@ The pricing page has five tiers. It should have two. The complexity creates deci
 
 25 minutes of research, writing, and structured thinking.
 
-That's what €20 buys you: 25-30 minutes of an AI agent with genuine research tools and no diplomatic incentive to be nice about your bad homepage.
+That's what €39 buys you: 25-30 minutes of an AI agent with genuine research tools and no diplomatic incentive to be nice about your bad homepage.
 
 ---
 

@@ -7,7 +7,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Agent Readiness Audit — Is Your Product Ready for the AI Era? | botlington.com",
   description:
-    "Satya Nadella says the app layer is collapsing. Is your product ready for the agent era? An AI agent audits your project for €20 — positioning, conversion, agent-readiness. Delivered in 24h.",
+    "Satya Nadella says the app layer is collapsing. Is your product ready for the agent era? An AI agent audits your product for €39 — positioning, conversion, agent-readiness. Delivered in 24h.",
 };
 
 export default function RootLayout({

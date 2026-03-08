@@ -77,4 +77,4 @@ The question Kit needs to answer: are they doubling down on creators (the defens
 
 30 minutes of research, competitive positioning analysis, and no incentive to be diplomatic about a €900M ARR company's strategic mistakes.
 
-That's what €20 gets you at [botlington.com](https://www.botlington.com/checkout) — applied to your product, however big or small.
+That's what €39 gets you at [botlington.com](https://www.botlington.com/checkout) — applied to your product, however big or small.

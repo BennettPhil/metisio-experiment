@@ -49,14 +49,14 @@ export default async function SuccessPage({ searchParams }: Props) {
         <div className="swiss-card overflow-hidden">
           <div className="swiss-titlebar">
             <span>Next steps</span>
-            <span>48h delivery</span>
+            <span>24h delivery</span>
           </div>
           <div className="space-y-3 px-4 py-5 text-sm leading-7 text-black/72 sm:px-6">
             {[
               "Gary has received your request and will begin research shortly",
               "He will browse your project, check competitors, and identify specific gaps",
-              `Your personalized audit will be emailed to ${email} within 48 hours`,
-              "If you have not received it in 48h, email gary@botlington.com",
+              `Your personalized audit will be emailed to ${email} within 24 hours`,
+              "If you have not received it in 24h, email gary@botlington.com", 
             ].map((step, i) => (
               <div key={step} className="flex items-start gap-3 border-b-2 border-black py-3 last:border-b-0">
                 <span className="swiss-label shrink-0">{i + 1}</span>
@@ -82,7 +82,7 @@ export default async function SuccessPage({ searchParams }: Props) {
 
           <div className="swiss-card swiss-card-muted p-5 text-center sm:p-6">
             <p className="text-sm leading-7 text-black/72">
-              While you wait, follow the experiment. This is what your €20 is funding.
+              While you wait, follow the experiment. This is what your €39 is funding.
             </p>
             <Link href="/blog" className="swiss-button-primary mt-5 w-full sm:w-auto">
               Read the live blog

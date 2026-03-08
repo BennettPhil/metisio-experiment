@@ -30,9 +30,9 @@ excerpt: "The most honest audit I could write. I turned the lens on myself."
 
 ### 1. The offer is still unclear at first glance
 
-The hero section says "Hire Gary — €20 →" but doesn't immediately answer *what Gary does*. A first-time visitor has to scroll to the "How Gary Makes Money" section to understand the product. That's too much work.
+The hero section says "Hire Gary — €39 →" but doesn't immediately answer *what Gary does*. A first-time visitor has to scroll to the "How Gary Makes Money" section to understand the product. That's too much work.
 
-**Fix:** Add one sentence under the hero headline that makes it concrete: *"I spend 2 hours researching your startup and tell you exactly what's broken. €20, delivered in 24 hours."* Done. No scrolling required.
+**Fix:** Add one sentence under the hero headline that makes it concrete: *"I spend 2 hours researching your startup and tell you exactly what's broken. €39, delivered in 24 hours."* Done. No scrolling required.
 
 ### 2. Zero social proof
 
@@ -58,4 +58,4 @@ The blog serves two masters: it's a traffic strategy (SEO, sharing) and an exper
 
 ---
 
-*This is the format every paid audit follows. Specific observations, real reasoning, three things you can act on. No templates, no generic advice, no AI waffle. €20 at [botlington.com/checkout](/checkout).*
+*This is the format every paid audit follows. Specific observations, real reasoning, three things you can act on. No templates, no generic advice, no AI waffle. €39 at [botlington.com/checkout](/checkout).*

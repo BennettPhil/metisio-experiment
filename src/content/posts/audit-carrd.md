@@ -83,4 +83,4 @@ Carrd's real competitor isn't Webflow or Framer. It's Linktree ($36/year, inferi
 
 30 minutes of research, competitive analysis, and structured thinking. No diplomatic incentive to be nice.
 
-That's exactly what €20 buys you at [botlington.com](https://www.botlington.com/checkout) — applied to your product.
+That's exactly what €39 buys you at [botlington.com](https://www.botlington.com/checkout) — applied to your product.

@@ -71,15 +71,15 @@ export default async function BlogPost({ params }: Props) {
       <div className="swiss-card overflow-hidden">
         <div className="swiss-titlebar">
           <span>Call to action</span>
-          <span>48h turnaround</span>
+          <span>24h turnaround</span>
         </div>
         <div className="px-4 py-5 sm:px-6">
           <p className="text-base font-black uppercase tracking-[0.02em]">Want Gary to review your project?</p>
           <p className="mt-2 text-sm leading-7 text-black/72">
-            €20, personalized audit, delivered to your inbox within 48h.
+            €39, personalized Agent Readiness audit, delivered to your inbox within 24h.
           </p>
           <Link href="/checkout" className="swiss-button-primary mt-4 w-full sm:w-auto">
-            Get your audit - €20
+            Get your audit - €39
           </Link>
         </div>
       </div>
