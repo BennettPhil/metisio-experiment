@@ -81,6 +81,7 @@ function fixFor(id: string): string {
 export default function ScorePage() {
   const [answers, setAnswers] = useState<Record<string, Answer>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [revealed, setRevealed] = useState(false);
   const [email, setEmail] = useState("");
   const [emailSent, setEmailSent] = useState(false);
   const [emailSending, setEmailSending] = useState(false);
@@ -140,6 +141,12 @@ export default function ScorePage() {
       setEmailSent(true); // fail silently
     }
     setEmailSending(false);
+  };
+
+  const revealWithEmail = async () => {
+    if (!email || !email.includes("@")) return;
+    await handleEmailCapture();
+    setRevealed(true);
   };
 
   const shareUrl = "https://www.botlington.com/score";
@@ -202,23 +209,62 @@ export default function ScorePage() {
 
           <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-base font-bold">{answered}/6 questions answered</p>
-            <button onClick={() => setSubmitted(true)} disabled={!allAnswered} className="neo-button w-full sm:w-auto">
+            <button
+              onClick={() => {
+                setSubmitted(true);
+                setRevealed(false);
+              }}
+              disabled={!allAnswered}
+              className="neo-button w-full sm:w-auto"
+            >
               SEE MY SCORE
             </button>
           </div>
         </div>
       ) : (
         <div className="space-y-6">
-          <div className="neo-panel bg-white p-6 text-center sm:p-8">
-            <p className={`text-[6rem] font-black leading-none tracking-[-0.08em] sm:text-[8rem] ${verdict.color}`}>
-              {score}
-              <span className="text-4xl text-black/40">/6</span>
-            </p>
-            <h2 className={`mt-3 text-3xl font-black tracking-[-0.05em] sm:text-5xl ${verdict.color}`}>{verdict.label}</h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg leading-8 text-black/76">{verdict.desc}</p>
-          </div>
+          {!revealed ? (
+            <div className="neo-panel bg-muted p-6 sm:p-8">
+              <p className="neo-kicker mb-4">Before you see the score</p>
+              <h2 className="text-2xl font-black leading-none tracking-[-0.05em] sm:text-3xl">Where should I send your checklist?</h2>
+              <p className="mt-3 max-w-2xl text-base leading-7 text-black/76">
+                Enter your email to reveal your score and save a one-page checklist. This is manual (not an automated drip). No spam.
+              </p>
 
-          {!emailSent ? (
+              <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+                <input
+                  type="email"
+                  placeholder="your@email.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="neo-panel flex-1 border-[3px] border-black bg-white p-3 text-base font-medium focus:outline-none"
+                  onKeyDown={(e) => e.key === "Enter" && revealWithEmail()}
+                />
+                <button
+                  onClick={revealWithEmail}
+                  disabled={emailSending || !email.includes("@")} 
+                  className="neo-button-secondary whitespace-nowrap disabled:opacity-50"
+                >
+                  {emailSending ? "SAVING..." : "REVEAL MY SCORE"}
+                </button>
+              </div>
+
+              <button onClick={() => setRevealed(true)} className="neo-link mt-4 text-sm font-bold">
+                Skip (show me the score)
+              </button>
+            </div>
+          ) : (
+            <>
+              <div className="neo-panel bg-white p-6 text-center sm:p-8">
+                <p className={`text-[6rem] font-black leading-none tracking-[-0.08em] sm:text-[8rem] ${verdict.color}`}>
+                  {score}
+                  <span className="text-4xl text-black/40">/6</span>
+                </p>
+                <h2 className={`mt-3 text-3xl font-black tracking-[-0.05em] sm:text-5xl ${verdict.color}`}>{verdict.label}</h2>
+                <p className="mx-auto mt-4 max-w-2xl text-lg leading-8 text-black/76">{verdict.desc}</p>
+              </div>
+
+              {!emailSent ? (
             <div className="neo-panel bg-muted p-6 sm:p-8">
               <p className="neo-kicker mb-4">Save your results</p>
               <h2 className="text-2xl font-black leading-none tracking-[-0.05em] sm:text-3xl">Email me my checklist</h2>
@@ -343,11 +389,18 @@ export default function ScorePage() {
             onClick={() => {
               setAnswers({});
               setSubmitted(false);
+              setRevealed(false);
+              setEmail("");
+              setEmailSent(false);
+              setEmailSending(false);
+              setCopied(null);
             }}
             className="neo-link text-sm font-bold"
           >
             Start over
           </button>
+            </>
+          )}
         </div>
       )}
     </div>
