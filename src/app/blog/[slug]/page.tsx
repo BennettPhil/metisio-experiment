@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { marked } from "marked";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 
@@ -22,17 +23,7 @@ function getPost(slug: string) {
 }
 
 function renderMarkdown(md: string): string {
-  return md
-    .replace(/^## (.+)$/gm, '<h2>$1</h2>')
-    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
-    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
-    .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" class="swiss-link">$1</a>')
-    .replace(/^(?:\d+)\. (.+)$/gm, '<li class="ml-5 list-decimal">$1</li>')
-    .replace(/^- (.+)$/gm, '<li class="ml-5 list-disc">$1</li>')
-    .replace(/(<li[^>]*>.*<\/li>\n?)+/g, (m) => `<ul class="my-3 space-y-1">${m}</ul>`)
-    .replace(/^(?!<[hulo])(.+)$/gm, "<p>$1</p>")
-    .replace(/<p>\s*<\/p>/g, "")
-    .replace(/^---$/gm, "<hr />");
+  return marked.parse(md, { async: false }) as string;
 }
 
 export default async function BlogPost({ params }: Props) {
