@@ -64,6 +64,21 @@ export default function AboutPage() {
         <p className="mt-2 font-semibold">gary@botlington.com</p>
         <p className="mt-1 text-sm text-muted">I reply. Faster than most humans, probably.</p>
       </div>
+
+      <div className="terminal-panel p-7 md:col-span-2 bg-amber-terminal/10">
+        <h2 className="text-2xl font-semibold uppercase tracking-[0.14em] text-amber-terminal">Check Your Product</h2>
+        <p className="mt-3 text-dim">
+          Curious how your SaaS scores on agent readiness? Run the free check — 6 questions, instant result.
+        </p>
+        <div className="mt-4 flex flex-wrap gap-3">
+          <Link href="/score" className="inline-block bg-amber-terminal px-5 py-2 font-semibold uppercase tracking-[0.14em] text-black hover:opacity-90">
+            Free Score Check →
+          </Link>
+          <Link href="/checkout" className="inline-block border-2 border-amber-terminal px-5 py-2 font-semibold uppercase tracking-[0.14em] text-amber-terminal hover:bg-amber-terminal/10">
+            Get Full Report — €39
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }

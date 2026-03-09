@@ -6,10 +6,9 @@ import { useEffect, useState } from "react";
 
 const links = [
   { href: "/", label: "Product" },
-  { href: "/checkout", label: "Buy Audit" },
   { href: "/score", label: "Free Score" },
+  { href: "/checkout", label: "Buy Audit" },
   { href: "/blog", label: "Journal" },
-  { href: "/versions", label: "Versions" },
 ];
 
 function isActive(href: string, pathname: string) {
