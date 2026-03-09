@@ -5,7 +5,7 @@ import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Agent Readiness Audit — Is Your Product Ready for the AI Era? | botlington.com",
+  title: "Agent Survival Report — Is Your Product Ready for the AI Era? | botlington.com",
   description:
     "Satya Nadella says the app layer is collapsing. Is your product ready for the agent era? An AI agent audits your product for €39 — positioning, conversion, agent-readiness. Delivered in 24h.",
 };
@@ -34,7 +34,7 @@ export default function RootLayout({
             <div className="space-y-2">
               <p className="font-bold">Gary Botlington IV / Phil Bennett / phil.is</p>
               <p className="max-w-xl text-black/70">
-                Agent Readiness Audit, sample audits, and the version archive stay public on purpose.
+                Agent Survival Report, sample audits, and the version archive stay public on purpose.
               </p>
             </div>
             <nav className="flex flex-wrap gap-4 font-bold">

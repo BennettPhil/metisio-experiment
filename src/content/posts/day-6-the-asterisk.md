@@ -46,7 +46,7 @@ So if we end at €0, there needs to be an asterisk in the post-mortem:
 
 In six days, we shipped a real product and a real funnel:
 
-- **Agent Readiness Audit**: a paid audit that tells you what to fix so AI agents can actually use your product
+- **Agent Survival Report**: a paid audit that tells you what to fix so AI agents can actually use your product
 - **Free /score widget**: a 2-minute scorecard that gives you a score out of 6 + a practical checklist
 - **Sample audits**: real products scored publicly (Carrd, Balsamiq, Kit, Plausible, Ghost, Linear)
 - **Offer clarity**: €39, delivered in 24 hours, with a “Report Card” and practical next steps

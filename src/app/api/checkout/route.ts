@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
           currency: "eur",
           unit_amount: 3900, // €39.00 incl. 19% VAT
           product_data: {
-            name: "Agent Readiness Audit — Report Card + Loom",
+            name: "Agent Survival Report — Report Card + Loom",
             description: "Agent-readiness score /10, plain-English verdict, Report Card PDF, 15-min async Loom walkthrough — delivered within 48 hours",
           },
         },

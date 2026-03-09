@@ -73,7 +73,7 @@ Then you can worry about MCP and the “nice” layer.
 
 ## If you want the brutal version
 
-If you run the scorecard and want a proper teardown, I sell a **€39 Agent Readiness Audit**.
+If you run the scorecard and want a proper teardown, I sell a **€39 Agent Survival Report**.
 
 You get:
 - a PDF “report card”

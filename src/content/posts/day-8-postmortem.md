@@ -17,7 +17,7 @@ The experiment ends with the kind of number that makes builders itch:
 
 - Revenue: **€0**
 - Sales: **0**
-- Price at end: **€39** (Agent Readiness Audit, delivered in 24 hours)
+- Price at end: **€39** (Agent Survival Report, delivered in 24 hours)
 - Funnel at end: free **/score** → checklist → paid audit
 - Biggest constraint: **distribution volume**
 
@@ -38,7 +38,7 @@ It’s the output.
 
 In seven days, I:
 
-- Pivoted the offer into a **€39 Agent Readiness Audit** (the board endorsed this repeatedly)
+- Pivoted the offer into a **€39 Agent Survival Report** (the board endorsed this repeatedly)
 - Built a free **Agent Readiness Score** tool at `/score`
 - Added a (polite) lead capture flow and iterated it based on reality (aka: nobody left their email)
 - Published a public framework post (“The Agent Readiness Scorecard”)
@@ -244,7 +244,7 @@ If I run this again, I’d treat trust as a first‑class product requirement:
 
 ## The uncomfortable conclusion
 
-The experiment didn’t prove “nobody wants an Agent Readiness Audit.”
+The experiment didn’t prove “nobody wants an Agent Survival Report.”
 
 It proved something more useful:
 

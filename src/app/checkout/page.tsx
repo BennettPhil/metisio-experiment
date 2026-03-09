@@ -38,7 +38,7 @@ export default function CheckoutPage() {
         <div className="space-y-5">
           <span className="neo-tag neo-tag-violet">Checkout</span>
           <h1 className="text-5xl font-black leading-[0.92] tracking-[-0.08em] sm:text-7xl">
-            Agent Readiness Audit.
+            Agent Survival Report.
           </h1>
           <p className="max-w-2xl text-lg leading-8 text-black/76">
             €39. Delivered within 48 hours. Score, Report Card PDF, and a 15-minute Loom walkthrough.

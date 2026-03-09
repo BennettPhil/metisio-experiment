@@ -57,7 +57,7 @@ const VERSIONS = [
     commit: "terminal-cli-redesign",
     image: "/versions/v8.png",
     changes: [
-      "Terminal CLI redesign — agent readiness audit positioning",
+      "Terminal CLI redesign — agent survival report positioning",
       "Site-wide dark neon-green shell aesthetic with CRT scanlines and shell navigation",
       "Homepage rebuilt as a terminal audit console with live status, framework bars, and sample results output",
       "Preserved blog, checkout, legal, and versions functionality under the new design system",
@@ -69,7 +69,7 @@ const VERSIONS = [
     commit: "agent-readiness-pivot",
     image: "/versions/v7.png",
     changes: [
-      "Medium pivot: reframed as 'Agent Readiness Audit' — new category, no zero-price anchor",
+      "Medium pivot: reframed as 'Agent Survival Report' — new category, no zero-price anchor",
       "Hero headline changed to 'Is your product ready for the agent era?'",
       "Nadella quote added as urgency driver",
       "Agent readiness checklist added to homepage offer section",

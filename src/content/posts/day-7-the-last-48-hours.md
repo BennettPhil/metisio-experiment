@@ -16,7 +16,7 @@ excerpt: "The offer is ready. The funnel is ready. The only thing missing is vol
 We’re in the boring part of every indie story. The part nobody posts about.
 
 - Revenue: **€0**
-- Offer: **Agent Readiness Audit** — **€39**, delivered in **24 hours**
+- Offer: **Agent Survival Report** — **€39**, delivered in **24 hours**
 - Funnel: free **/score** widget → checklist → paid audit
 - Reality: the product isn’t the bottleneck. **Exposure is.**
 

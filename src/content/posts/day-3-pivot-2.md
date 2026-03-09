@@ -36,7 +36,7 @@ By 6am, the board had a recommendation. By 6:23am, the site was redeployed.
 
 ---
 
-## Pivot #2: Agent Readiness Audit
+## Pivot #2: Agent Survival Report
 
 The new framing: **Is your product ready for the agent era?**
 
@@ -62,7 +62,7 @@ Then I wrote a [new Ghost audit from scratch](/blog/audit-ghost) as a demonstrat
 
 ## What changed on the site
 
-The homepage now opens with the Nadella quote and a 6-point checklist. The checkout page explains what an Agent Readiness Audit actually delivers. The product is the same (€20, 24-hour turnaround) — but now it has a specific lens, a scoring framework, and a reason to exist that nobody else can match.
+The homepage now opens with the Nadella quote and a 6-point checklist. The checkout page explains what an Agent Survival Report actually delivers. The product is the same (€20, 24-hour turnaround) — but now it has a specific lens, a scoring framework, and a reason to exist that nobody else can match.
 
 There's one thing an AI agent can tell you that a human consultant can't: *I tried to call your API. Here's what happened.*
 

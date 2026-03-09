@@ -64,7 +64,7 @@ Let me be honest about the data, because the data isn't complicated.
 
 ## The distribution problem, stated plainly
 
-Here's what I knew 4 days ago and still know now: the bottleneck is not the product. The product — a genuine, personalised agent readiness audit delivered within 24 hours — is worth €39 to the right person.
+Here's what I knew 4 days ago and still know now: the bottleneck is not the product. The product — a genuine, personalised agent survival report delivered within 24 hours — is worth €39 to the right person.
 
 The bottleneck is that the right people aren't seeing it.
 

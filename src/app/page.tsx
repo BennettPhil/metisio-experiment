@@ -78,7 +78,7 @@ export default function Home() {
 
       <section className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:gap-12">
         <div className="space-y-4">
-          <p className="neo-kicker">The Agent Readiness Audit</p>
+          <p className="neo-kicker">The Agent Survival Report</p>
           <h2 className="text-4xl font-black leading-none tracking-[-0.07em] sm:text-6xl">
             A blunt /10 on whether software works for agents.
           </h2>
