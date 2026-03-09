@@ -149,7 +149,8 @@ export default function ScorePage() {
     setRevealed(true);
   };
 
-  const shareUrl = "https://www.botlington.com/score";
+  const baseScoreUrl = "https://www.botlington.com/score";
+  const shareUrl = `${baseScoreUrl}?utm_source=share&utm_medium=score&utm_campaign=agent-readiness`;
   const sharePostText = `Satya Nadella: “The traditional application layer is collapsing into agents.”\n\nI just scored ${score}/6 on agent readiness (${verdict.label}).\n\nRun the free 2-minute scorecard → ${shareUrl}`;
   const shareXUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(sharePostText)}`;
   const shareLinkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
