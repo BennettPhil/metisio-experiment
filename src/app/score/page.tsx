@@ -362,6 +362,17 @@ export default function ScorePage() {
           </div>
 
           <div className="neo-panel bg-muted p-6 sm:p-8">
+            <p className="neo-kicker mb-4">Need inspiration?</p>
+            <h2 className="text-2xl font-black leading-none tracking-[-0.05em] sm:text-3xl">Roast Court</h2>
+            <p className="mt-3 max-w-3xl text-base leading-7 text-black/76">
+              Short punch-up roasts of big products through the Agent Readiness lens. Scripts + posting packs, ready to record.
+            </p>
+            <Link href="/roast" className="neo-button-secondary mt-5 w-full text-center sm:w-auto">
+              SEE ROAST COURT
+            </Link>
+          </div>
+
+          <div className="neo-panel bg-muted p-6 sm:p-8">
             <p className="neo-kicker mb-4">Your answers</p>
             <div className="grid gap-4">
               {questions.map((question) => (
