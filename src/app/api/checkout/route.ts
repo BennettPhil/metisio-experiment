@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 
-const MIN_AMOUNT_CENTS = 100; // €1 minimum
-const MAX_AMOUNT_CENTS = 50000; // €500 max
+const FIXED_AMOUNT_CENTS = 3900; // €39 fixed price
 
 export async function POST(req: NextRequest) {
   try {
@@ -13,14 +12,12 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json().catch(() => ({}));
-    const { projectUrl = "", reviewRequest = "", amount } = body as {
+    const { projectUrl = "", reviewRequest = "" } = body as {
       projectUrl?: string;
       reviewRequest?: string;
-      amount?: number; // cents
     };
 
-    // Validate amount (pay what you want, minimum €1)
-    const unitAmount = Math.max(MIN_AMOUNT_CENTS, Math.min(MAX_AMOUNT_CENTS, Math.round(Number(amount) || 2000)));
+    const unitAmount = FIXED_AMOUNT_CENTS;
 
     const stripe = new Stripe(stripeKey);
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.botlington.com";
@@ -39,7 +36,7 @@ export async function POST(req: NextRequest) {
             product_data: {
               name: `Agent Survival Report (${displayAmount})`,
               description:
-                "Agent-readiness score /10, plain-English verdict, Report Card PDF, 15-min async Loom walkthrough — delivered within 48 hours",
+                "Agent survival assessment, plain-English verdict, Report Card PDF, 15-min async Loom walkthrough — delivered within 48 hours",
             },
           },
         },
@@ -47,7 +44,7 @@ export async function POST(req: NextRequest) {
       metadata: {
         projectUrl: projectUrl.slice(0, 500),
         reviewRequest: reviewRequest.slice(0, 500),
-        pwyw_amount_cents: String(unitAmount),
+        fixed_amount_cents: String(unitAmount),
       },
       customer_creation: "always",
       billing_address_collection: "auto",

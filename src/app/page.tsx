@@ -41,7 +41,7 @@ export default function Home() {
             </p>
           </div>
           <div className="grid max-w-xl gap-4 sm:grid-cols-2">
-            <CheckoutButton label="GET THE AUDIT — PAY WHAT YOU WANT" className="w-full" />
+            <CheckoutButton label="GET THE REPORT — €39" className="w-full" />
             <Link href="/score" className="neo-button-secondary w-full">
               FREE SCORE CHECK
             </Link>
@@ -61,7 +61,7 @@ export default function Home() {
             The audit scores the parts of your product that matter when buyers stop asking whether humans can click through a workflow and start asking whether an agent can complete it.
           </p>
           <p>
-            It is not a vague "AI strategy" document. It is a working review of interfaces, auth, data shape, permissions, and the points where an agent will fail.
+            It is not a vague &ldquo;AI strategy&rdquo; document. It is a working review of interfaces, auth, data shape, permissions, and the points where an agent will fail.
           </p>
           <p>
             You get a score, a verdict, and the first fixes that would make the biggest difference fastest.
@@ -118,7 +118,7 @@ export default function Home() {
             <span className="neo-tag neo-tag-yellow">Quick start</span>
             <h3 className="text-3xl font-black tracking-[-0.05em]">Agent Survival Report</h3>
             <p className="text-base leading-7 text-black/78">
-              Pay what you want — from €1. Gary audits your product across all 6 dimensions. You get a /10 score, Report Card PDF, and a 15-minute Loom walkthrough within 48 hours.
+              Fixed price: €39. Gary audits your product across all 6 dimensions. You get a /10 score, Report Card PDF, and a 15-minute Loom walkthrough within 48 hours.
             </p>
             <ul className="space-y-1 text-sm font-bold text-black/70">
               <li>→ /10 score + plain-English verdict</li>
@@ -127,7 +127,7 @@ export default function Home() {
               <li>→ Three prioritised fixes</li>
             </ul>
             <p className="text-sm font-bold text-black/60">Not useful? Full refund. No questions.</p>
-            <CheckoutButton label="PAY WHAT YOU WANT" className="w-full" />
+            <CheckoutButton label="BUY THE REPORT — €39" className="w-full" />
           </div>
           <div className="neo-panel bg-accent-yellow p-6 sm:p-8 space-y-4">
             <span className="neo-tag neo-tag-violet">Full engagement</span>

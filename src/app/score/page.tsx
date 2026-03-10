@@ -330,7 +330,7 @@ export default function ScorePage() {
                 {copied === "checklist" ? "COPIED" : "COPY CHECKLIST"}
               </button>
               <Link href="/checkout" className="neo-button-secondary w-full text-center">
-                GET THE FULL AUDIT — PAY WHAT YOU WANT
+                GET THE FULL REPORT — €39
               </Link>
             </div>
           </div>
@@ -390,11 +390,11 @@ export default function ScorePage() {
           <div className="neo-panel bg-accent-yellow p-6 sm:p-8">
             <h2 className="text-4xl font-black leading-none tracking-[-0.07em] sm:text-5xl">Want the full picture?</h2>
             <p className="mt-4 max-w-3xl text-lg leading-8 text-black/78">
-              The free score tells you where you stand. Get a full audit with Report Card PDF and Loom walkthrough — pay what you want. Or go deep with Phil&apos;s consulting engagement.
+              The free score tells you where you stand. Get the full report with Report Card PDF and Loom walkthrough for €39. Or go deep with Phil&apos;s consulting engagement.
             </p>
             <div className="mt-6 flex flex-wrap gap-4">
               <Link href="/checkout" className="neo-button">
-                PAY WHAT YOU WANT — GET THE REPORT
+                BUY THE REPORT — €39
               </Link>
               <Link href="/consulting" className="neo-button-secondary">
                 FULL CONSULTING — €299

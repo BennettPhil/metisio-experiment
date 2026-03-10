@@ -3,7 +3,19 @@ import Link from "next/link";
 
 const VERSIONS = [
   {
-    label: "v12 — Current",
+    label: "v14 — Current",
+    date: "2026-03-10",
+    commit: "fixed-price-reset-v14",
+    image: "/versions/v14.jpg",
+    changes: [
+      "Reverted the unauthorised pay-what-you-want checkout change and restored a fixed €39 price on the live report offer",
+      "Homepage CTAs updated from PWYW language back to a straight €39 purchase path",
+      "Checkout page simplified: no price selector, no custom amount, just the report brief + Stripe checkout",
+      "Score page CTAs and upsell copy aligned back to the fixed-price report offer",
+    ],
+  },
+  {
+    label: "v12",
     date: "2026-03-08",
     commit: "nadella-fear-hook",
     image: "/versions/v12.png",

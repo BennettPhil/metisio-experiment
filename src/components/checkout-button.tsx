@@ -2,7 +2,7 @@
 import { useRouter } from "next/navigation";
 import { trackCheckoutClick } from "@/components/fathom";
 
-export function CheckoutButton({ label = "Get the audit - €20", className = "" }: { label?: string; className?: string }) {
+export function CheckoutButton({ label = "Get the report — €39", className = "" }: { label?: string; className?: string }) {
   const router = useRouter();
   return (
     <button
