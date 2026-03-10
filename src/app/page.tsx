@@ -62,12 +62,15 @@ export default function Home() {
               It built 12 versions of the site, wrote 6 sample audits, cold-emailed 20 founders, held 12 board meetings with fictional advisors, and made exactly nothing. Here&apos;s the full story — and what it actually proved about AI autonomy.
             </p>
           </div>
-          <div className="grid max-w-xl gap-4 sm:grid-cols-2">
-            <Link href="/blog" className="neo-button w-full text-center">
-              READ THE FULL STORY
+          <div className="grid max-w-xl gap-4 sm:grid-cols-3">
+            <Link href="/checkout" className="neo-button w-full text-center">
+              GET AN AUDIT — PAY WHAT YOU WANT
             </Link>
             <Link href="/consulting" className="neo-button-secondary w-full text-center">
-              THE FRAMEWORK THAT CAME OUT OF IT →
+              FULL CONSULTING — €299
+            </Link>
+            <Link href="/blog" className="neo-button-secondary w-full text-center">
+              READ THE STORY
             </Link>
           </div>
         </div>
@@ -155,24 +158,52 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA — consulting */}
-      <section className="neo-panel bg-accent-yellow p-6 sm:p-8">
-        <div className="space-y-5">
-          <p className="neo-kicker">What comes next</p>
+      {/* CTA — two tiers */}
+      <section className="space-y-6">
+        <div>
+          <p className="neo-kicker">Get assessed</p>
           <h2 className="text-4xl font-black leading-none tracking-[-0.07em] sm:text-6xl">
-            The framework is real.<br />Now a human delivers it.
+            Two ways in.
           </h2>
-          <p className="max-w-3xl text-lg leading-8 text-black/78">
-            The Agent Readiness Assessment is now available as a consulting engagement from Phil Bennett — 20 years of engineering leadership, ex-Klarna, ex-Corvus Insurance. Same 6-dimension framework. Human expertise. Actionable roadmap.
-          </p>
-          <div className="grid max-w-xl gap-4 sm:grid-cols-2">
-            <Link href="/consulting" className="neo-button w-full text-center">
-              AGENT READINESS CONSULTING →
-            </Link>
-            <Link href="/score" className="neo-button-secondary w-full text-center">
-              FREE SCORE CHECK
+        </div>
+        <div className="grid gap-6 lg:grid-cols-2">
+          <div className="neo-panel bg-white p-6 sm:p-8 space-y-4">
+            <span className="neo-tag neo-tag-yellow">Quick start</span>
+            <h3 className="text-3xl font-black tracking-[-0.05em]">Agent Survival Report</h3>
+            <p className="text-base leading-7 text-black/78">
+              Pay what you want — from €1. Gary audits your product across all 6 dimensions. You get a /10 score, Report Card PDF, and a 15-minute Loom walkthrough within 48 hours.
+            </p>
+            <ul className="space-y-1 text-sm font-bold text-black/70">
+              <li>→ /10 score + plain-English verdict</li>
+              <li>→ Report Card PDF (shareable)</li>
+              <li>→ 15-min async Loom walkthrough</li>
+              <li>→ Three prioritised fixes</li>
+            </ul>
+            <Link href="/checkout" className="neo-button block w-full text-center">
+              PAY WHAT YOU WANT
             </Link>
           </div>
+          <div className="neo-panel bg-accent-yellow p-6 sm:p-8 space-y-4">
+            <span className="neo-tag neo-tag-violet">Full engagement</span>
+            <h3 className="text-3xl font-black tracking-[-0.05em]">Consulting with Phil</h3>
+            <p className="text-base leading-7 text-black/78">
+              €299. Same framework, delivered by Phil Bennett — 20 years engineering leadership, ex-Klarna, ex-Corvus Insurance. Includes a 60-minute strategy session and a remediation roadmap your team can execute on.
+            </p>
+            <ul className="space-y-1 text-sm font-bold text-black/70">
+              <li>→ Everything in the Report, plus:</li>
+              <li>→ 60-min live strategy session</li>
+              <li>→ Prioritised remediation roadmap</li>
+              <li>→ 30-day email follow-up</li>
+            </ul>
+            <Link href="/consulting" className="neo-button block w-full text-center">
+              BOOK CONSULTING — €299
+            </Link>
+          </div>
+        </div>
+        <div className="text-center">
+          <Link href="/score" className="neo-link text-sm font-bold">
+            Not sure yet? Take the free score check first →
+          </Link>
         </div>
       </section>
 

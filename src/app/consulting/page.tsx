@@ -167,17 +167,22 @@ export default function ConsultingPage() {
         </div>
       </section>
 
-      {/* Try free first */}
+      {/* Lighter option */}
       <section className="neo-panel bg-muted p-6 sm:p-8">
         <h2 className="text-3xl font-black leading-none tracking-[-0.05em] sm:text-4xl">
-          Not sure yet? Try the free score first.
+          Want to start smaller?
         </h2>
         <p className="mt-3 max-w-3xl text-base leading-8 text-black/78">
-          Six yes-or-no questions. One minute. See where you stand before committing to the full assessment.
+          Get the Agent Survival Report first — pay what you want, from €1. Same 6-dimension framework, delivered as a PDF + Loom walkthrough within 48 hours. Upgrade to full consulting any time.
         </p>
-        <Link href="/score" className="neo-button-secondary mt-5 block w-full text-center sm:w-auto sm:inline-block">
-          FREE SCORE CHECK →
-        </Link>
+        <div className="mt-5 flex flex-wrap gap-4">
+          <Link href="/checkout" className="neo-button block text-center sm:inline-block">
+            PAY WHAT YOU WANT — GET THE REPORT
+          </Link>
+          <Link href="/score" className="neo-button-secondary block text-center sm:inline-block">
+            FREE SCORE CHECK →
+          </Link>
+        </div>
       </section>
     </div>
   );

@@ -258,6 +258,19 @@ export default function CheckoutPage() {
           </p>
         </div>
       </section>
+
+      {/* Consulting upsell */}
+      <section className="neo-panel bg-accent-yellow p-6 sm:p-8">
+        <div className="space-y-4">
+          <p className="neo-kicker">Want more depth?</p>
+          <h2 className="text-3xl font-black tracking-[-0.05em] sm:text-4xl">
+            Full consulting — €299
+          </h2>
+          <p className="max-w-2xl text-base leading-8 text-black/78">
+            Same framework, delivered by Phil Bennett (ex-Klarna, 20yr CTO). Includes a 60-minute strategy session, full remediation roadmap, and 30 days of follow-up. <Link href="/consulting" className="neo-link font-bold">Learn more →</Link>
+          </p>
+        </div>
+      </section>
     </div>
   );
 }
