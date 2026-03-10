@@ -104,7 +104,7 @@ export default function ConsultingPage() {
             ))}
           </ul>
           <a
-            href="https://calendly.com/philbennett"
+            href="https://meetings-eu1.hubspot.com/phil-bennett/agent-readiness-consultation"
             target="_blank"
             rel="noreferrer"
             className="neo-button mt-6 block w-full text-center"
