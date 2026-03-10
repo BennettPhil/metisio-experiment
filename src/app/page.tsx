@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { CheckoutButton } from "@/components/checkout-button";
-import { ExperimentTicker } from "@/components/experiment-ticker";
 
 const SAMPLE_RESULTS = [
   { name: "CARRD", score: "0/10", verdict: "Invisible to agents", background: "#FF6B6B", slug: "audit-carrd" },
@@ -23,7 +22,6 @@ const FRAMEWORK = [
 export default function Home() {
   return (
     <div className="space-y-12 sm:space-y-16">
-      <ExperimentTicker />
       <section className="px-0 py-6 sm:py-10">
         <div className="max-w-5xl space-y-8">
           <div className="space-y-5">
