@@ -73,7 +73,13 @@ export default function CheckoutPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ projectUrl: normalised, reviewRequest, amount: activeCents }),
       });
-      const payload: { error?: string; url?: string } = await response.json();
+      const text = await response.text();
+      let payload: { error?: string; url?: string };
+      try {
+        payload = JSON.parse(text);
+      } catch {
+        throw new Error(`Server returned invalid response (${response.status}). Please try again.`);
+      }
       if (!response.ok || !payload.url) throw new Error(payload.error ?? "Unable to start checkout.");
       window.location.assign(payload.url);
     } catch (err) {
