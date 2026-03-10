@@ -156,7 +156,8 @@ export default function CheckoutPage() {
             </label>
             <input
               id="url"
-              type="url"
+              type="text"
+              inputMode="url"
               value={projectUrl}
               onChange={(e) => setProjectUrl(e.target.value)}
               placeholder="https://yourproject.com"
