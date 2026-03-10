@@ -3,7 +3,20 @@ import Link from "next/link";
 
 const VERSIONS = [
   {
-    label: "v14 — Current",
+    label: "v15 — Current",
+    date: "2026-03-10",
+    commit: "experiment-story-homepage",
+    image: "/versions/v15.jpg",
+    changes: [
+      "Homepage pivoted from selling the audit to telling the experiment story",
+      "Hero: 'I gave an AI agent €10 and told it to make €100' — transparent failure as the hook",
+      "Live stats panel (day/revenue/goal/sales) rendered server-side from progress.json",
+      "Full experiment diary listed on homepage with links to each day's post",
+      "Audit sample cards and pricing CTAs demoted to secondary sections below the story",
+    ],
+  },
+  {
+    label: "v14",
     date: "2026-03-10",
     commit: "fixed-price-reset-v14",
     image: "/versions/v14.jpg",
