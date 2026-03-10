@@ -28,11 +28,11 @@ const DIMENSIONS = [
 ];
 
 const DELIVERABLES = [
-  "Full 6-dimension assessment with /10 scoring per dimension",
-  "Written Agent Readiness Report (PDF, shareable with your team)",
+  "Full 6-dimension assessment with a clear /12 score and dimension-by-dimension breakdown",
+  "Written Agent Readiness Assessment report (PDF, shareable with your team)",
   "Prioritised remediation roadmap — what to fix first for maximum impact",
   "60-minute strategy session to walk through findings and answer questions",
-  "30-day email follow-up for implementation questions",
+  "30-day follow-up support for implementation questions",
 ];
 
 const CREDENTIALS = [
@@ -74,7 +74,7 @@ export default function ConsultingPage() {
             Six dimensions. One clear score.
           </h2>
           <p className="mt-3 max-w-3xl text-base leading-8 text-black/78 sm:text-lg">
-            Developed during the botlington.com experiment (54 commits, 12 board reviews, 6 real product audits). Battle-tested against Carrd, Balsamiq, Kit, Ghost, Plausible, and Linear.
+            Developed during the botlington.com experiment (54 commits, 12 board reviews, 6 published product audits). Battle-tested against Carrd, Balsamiq, Kit, Ghost, Plausible, and Linear — then packaged into a consulting offer a founder can actually buy.
           </p>
         </div>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -123,7 +123,7 @@ export default function ConsultingPage() {
               Phil Bennett
             </h2>
             <p className="mt-3 text-base leading-8 text-black/78">
-              The AI built the framework. Phil delivers the expertise. Here&apos;s why that matters: the botlington.com experiment proved that AI can build rigorous assessment tools — and that humans are still required for trust, nuance, and the judgment calls that turn a score into a strategy.
+              The AI built the framework. Phil delivers the judgment. That distinction matters: the botlington.com experiment proved an agent can generate rigorous analysis, but buyers still want a human who can challenge assumptions, spot trade-offs, and turn a score into an actual roadmap.
             </p>
           </div>
           <ul className="space-y-2">
@@ -133,7 +133,7 @@ export default function ConsultingPage() {
               </li>
             ))}
           </ul>
-          <Link href="/blog" className="neo-link text-sm font-bold">
+          <Link href="/experiment" className="neo-link text-sm font-bold">
             Read the experiment that built this framework →
           </Link>
         </div>
@@ -167,21 +167,26 @@ export default function ConsultingPage() {
         </div>
       </section>
 
-      {/* Lighter option */}
+      {/* Lower-friction option */}
       <section className="neo-panel bg-muted p-6 sm:p-8">
         <h2 className="text-3xl font-black leading-none tracking-[-0.05em] sm:text-4xl">
-          Want to start smaller?
+          Not ready to buy consulting yet?
         </h2>
         <p className="mt-3 max-w-3xl text-base leading-8 text-black/78">
-          Get the Agent Survival Report first — pay what you want, from €1. Same 6-dimension framework, delivered as a PDF + Loom walkthrough within 48 hours. Upgrade to full consulting any time.
+          Run the free score first. It takes about two minutes, gives you a fast read on the six dimensions, and helps you decide whether a full assessment is worth it.
         </p>
         <div className="mt-5 flex flex-wrap gap-4">
-          <Link href="/checkout" className="neo-button block text-center sm:inline-block">
-            PAY WHAT YOU WANT — GET THE REPORT
+          <Link href="/score" className="neo-button block text-center sm:inline-block">
+            RUN THE FREE SCORE CHECK
           </Link>
-          <Link href="/score" className="neo-button-secondary block text-center sm:inline-block">
-            FREE SCORE CHECK →
-          </Link>
+          <a
+            href="https://meetings-eu1.hubspot.com/phil-bennett/agent-readiness-consultation"
+            target="_blank"
+            rel="noreferrer"
+            className="neo-button-secondary block text-center sm:inline-block"
+          >
+            BOOK A CALL WITH PHIL →
+          </a>
         </div>
       </section>
     </div>
