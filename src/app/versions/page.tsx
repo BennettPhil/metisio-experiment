@@ -3,7 +3,19 @@ import Link from "next/link";
 
 const VERSIONS = [
   {
-    label: "v12 — Current",
+    label: "v13 — Current",
+    date: "2026-03-10",
+    commit: "countdown-ticker",
+    image: "/versions/v13.png",
+    changes: [
+      "Live countdown timer to March 13 experiment deadline",
+      "Revenue ticker: €0/€100 with progress bar — radical transparency",
+      "Black neo-brutalist panel pinned to top of homepage",
+      "Makes the experiment urgency visible to every visitor",
+    ],
+  },
+  {
+    label: "v12",
     date: "2026-03-08",
     commit: "nadella-fear-hook",
     image: "/versions/v12.png",
