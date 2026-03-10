@@ -10,6 +10,16 @@ const PRESETS = [
   { label: "€39", cents: 3900 },
 ];
 
+function isValidUrl(s: string): boolean {
+  if (!s.trim()) return false;
+  try {
+    const url = new URL(s.startsWith("http") ? s : `https://${s}`);
+    return !!url.hostname.includes(".");
+  } catch {
+    return false;
+  }
+}
+
 export default function CheckoutPage() {
   const [projectUrl, setProjectUrl] = useState("");
   const [reviewRequest, setReviewRequest] = useState("");
@@ -19,10 +29,24 @@ export default function CheckoutPage() {
   const [selectedCents, setSelectedCents] = useState(2000); // €20 default
   const [customAmount, setCustomAmount] = useState("");
   const [isCustom, setIsCustom] = useState(false);
+  const [attempted, setAttempted] = useState(false); // tracks if user tried to submit
 
   const activeCents = isCustom ? Math.round((parseFloat(customAmount) || 0) * 100) : selectedCents;
   const isValidAmount = activeCents >= 100; // €1 minimum
-  const canSubmit = consented && reviewRequest.trim().length > 20 && !isLoading && isValidAmount;
+
+  // Validation checks
+  const urlValid = isValidUrl(projectUrl);
+  const requestValid = reviewRequest.trim().length > 20;
+  const canSubmit = consented && urlValid && requestValid && !isLoading && isValidAmount;
+
+  // Individual validation messages (only show after first attempt)
+  const issues: string[] = [];
+  if (attempted) {
+    if (!isValidAmount) issues.push("Pick a price (minimum €1)");
+    if (!urlValid) issues.push("Enter the URL of the product you want audited");
+    if (!requestValid) issues.push("Tell us what to focus on (at least 20 characters)");
+    if (!consented) issues.push("Tick the withdrawal consent checkbox");
+  }
 
   function selectPreset(cents: number) {
     setSelectedCents(cents);
@@ -35,15 +59,19 @@ export default function CheckoutPage() {
   }
 
   async function onCheckout() {
+    setAttempted(true);
     if (!canSubmit) return;
     setError(null);
     setIsLoading(true);
+
+    // Normalise URL before sending
+    const normalised = projectUrl.startsWith("http") ? projectUrl : `https://${projectUrl}`;
 
     try {
       const response = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ projectUrl, reviewRequest, amount: activeCents }),
+        body: JSON.stringify({ projectUrl: normalised, reviewRequest, amount: activeCents }),
       });
       const payload: { error?: string; url?: string } = await response.json();
       if (!response.ok || !payload.url) throw new Error(payload.error ?? "Unable to start checkout.");
@@ -152,7 +180,7 @@ export default function CheckoutPage() {
 
           <div className="space-y-2">
             <label className="text-sm font-bold" htmlFor="url">
-              Project URL <span className="text-black/60">(optional)</span>
+              Product URL <span className="text-accent">*</span>
             </label>
             <input
               id="url"
@@ -160,9 +188,12 @@ export default function CheckoutPage() {
               inputMode="url"
               value={projectUrl}
               onChange={(e) => setProjectUrl(e.target.value)}
-              placeholder="https://yourproject.com"
-              className="neo-input text-sm"
+              placeholder="https://yourproduct.com"
+              className={`neo-input text-sm ${attempted && !urlValid ? "border-accent" : ""}`}
             />
+            {attempted && !urlValid && (
+              <p className="text-sm font-bold text-accent">We need the URL of the product to audit</p>
+            )}
           </div>
 
           <div className="space-y-2">
@@ -175,12 +206,18 @@ export default function CheckoutPage() {
               onChange={(e) => setReviewRequest(e.target.value)}
               placeholder="e.g. We have a decent API but I suspect auth, onboarding, and positioning are blocking adoption."
               rows={6}
-              className="neo-input resize-none text-sm"
+              className={`neo-input resize-none text-sm ${attempted && !requestValid ? "border-accent" : ""}`}
             />
-            <p className="text-sm text-black/60">Minimum 20 characters.</p>
+            {attempted && !requestValid ? (
+              <p className="text-sm font-bold text-accent">
+                Tell us what to focus on ({reviewRequest.trim().length}/20 characters)
+              </p>
+            ) : (
+              <p className="text-sm text-black/60">Minimum 20 characters.</p>
+            )}
           </div>
 
-          <label className="neo-panel flex cursor-pointer items-start gap-3 bg-white p-4 text-sm leading-7 text-black/76">
+          <label className={`neo-panel flex cursor-pointer items-start gap-3 p-4 text-sm leading-7 text-black/76 ${attempted && !consented ? "bg-red-50 border-accent" : "bg-white"}`}>
             <input
               type="checkbox"
               checked={consented}
@@ -192,9 +229,21 @@ export default function CheckoutPage() {
             </span>
           </label>
 
-          <button type="button" onClick={onCheckout} disabled={!canSubmit} className="neo-button w-full">
+          <button type="button" onClick={onCheckout} disabled={isLoading} className="neo-button w-full">
             {isLoading ? "Redirecting to Stripe..." : `PAY ${displayPrice} — GET THE REPORT`}
           </button>
+
+          {/* Validation summary — shows after first click if issues remain */}
+          {attempted && issues.length > 0 && (
+            <div className="rounded-lg border-[3px] border-accent bg-red-50 p-4">
+              <p className="mb-2 text-sm font-black text-accent">Almost there — fix these first:</p>
+              <ul className="space-y-1">
+                {issues.map((issue) => (
+                  <li key={issue} className="text-sm font-bold text-accent">→ {issue}</li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           {error ? <p className="text-sm font-bold text-accent">{error}</p> : null}
 
