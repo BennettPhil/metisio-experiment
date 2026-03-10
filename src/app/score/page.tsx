@@ -388,13 +388,18 @@ export default function ScorePage() {
 
 
           <div className="neo-panel bg-accent-yellow p-6 sm:p-8">
-            <h2 className="text-4xl font-black leading-none tracking-[-0.07em] sm:text-5xl">Want the full audit?</h2>
+            <h2 className="text-4xl font-black leading-none tracking-[-0.07em] sm:text-5xl">Want the full picture?</h2>
             <p className="mt-4 max-w-3xl text-lg leading-8 text-black/78">
-              The free score tells you where you stand. The paid audit tells you what to change next.
+              The free score tells you where you stand. Get a full audit with Report Card PDF and Loom walkthrough — pay what you want. Or go deep with Phil&apos;s consulting engagement.
             </p>
-            <Link href="/checkout" className="neo-button mt-6 w-full sm:w-auto">
-              GET THE FULL AUDIT — PAY WHAT YOU WANT
-            </Link>
+            <div className="mt-6 flex flex-wrap gap-4">
+              <Link href="/checkout" className="neo-button">
+                PAY WHAT YOU WANT — GET THE REPORT
+              </Link>
+              <Link href="/consulting" className="neo-button-secondary">
+                FULL CONSULTING — €299
+              </Link>
+            </div>
           </div>
 
           <button

@@ -132,38 +132,45 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-        <div className="space-y-3">
-          <p className="neo-kicker">Experiment stats</p>
-          <div className="space-y-2">
-            <p className="neo-stat-number text-accent">€{progress.revenue}</p>
-            <p className="neo-stat-number rotate-[-1deg] text-accent-violet">{progress.sales}</p>
-            <p className="text-base font-bold leading-7 text-black/74">
-              Revenue so far and audits sold so far. The numbers are still small enough to be honest.
-            </p>
-          </div>
+      {/* Two-tier pricing */}
+      <section className="space-y-6">
+        <div>
+          <p className="neo-kicker">Get assessed</p>
+          <h2 className="text-4xl font-black leading-none tracking-[-0.07em] sm:text-6xl">
+            Two ways in.
+          </h2>
         </div>
-
-        <div className="neo-panel bg-accent-yellow p-6 sm:p-8">
-          <div className="space-y-5">
-            <p className="neo-kicker">Get Your Audit — Pay What You Want</p>
-            <h2 className="text-4xl font-black leading-none tracking-[-0.07em] sm:text-6xl">
-              Name your
-              <br />
-              price.
-            </h2>
-            <p className="max-w-2xl text-base leading-8 text-black/78 sm:text-lg">
-              From €1 to whatever you think it's worth. Same full report either way: score, PDF, Loom walkthrough. Delivered within 48 hours.
+        <div className="grid gap-6 lg:grid-cols-2">
+          <div className="neo-panel bg-white p-6 sm:p-8 space-y-4">
+            <span className="neo-tag neo-tag-yellow">Quick start</span>
+            <h3 className="text-3xl font-black tracking-[-0.05em]">Agent Survival Report</h3>
+            <p className="text-base leading-7 text-black/78">
+              Pay what you want — from €1. Gary audits your product across all 6 dimensions. You get a /10 score, Report Card PDF, and a 15-minute Loom walkthrough within 48 hours.
             </p>
-            <ul className="space-y-2 text-base font-bold">
-              <li>/10 score and plain-English verdict</li>
-              <li>Agent Readiness Report Card PDF (shareable with your team)</li>
-              <li>15-min async Loom walkthrough of every finding</li>
-              <li>Three specific fixes to ship next</li>
-              <li>Delivered to your Stripe checkout email within 48 hours</li>
+            <ul className="space-y-1 text-sm font-bold text-black/70">
+              <li>→ /10 score + plain-English verdict</li>
+              <li>→ Report Card PDF (shareable)</li>
+              <li>→ 15-min async Loom walkthrough</li>
+              <li>→ Three prioritised fixes</li>
             </ul>
-            <p className="text-sm font-bold text-black/70">Not useful? Full refund. No questions.</p>
-            <CheckoutButton label="PAY WHAT YOU WANT" className="w-full sm:w-auto" />
+            <p className="text-sm font-bold text-black/60">Not useful? Full refund. No questions.</p>
+            <CheckoutButton label="PAY WHAT YOU WANT" className="w-full" />
+          </div>
+          <div className="neo-panel bg-accent-yellow p-6 sm:p-8 space-y-4">
+            <span className="neo-tag neo-tag-violet">Full engagement</span>
+            <h3 className="text-3xl font-black tracking-[-0.05em]">Consulting with Phil</h3>
+            <p className="text-base leading-7 text-black/78">
+              €299. Same framework, delivered by Phil Bennett — 20 years engineering leadership, ex-Klarna, ex-Corvus Insurance. Includes a 60-minute strategy session and a remediation roadmap your team can execute on.
+            </p>
+            <ul className="space-y-1 text-sm font-bold text-black/70">
+              <li>→ Everything in the Report, plus:</li>
+              <li>→ 60-min live strategy session</li>
+              <li>→ Prioritised remediation roadmap</li>
+              <li>→ 30-day email follow-up</li>
+            </ul>
+            <Link href="/consulting" className="neo-button block w-full text-center">
+              BOOK CONSULTING — €299
+            </Link>
           </div>
         </div>
       </section>
