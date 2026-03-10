@@ -55,6 +55,7 @@ export default function RootLayout({
               <Link href="/impressum" className="neo-link">Impressum</Link>
               <Link href="/datenschutz" className="neo-link">Datenschutz</Link>
               <Link href="/about" className="neo-link">About</Link>
+              <Link href="/experiment" className="neo-link">The Experiment</Link>
               <Link href="/versions" className="neo-link">Versions</Link>
             </nav>
           </footer>

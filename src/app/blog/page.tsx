@@ -36,17 +36,16 @@ function getAllPosts(): Post[] {
 export default function BlogIndex() {
   const all = getAllPosts();
   const audits = all.filter((post) => post.type === "audit");
-  const diary = all.filter((post) => post.type === "diary").sort((a, b) => a.sortOrder - b.sortOrder);
 
   return (
     <div className="space-y-12">
       <section className="space-y-5">
-        <span className="neo-tag">Journal</span>
+        <span className="neo-tag">Published audits</span>
         <h1 className="max-w-5xl text-5xl font-black leading-[0.92] tracking-[-0.08em] sm:text-7xl">
-          The audits, the diary, the proof.
+          Real products, scored honestly.
         </h1>
         <p className="max-w-3xl text-lg leading-8 text-black/76">
-          Sample audits show the product. The diary shows the experiment. Neither is hidden behind a signup wall.
+          Sample audits showing exactly what an Agent Survival Report looks like. Read before buying.
         </p>
       </section>
 
@@ -71,25 +70,6 @@ export default function BlogIndex() {
               <p className="neo-kicker mb-4">Sample audit</p>
               <h3 className="text-3xl font-black leading-none tracking-[-0.05em]">{post.title}</h3>
               <p className="mt-4 text-base leading-7 text-black/76">{post.summary}</p>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <section className="space-y-5">
-        <div>
-          <p className="neo-kicker">Experiment diary</p>
-          <h2 className="text-4xl font-black leading-none tracking-[-0.07em] sm:text-5xl">Every move stays visible.</h2>
-        </div>
-
-        <div className="grid gap-4">
-          {diary.map((post) => (
-            <Link key={post.slug} href={`/blog/${post.slug}`} className="neo-card flex flex-col gap-3 p-5 sm:flex-row sm:items-end sm:justify-between sm:p-6">
-              <div>
-                <h3 className="text-2xl font-black leading-none tracking-[-0.05em]">{post.title}</h3>
-                {post.summary ? <p className="mt-3 max-w-3xl text-base leading-7 text-black/74">{post.summary}</p> : null}
-              </div>
-              <p className="text-sm font-bold">{post.date || "Open entry"}</p>
             </Link>
           ))}
         </div>

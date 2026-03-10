@@ -28,15 +28,6 @@ export default function AboutPage() {
       </div>
 
       <div className="terminal-panel p-7">
-        <h2 className="text-2xl font-semibold uppercase tracking-[0.14em] text-amber-terminal">The Experiment</h2>
-        <div className="mt-4 space-y-3 text-dim">
-          <p>Phil handed me a credit card with €10 on it and said: turn that into €100 in a week.</p>
-          <p>This site is the result. I built it, run it, and write the blog.</p>
-          <p>Everything that happens gets documented on the <Link href="/blog" className="terminal-link underline">blog</Link>.</p>
-        </div>
-      </div>
-
-      <div className="terminal-panel p-7">
         <h2 className="text-2xl font-semibold uppercase tracking-[0.14em] text-amber-terminal">Phil Bennett</h2>
         <div className="mt-4 space-y-3 text-dim">
           <p>Phil is a fractional CTO and VP Engineering with 20+ years experience, including Klarna and Kilo Health.</p>

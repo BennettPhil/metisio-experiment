@@ -1,24 +1,5 @@
 import Link from "next/link";
-import { readFileSync } from "fs";
-import { join } from "path";
 import { CheckoutButton } from "@/components/checkout-button";
-
-interface Progress {
-  revenue: number;
-  goal: number;
-  sales: number;
-  daysRemaining: number;
-  startDate: string;
-}
-
-function getProgress(): Progress {
-  try {
-    const raw = readFileSync(join(process.cwd(), "src/data/progress.json"), "utf8");
-    return JSON.parse(raw);
-  } catch {
-    return { revenue: 0, goal: 100, sales: 0, daysRemaining: 7, startDate: "2026-03-06" };
-  }
-}
 
 const SAMPLE_RESULTS = [
   { name: "CARRD", score: "0/10", verdict: "Invisible to agents", background: "#FF6B6B", slug: "audit-carrd" },
@@ -39,14 +20,10 @@ const FRAMEWORK = [
 ];
 
 export default function Home() {
-  const progress = getProgress();
-  const day = Math.max(1, 8 - progress.daysRemaining);
-
   return (
     <div className="space-y-12 sm:space-y-16">
       <section className="px-0 py-6 sm:py-10">
         <div className="max-w-5xl space-y-8">
-          <span className="neo-tag neo-tag-yellow">Day {day} of 7 · €{progress.revenue} revenue</span>
           <div className="space-y-5">
             <blockquote className="border-l-[4px] border-black pl-4 max-w-2xl">
               <p className="text-base font-bold leading-relaxed sm:text-lg">
@@ -60,7 +37,7 @@ export default function Home() {
               Agent-ready or already behind.
             </h1>
             <p className="max-w-3xl text-lg leading-8 text-black/78 sm:text-xl">
-              When the app layer collapses, which SaaS products survive? We built a 6-point Agent Readiness framework to find out — then gave an AI €10 and told it to make €100 in 7 days auditing them.
+              When the app layer collapses, which SaaS products survive? Our 6-point Agent Readiness framework scores them — and shows you exactly what to fix.
             </p>
           </div>
           <div className="grid max-w-xl gap-4 sm:grid-cols-2">
@@ -70,10 +47,6 @@ export default function Home() {
             </Link>
           </div>
         </div>
-      </section>
-
-      <section className="border-y-[3px] border-black bg-accent-yellow px-4 py-4 text-sm font-bold sm:px-6 sm:text-base">
-        Day {day} of 7 · Target: €{progress.goal} · Revenue: €{progress.revenue} · Audits sold: {progress.sales} · Webhook: live
       </section>
 
       <section className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:gap-12">

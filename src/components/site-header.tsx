@@ -109,7 +109,7 @@ export function SiteHeader() {
             </nav>
 
             <div className="mt-auto pt-8 text-sm font-bold text-black/70">
-              Day 2 of 7. Revenue €0. Webhook live.
+              Agent Survival Report — botlington.com
             </div>
           </div>
         </div>
