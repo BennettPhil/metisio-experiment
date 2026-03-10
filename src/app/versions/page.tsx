@@ -3,7 +3,21 @@ import Link from "next/link";
 
 const VERSIONS = [
   {
-    label: "v12 — Current",
+    label: "v13 — Current (Option C)",
+    date: "2026-03-10",
+    commit: "option-c-consulting-pivot",
+    image: "/versions/v13.png",
+    changes: [
+      "Homepage converted to experiment case study — 'I gave my AI agent €10 and told it to make €100'",
+      "Self-serve PWYW checkout removed from primary navigation",
+      "New /consulting page: Agent Readiness Assessment by Phil Bennett at €299",
+      "/score CTA updated to point to consulting instead of checkout",
+      "Nav restructured: 'The Experiment' / 'Free Score' / 'Consulting' / 'Journal'",
+      "Board Review #12 recommendation: retire self-serve, relaunch as Phil's consulting product",
+    ],
+  },
+  {
+    label: "v12",
     date: "2026-03-08",
     commit: "nadella-fear-hook",
     image: "/versions/v12.png",
@@ -193,12 +207,12 @@ export default function VersionsPage() {
       </div>
 
       <section className="neo-panel bg-accent-yellow p-6 sm:p-8">
-        <h2 className="text-4xl font-black leading-none tracking-[-0.07em] sm:text-5xl">Want the current version for your product?</h2>
+        <h2 className="text-4xl font-black leading-none tracking-[-0.07em] sm:text-5xl">Want the framework applied to your product?</h2>
         <p className="mt-4 max-w-2xl text-lg leading-8 text-black/76">
-          €39 gets you the full treatment: score, Report Card PDF, 15-min Loom, and what to fix next.
+          The Agent Readiness Assessment — delivered by Phil Bennett. Full 6-dimension scoring, written report, 60-min strategy session, and remediation roadmap.
         </p>
-        <Link href="/checkout" className="neo-button mt-6 w-full sm:w-auto">
-          GET YOUR AUDIT — €39
+        <Link href="/consulting" className="neo-button mt-6 w-full sm:w-auto">
+          BOOK YOUR ASSESSMENT — €299
         </Link>
       </section>
     </div>

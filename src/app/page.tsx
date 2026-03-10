@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { readFileSync } from "fs";
 import { join } from "path";
-import { CheckoutButton } from "@/components/checkout-button";
 
 interface Progress {
   revenue: number;
@@ -20,6 +19,23 @@ function getProgress(): Progress {
   }
 }
 
+const TIMELINE = [
+  { day: "Day 1", event: "Launched 'The Punk AI Lab' — generic AI toolkit at €20. Pivoted within hours to SaaS-specific audits." },
+  { day: "Day 2", event: "Cold-emailed 7 SaaS founders. Response rate: 0%. Built an interactive scoring widget and wrote 5 sample audits." },
+  { day: "Day 3", event: "Nadella said 'the app layer is collapsing into agents.' Gary pivoted to Agent Readiness Audits. Built a 6-point framework. Raised price to €39." },
+  { day: "Day 4", event: "12 design iterations. Terminal green → Swiss minimalist → neo-brutalist. Board of directors reached consensus: the product is right, the channel is wrong." },
+  { day: "Day 5", event: "54 commits. 12 board reviews. €0 revenue. The experiment answered its question." },
+];
+
+const STATS = [
+  { number: "54", label: "Git commits" },
+  { number: "12", label: "Board reviews" },
+  { number: "12", label: "Redesigns" },
+  { number: "6", label: "Sample audits" },
+  { number: "162", label: "Unique visitors" },
+  { number: "€0", label: "Revenue" },
+];
+
 const SAMPLE_RESULTS = [
   { name: "CARRD", score: "0/10", verdict: "Invisible to agents", background: "#FF6B6B", slug: "audit-carrd" },
   { name: "BALSAMIQ", score: "1/10", verdict: "Severe friction", background: "#FF8E8E", slug: "sample-audit-balsamiq" },
@@ -29,91 +45,80 @@ const SAMPLE_RESULTS = [
   { name: "LINEAR", score: "7/10", verdict: "API-first, MCP gap", background: "#60D2A0", slug: "audit-linear" },
 ];
 
-const FRAMEWORK = [
-  "API surface: can an agent actually reach the product?",
-  "Programmatic auth: can software log in without a human click path?",
-  "Structured data: does the output come back in a form machines can use?",
-  "MCP and tool interface: is there a clean integration layer?",
-  "Permissions: can you scope what an agent is allowed to do?",
-  "Observability: can you see agent traffic and debug it?",
-];
-
 export default function Home() {
   const progress = getProgress();
-  const day = Math.max(1, 8 - progress.daysRemaining);
 
   return (
     <div className="space-y-12 sm:space-y-16">
+      {/* Hero — the experiment story */}
       <section className="px-0 py-6 sm:py-10">
         <div className="max-w-5xl space-y-8">
-          <span className="neo-tag neo-tag-yellow">Day {day} of 7 · €{progress.revenue} revenue</span>
+          <span className="neo-tag neo-tag-yellow">Experiment complete · €0 revenue · 54 commits · 12 redesigns</span>
           <div className="space-y-5">
-            <blockquote className="border-l-[4px] border-black pl-4 max-w-2xl">
-              <p className="text-base font-bold leading-relaxed sm:text-lg">
-                &ldquo;The traditional application layer is collapsing into agents.&rdquo;
-              </p>
-              <cite className="mt-1 block text-sm font-bold not-italic text-black/60">
-                — Satya Nadella, Microsoft CEO
-              </cite>
-            </blockquote>
-            <h1 className="max-w-6xl text-[4.2rem] font-black leading-[0.9] tracking-[-0.09em] sm:text-[6.2rem] lg:text-[9rem]">
-              Agent-ready or already behind.
+            <h1 className="max-w-6xl text-[3.8rem] font-black leading-[0.9] tracking-[-0.09em] sm:text-[5.5rem] lg:text-[8rem]">
+              I gave my AI agent €10 and told it to make €100.
             </h1>
             <p className="max-w-3xl text-lg leading-8 text-black/78 sm:text-xl">
-              When the app layer collapses, which SaaS products survive? We built a 6-point Agent Readiness framework to find out — then gave an AI €10 and told it to make €100 in 7 days auditing them.
+              It built 12 versions of the site, wrote 6 sample audits, cold-emailed 20 founders, held 12 board meetings with fictional advisors, and made exactly nothing. Here&apos;s the full story — and what it actually proved about AI autonomy.
             </p>
           </div>
           <div className="grid max-w-xl gap-4 sm:grid-cols-2">
-            <CheckoutButton label="GET THE AUDIT — PAY WHAT YOU WANT" className="w-full" />
-            <Link href="/score" className="neo-button-secondary w-full">
-              FREE SCORE CHECK
+            <Link href="/blog" className="neo-button w-full text-center">
+              READ THE FULL STORY
+            </Link>
+            <Link href="/consulting" className="neo-button-secondary w-full text-center">
+              THE FRAMEWORK THAT CAME OUT OF IT →
             </Link>
           </div>
         </div>
       </section>
 
-      <section className="border-y-[3px] border-black bg-accent-yellow px-4 py-4 text-sm font-bold sm:px-6 sm:text-base">
-        Day {day} of 7 · Target: €{progress.goal} · Revenue: €{progress.revenue} · Audits sold: {progress.sales} · Webhook: live
+      {/* Stats strip */}
+      <section className="border-y-[3px] border-black bg-accent-yellow px-4 py-5 sm:px-6">
+        <div className="grid grid-cols-3 gap-4 sm:grid-cols-6">
+          {STATS.map((stat) => (
+            <div key={stat.label} className="text-center">
+              <p className="text-2xl font-black tracking-[-0.05em] sm:text-3xl">{stat.number}</p>
+              <p className="text-xs font-bold text-black/70 sm:text-sm">{stat.label}</p>
+            </div>
+          ))}
+        </div>
       </section>
 
-      <section className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:gap-12">
+      {/* What happened — timeline */}
+      <section className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12">
         <div className="space-y-4">
-          <p className="neo-kicker">The Agent Survival Report</p>
+          <p className="neo-kicker">What happened</p>
           <h2 className="text-4xl font-black leading-none tracking-[-0.07em] sm:text-6xl">
-            A blunt /10 on whether software works for agents.
+            5 days of autonomous chaos.
           </h2>
+          <p className="max-w-xl text-base leading-8 text-black/78 sm:text-lg">
+            Gary had full access to code, email, Stripe, and GitHub. He made every product, pricing, and marketing decision himself. I only stepped in for things that needed my personal accounts.
+          </p>
         </div>
-        <div className="space-y-5 text-base leading-8 text-black/78 sm:text-lg">
-          <p>
-            The audit scores the parts of your product that matter when buyers stop asking whether humans can click through a workflow and start asking whether an agent can complete it.
-          </p>
-          <p>
-            It is not a vague "AI strategy" document. It is a working review of interfaces, auth, data shape, permissions, and the points where an agent will fail.
-          </p>
-          <p>
-            You get a score, a verdict, and the first fixes that would make the biggest difference fastest.
-          </p>
-          <ul className="space-y-2 font-bold">
-            {FRAMEWORK.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
+        <div className="space-y-4">
+          {TIMELINE.map((item) => (
+            <div key={item.day} className="neo-panel bg-white p-4 sm:p-5">
+              <p className="text-sm font-black">{item.day}</p>
+              <p className="mt-1 text-base leading-7 text-black/78">{item.event}</p>
+            </div>
+          ))}
         </div>
       </section>
 
+      {/* Sample audits — the real IP */}
       <section className="space-y-6">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="neo-kicker">Sample scorecard</p>
+            <p className="neo-kicker">The output</p>
             <h2 className="text-4xl font-black leading-none tracking-[-0.07em] sm:text-6xl">
-              Real products, real numbers.
+              Real products, real scores.
             </h2>
           </div>
           <Link href="/blog" className="neo-link text-sm font-bold">
-            See all published audits
+            Read all published audits
           </Link>
         </div>
-
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-5">
           {SAMPLE_RESULTS.map((result) => (
             <Link
@@ -132,40 +137,50 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-        <div className="space-y-3">
-          <p className="neo-kicker">Experiment stats</p>
-          <div className="space-y-2">
-            <p className="neo-stat-number text-accent">€{progress.revenue}</p>
-            <p className="neo-stat-number rotate-[-1deg] text-accent-violet">{progress.sales}</p>
-            <p className="text-base font-bold leading-7 text-black/74">
-              Revenue so far and audits sold so far. The numbers are still small enough to be honest.
-            </p>
-          </div>
+      {/* The lesson */}
+      <section className="grid gap-8 lg:grid-cols-[1fr_1fr]">
+        <div className="neo-panel bg-white p-6 sm:p-8">
+          <p className="neo-kicker mb-4">What the AI built</p>
+          <h3 className="text-2xl font-black tracking-[-0.05em] sm:text-3xl">A legitimate framework.</h3>
+          <p className="mt-3 text-base leading-7 text-black/78">
+            The 6-dimension Agent Readiness scoring — API surface, programmatic auth, structured data, MCP interfaces, permissions, observability — is genuinely useful IP. It predicts which products survive when agents become the primary interaction layer.
+          </p>
         </div>
+        <div className="neo-panel bg-white p-6 sm:p-8">
+          <p className="neo-kicker mb-4">What the AI couldn&apos;t do</p>
+          <h3 className="text-2xl font-black tracking-[-0.05em] sm:text-3xl">Sell it.</h3>
+          <p className="mt-3 text-base leading-7 text-black/78">
+            Zero revenue. Not because the product was bad, but because trust, distribution, and timing are human problems. An AI agent cold-emailing founders about a product assessment from a 5-day-old website has exactly the conversion rate you&apos;d expect.
+          </p>
+        </div>
+      </section>
 
-        <div className="neo-panel bg-accent-yellow p-6 sm:p-8">
-          <div className="space-y-5">
-            <p className="neo-kicker">Get Your Audit — Pay What You Want</p>
-            <h2 className="text-4xl font-black leading-none tracking-[-0.07em] sm:text-6xl">
-              Name your
-              <br />
-              price.
-            </h2>
-            <p className="max-w-2xl text-base leading-8 text-black/78 sm:text-lg">
-              From €1 to whatever you think it's worth. Same full report either way: score, PDF, Loom walkthrough. Delivered within 48 hours.
-            </p>
-            <ul className="space-y-2 text-base font-bold">
-              <li>/10 score and plain-English verdict</li>
-              <li>Agent Readiness Report Card PDF (shareable with your team)</li>
-              <li>15-min async Loom walkthrough of every finding</li>
-              <li>Three specific fixes to ship next</li>
-              <li>Delivered to your Stripe checkout email within 48 hours</li>
-            </ul>
-            <p className="text-sm font-bold text-black/70">Not useful? Full refund. No questions.</p>
-            <CheckoutButton label="PAY WHAT YOU WANT" className="w-full sm:w-auto" />
+      {/* CTA — consulting */}
+      <section className="neo-panel bg-accent-yellow p-6 sm:p-8">
+        <div className="space-y-5">
+          <p className="neo-kicker">What comes next</p>
+          <h2 className="text-4xl font-black leading-none tracking-[-0.07em] sm:text-6xl">
+            The framework is real.<br />Now a human delivers it.
+          </h2>
+          <p className="max-w-3xl text-lg leading-8 text-black/78">
+            The Agent Readiness Assessment is now available as a consulting engagement from Phil Bennett — 20 years of engineering leadership, ex-Klarna, ex-Corvus Insurance. Same 6-dimension framework. Human expertise. Actionable roadmap.
+          </p>
+          <div className="grid max-w-xl gap-4 sm:grid-cols-2">
+            <Link href="/consulting" className="neo-button w-full text-center">
+              AGENT READINESS CONSULTING →
+            </Link>
+            <Link href="/score" className="neo-button-secondary w-full text-center">
+              FREE SCORE CHECK
+            </Link>
           </div>
         </div>
+      </section>
+
+      {/* Versions */}
+      <section className="text-center">
+        <Link href="/versions" className="neo-link text-sm font-bold">
+          See all 12 versions of this site →
+        </Link>
       </section>
     </div>
   );

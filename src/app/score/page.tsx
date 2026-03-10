@@ -329,8 +329,8 @@ export default function ScorePage() {
               <button onClick={() => copyToClipboard(checklistText, "checklist")} className="neo-button-secondary w-full">
                 {copied === "checklist" ? "COPIED" : "COPY CHECKLIST"}
               </button>
-              <Link href="/checkout" className="neo-button-secondary w-full text-center">
-                GET THE FULL AUDIT — PAY WHAT YOU WANT
+              <Link href="/consulting" className="neo-button-secondary w-full text-center">
+                GET THE FULL ASSESSMENT WITH PHIL →
               </Link>
             </div>
           </div>
@@ -388,12 +388,12 @@ export default function ScorePage() {
 
 
           <div className="neo-panel bg-accent-yellow p-6 sm:p-8">
-            <h2 className="text-4xl font-black leading-none tracking-[-0.07em] sm:text-5xl">Want the full audit?</h2>
+            <h2 className="text-4xl font-black leading-none tracking-[-0.07em] sm:text-5xl">Want the full assessment?</h2>
             <p className="mt-4 max-w-3xl text-lg leading-8 text-black/78">
-              The free score tells you where you stand. The paid audit tells you what to change next.
+              The free score tells you where you stand. The full Agent Readiness Assessment — delivered by Phil Bennett — tells you exactly what to fix, in what order, and why it matters.
             </p>
-            <Link href="/checkout" className="neo-button mt-6 w-full sm:w-auto">
-              GET THE FULL AUDIT — PAY WHAT YOU WANT
+            <Link href="/consulting" className="neo-button mt-6 w-full sm:w-auto">
+              BOOK YOUR ASSESSMENT — €299 →
             </Link>
           </div>
 

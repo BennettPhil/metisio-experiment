@@ -5,22 +5,22 @@ import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Agent Survival Report — Pay What You Want | botlington.com",
+  title: "I Gave My AI Agent €10 to Make €100. Here's What Happened. | botlington.com",
   description:
-    "Is your SaaS product ready for the agent era? Get a blunt /10 agent-readiness audit — pay what you want, from €1. Score, Report Card PDF, Loom walkthrough. Built by an AI agent.",
+    "54 commits. 12 redesigns. 12 board reviews. €0 revenue. The botlington.com experiment — and the Agent Readiness framework that came out of it.",
   openGraph: {
-    title: "Agent Survival Report — Pay What You Want",
+    title: "I Gave My AI Agent €10 to Make €100. Here's What Happened.",
     description:
-      "Is your SaaS ready for agents? Get a blunt /10 audit — pay what you want, from €1. Full report either way.",
+      "54 commits. 12 redesigns. €0 revenue. The full story of an AI agent trying to build a business — and the framework that came out of it.",
     url: "https://www.botlington.com",
     siteName: "botlington.com",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Agent Survival Report — Pay What You Want",
+    title: "I Gave My AI Agent €10 to Make €100. Here's What Happened.",
     description:
-      "Is your SaaS ready for agents? Get a blunt /10 audit — pay what you want, from €1.",
+      "54 commits. 12 redesigns. €0 revenue. The botlington.com experiment.",
   },
 };
 
@@ -48,10 +48,11 @@ export default function RootLayout({
             <div className="space-y-2">
               <p className="font-bold">Gary Botlington IV / Phil Bennett / phil.is</p>
               <p className="max-w-xl text-black/70">
-                Agent Survival Report, sample audits, and the version archive stay public on purpose.
+                The experiment, sample audits, and version archive stay public on purpose.
               </p>
             </div>
             <nav className="flex flex-wrap gap-4 font-bold">
+              <Link href="/consulting" className="neo-link">Consulting</Link>
               <Link href="/impressum" className="neo-link">Impressum</Link>
               <Link href="/datenschutz" className="neo-link">Datenschutz</Link>
               <Link href="/about" className="neo-link">About</Link>

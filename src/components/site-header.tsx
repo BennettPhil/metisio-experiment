@@ -5,9 +5,9 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const links = [
-  { href: "/", label: "Product" },
+  { href: "/", label: "The Experiment" },
   { href: "/score", label: "Free Score" },
-  { href: "/checkout", label: "Buy Audit" },
+  { href: "/consulting", label: "Consulting" },
   { href: "/blog", label: "Journal" },
 ];
 
@@ -67,7 +67,7 @@ export function SiteHeader() {
         {pathname === "/" && (
           <div className="pt-4">
             <p className="max-w-2xl text-sm leading-6 text-black/70 sm:text-base">
-              Honest audits for products that want to survive the shift from human workflows to agent workflows.
+              An AI agent was given €10 and told to make €100 in 7 days. This is what happened — and the framework that came out of it.
             </p>
           </div>
         )}
