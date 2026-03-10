@@ -3,14 +3,36 @@
 import { useState } from "react";
 import Link from "next/link";
 
+const PRESETS = [
+  { label: "€5", cents: 500 },
+  { label: "€10", cents: 1000 },
+  { label: "€20", cents: 2000, suggested: true },
+  { label: "€39", cents: 3900 },
+];
+
 export default function CheckoutPage() {
   const [projectUrl, setProjectUrl] = useState("");
   const [reviewRequest, setReviewRequest] = useState("");
   const [consented, setConsented] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [selectedCents, setSelectedCents] = useState(2000); // €20 default
+  const [customAmount, setCustomAmount] = useState("");
+  const [isCustom, setIsCustom] = useState(false);
 
-  const canSubmit = consented && reviewRequest.trim().length > 20 && !isLoading;
+  const activeCents = isCustom ? Math.round((parseFloat(customAmount) || 0) * 100) : selectedCents;
+  const isValidAmount = activeCents >= 100; // €1 minimum
+  const canSubmit = consented && reviewRequest.trim().length > 20 && !isLoading && isValidAmount;
+
+  function selectPreset(cents: number) {
+    setSelectedCents(cents);
+    setIsCustom(false);
+    setCustomAmount("");
+  }
+
+  function onCustomFocus() {
+    setIsCustom(true);
+  }
 
   async function onCheckout() {
     if (!canSubmit) return;
@@ -21,7 +43,7 @@ export default function CheckoutPage() {
       const response = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ projectUrl, reviewRequest }),
+        body: JSON.stringify({ projectUrl, reviewRequest, amount: activeCents }),
       });
       const payload: { error?: string; url?: string } = await response.json();
       if (!response.ok || !payload.url) throw new Error(payload.error ?? "Unable to start checkout.");
@@ -32,16 +54,20 @@ export default function CheckoutPage() {
     }
   }
 
+  const displayPrice = activeCents >= 100
+    ? `€${(activeCents / 100).toFixed(activeCents % 100 === 0 ? 0 : 2)}`
+    : "€??";
+
   return (
     <div className="mx-auto max-w-6xl space-y-10">
       <section className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:gap-12">
         <div className="space-y-5">
-          <span className="neo-tag neo-tag-violet">Checkout</span>
+          <span className="neo-tag neo-tag-violet">Pay What You Want</span>
           <h1 className="text-5xl font-black leading-[0.92] tracking-[-0.08em] sm:text-7xl">
             Agent Survival Report.
           </h1>
           <p className="max-w-2xl text-lg leading-8 text-black/76">
-            €39. Delivered within 48 hours. Score, Report Card PDF, and a 15-minute Loom walkthrough.
+            Name your price. Minimum €1. You get the same full report either way.
           </p>
           <div className="space-y-2 text-base leading-8 text-black/78">
             <p>A blunt /10 review of whether your product works for AI agents — with a shareable PDF your team can act on.</p>
@@ -54,7 +80,7 @@ export default function CheckoutPage() {
 
         <div className="neo-panel bg-white p-6 sm:p-8">
           <div className="space-y-5">
-            <p className="neo-kicker">What you get</p>
+            <p className="neo-kicker">What you get — at any price</p>
             <ul className="space-y-3 text-base leading-7 text-black/78">
               <li>/10 agent-readiness score across API, auth, data, interfaces, permissions, and observability</li>
               <li>Plain-English verdict on where your product stands right now</li>
@@ -72,6 +98,58 @@ export default function CheckoutPage() {
 
       <section className="neo-panel bg-muted p-6 sm:p-8">
         <div className="grid gap-5">
+          {/* Pay What You Want selector */}
+          <div className="space-y-3">
+            <label className="text-sm font-bold">
+              Name your price <span className="text-black/60">(min €1)</span>
+            </label>
+            <div className="flex flex-wrap gap-3">
+              {PRESETS.map((p) => (
+                <button
+                  key={p.cents}
+                  type="button"
+                  onClick={() => selectPreset(p.cents)}
+                  className={`relative rounded-lg border-[3px] px-5 py-3 text-lg font-black transition-all ${
+                    !isCustom && selectedCents === p.cents
+                      ? "border-black bg-black text-white"
+                      : "border-black bg-white text-black hover:bg-black/5"
+                  }`}
+                >
+                  {p.label}
+                  {p.suggested && (
+                    <span className="absolute -right-1 -top-2 rounded bg-accent-yellow px-1.5 py-0.5 text-[10px] font-bold text-black">
+                      suggested
+                    </span>
+                  )}
+                </button>
+              ))}
+              <div className="relative">
+                <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-lg font-black text-black/40">€</span>
+                <input
+                  type="number"
+                  min="1"
+                  max="500"
+                  step="1"
+                  value={customAmount}
+                  onChange={(e) => {
+                    setCustomAmount(e.target.value);
+                    setIsCustom(true);
+                  }}
+                  onFocus={onCustomFocus}
+                  placeholder="Other"
+                  className={`w-28 rounded-lg border-[3px] py-3 pl-8 pr-3 text-lg font-black transition-all ${
+                    isCustom
+                      ? "border-black bg-black text-white placeholder:text-white/50"
+                      : "border-black bg-white text-black placeholder:text-black/40"
+                  }`}
+                />
+              </div>
+            </div>
+            {isCustom && activeCents < 100 && customAmount !== "" && (
+              <p className="text-sm font-bold text-accent">Minimum is €1</p>
+            )}
+          </div>
+
           <div className="space-y-2">
             <label className="text-sm font-bold" htmlFor="url">
               Project URL <span className="text-black/60">(optional)</span>
@@ -114,7 +192,7 @@ export default function CheckoutPage() {
           </label>
 
           <button type="button" onClick={onCheckout} disabled={!canSubmit} className="neo-button w-full">
-            {isLoading ? "Redirecting to Stripe..." : "GET THE AUDIT — €39"}
+            {isLoading ? "Redirecting to Stripe..." : `PAY ${displayPrice} — GET THE REPORT`}
           </button>
 
           {error ? <p className="text-sm font-bold text-accent">{error}</p> : null}

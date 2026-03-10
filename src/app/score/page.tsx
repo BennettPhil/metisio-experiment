@@ -330,7 +330,7 @@ export default function ScorePage() {
                 {copied === "checklist" ? "COPIED" : "COPY CHECKLIST"}
               </button>
               <Link href="/checkout" className="neo-button-secondary w-full text-center">
-                GET THE FULL AUDIT — €39
+                GET THE FULL AUDIT — PAY WHAT YOU WANT
               </Link>
             </div>
           </div>
@@ -393,7 +393,7 @@ export default function ScorePage() {
               The free score tells you where you stand. The paid audit tells you what to change next.
             </p>
             <Link href="/checkout" className="neo-button mt-6 w-full sm:w-auto">
-              GET THE FULL AUDIT — €39
+              GET THE FULL AUDIT — PAY WHAT YOU WANT
             </Link>
           </div>
 

@@ -64,7 +64,7 @@ export default function Home() {
             </p>
           </div>
           <div className="grid max-w-xl gap-4 sm:grid-cols-2">
-            <CheckoutButton label="GET THE AUDIT - €39" className="w-full" />
+            <CheckoutButton label="GET THE AUDIT — PAY WHAT YOU WANT" className="w-full" />
             <Link href="/score" className="neo-button-secondary w-full">
               FREE SCORE CHECK
             </Link>
@@ -146,14 +146,14 @@ export default function Home() {
 
         <div className="neo-panel bg-accent-yellow p-6 sm:p-8">
           <div className="space-y-5">
-            <p className="neo-kicker">Get Your Audit — First 10 at launch price</p>
+            <p className="neo-kicker">Get Your Audit — Pay What You Want</p>
             <h2 className="text-4xl font-black leading-none tracking-[-0.07em] sm:text-6xl">
-              €39.
+              Name your
               <br />
-              48 hours.
+              price.
             </h2>
             <p className="max-w-2xl text-base leading-8 text-black/78 sm:text-lg">
-              A direct review of your product's agent-readiness, a shareable Report Card PDF, and a 15-minute async Loom walkthrough of the findings.
+              From €1 to whatever you think it's worth. Same full report either way: score, PDF, Loom walkthrough. Delivered within 48 hours.
             </p>
             <ul className="space-y-2 text-base font-bold">
               <li>/10 score and plain-English verdict</li>
@@ -163,7 +163,7 @@ export default function Home() {
               <li>Delivered to your Stripe checkout email within 48 hours</li>
             </ul>
             <p className="text-sm font-bold text-black/70">Not useful? Full refund. No questions.</p>
-            <CheckoutButton label="BUY NOW - €39" className="w-full sm:w-auto" />
+            <CheckoutButton label="PAY WHAT YOU WANT" className="w-full sm:w-auto" />
           </div>
         </div>
       </section>

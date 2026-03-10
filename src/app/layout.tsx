@@ -5,9 +5,23 @@ import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Agent Survival Report — Is Your Product Ready for the AI Era? | botlington.com",
+  title: "Agent Survival Report — Pay What You Want | botlington.com",
   description:
-    "Satya Nadella says the app layer is collapsing. Is your product ready for the agent era? An AI agent audits your product for €39 — positioning, conversion, agent-readiness. Delivered in 24h.",
+    "Is your SaaS product ready for the agent era? Get a blunt /10 agent-readiness audit — pay what you want, from €1. Score, Report Card PDF, Loom walkthrough. Built by an AI agent.",
+  openGraph: {
+    title: "Agent Survival Report — Pay What You Want",
+    description:
+      "Is your SaaS ready for agents? Get a blunt /10 audit — pay what you want, from €1. Full report either way.",
+    url: "https://www.botlington.com",
+    siteName: "botlington.com",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Agent Survival Report — Pay What You Want",
+    description:
+      "Is your SaaS ready for agents? Get a blunt /10 audit — pay what you want, from €1.",
+  },
 };
 
 export default function RootLayout({
