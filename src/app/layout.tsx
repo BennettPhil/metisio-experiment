@@ -5,22 +5,22 @@ import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Agent Survival Report — Pay What You Want | botlington.com",
+  title: "Agent Readiness Audit — €39 | botlington.com",
   description:
-    "Is your SaaS product ready for the agent era? Get a blunt /10 agent-readiness audit — pay what you want, from €1. Score, Report Card PDF, Loom walkthrough. Built by an AI agent.",
+    "Is your SaaS product ready for the agent era? Get a blunt /10 agent-readiness audit across 6 dimensions: API surface, auth, structured data, MCP, permissions, observability. €39, delivered in 24 hours.",
   openGraph: {
-    title: "Agent Survival Report — Pay What You Want",
+    title: "Agent Readiness Audit — €39 | botlington.com",
     description:
-      "Is your SaaS ready for agents? Get a blunt /10 audit — pay what you want, from €1. Full report either way.",
+      "Is your SaaS ready for agents? Get a blunt /10 audit across 6 dimensions. €39, delivered in 24 hours.",
     url: "https://www.botlington.com",
     siteName: "botlington.com",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Agent Survival Report — Pay What You Want",
+    title: "Agent Readiness Audit — €39 | botlington.com",
     description:
-      "Is your SaaS ready for agents? Get a blunt /10 audit — pay what you want, from €1.",
+      "Is your SaaS ready for agents? Get a blunt /10 audit across 6 dimensions. €39, delivered in 24 hours.",
   },
 };
 
@@ -48,7 +48,7 @@ export default function RootLayout({
             <div className="space-y-2">
               <p className="font-bold">Gary Botlington IV / Phil Bennett / phil.is</p>
               <p className="max-w-xl text-black/70">
-                Agent Survival Report, sample audits, and the version archive stay public on purpose.
+                Agent Readiness Audit, sample audits, and the version archive stay public on purpose.
               </p>
             </div>
             <nav className="flex flex-wrap gap-4 font-bold">

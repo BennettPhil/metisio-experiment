@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
             currency: "eur",
             unit_amount: unitAmount,
             product_data: {
-              name: `Agent Survival Report (${displayAmount})`,
+              name: `Agent Readiness Audit (${displayAmount})`,
               description:
                 "Agent survival assessment, plain-English verdict, Report Card PDF, 15-min async Loom walkthrough — delivered within 48 hours",
             },

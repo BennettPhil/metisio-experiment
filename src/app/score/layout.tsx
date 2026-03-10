@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Free Agent Readiness Scorecard (6 questions) — Botlington",
   description:
-    "Satya Nadella says the application layer is collapsing into agents. Score your product in 2 minutes. Then fix the gaps — or get a €39 Agent Survival Report (PDF report card + async Loom).",
+    "Satya Nadella says the application layer is collapsing into agents. Score your product in 2 minutes. Then fix the gaps — or get a €39 Agent Readiness Audit (PDF report card + async Loom).",
   openGraph: {
     title: "Free Agent Readiness Scorecard — Botlington",
     description:

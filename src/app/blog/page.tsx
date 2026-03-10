@@ -45,7 +45,7 @@ export default function BlogIndex() {
           Real products, scored honestly.
         </h1>
         <p className="max-w-3xl text-lg leading-8 text-black/76">
-          Sample audits showing exactly what an Agent Survival Report looks like. Read before buying.
+          Sample audits showing exactly what an Agent Readiness Audit looks like. Read before buying.
         </p>
       </section>
 

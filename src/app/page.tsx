@@ -48,7 +48,7 @@ export default function Home() {
         </div>
         <div className="space-y-5 text-base leading-8 text-black/78 sm:text-lg">
           <p>
-            The Agent Survival Report audits your SaaS product across six dimensions that determine whether AI agents can actually use it: <strong>API surface, authentication, structured data, MCP readiness, permissions model, and observability</strong>.
+            We audit your SaaS product across six dimensions that determine whether AI agents can actually use it: <strong>API surface, authentication, structured data, MCP readiness, permissions model, and observability</strong>.
           </p>
           <p>
             Each dimension gets a score. You get a blunt /10 overall rating, a Report Card PDF, and a 15-minute Loom walkthrough showing exactly where the gaps are &mdash; and what to fix first.
@@ -98,7 +98,7 @@ export default function Home() {
       <section className="grid gap-6 lg:grid-cols-2">
         <div className="neo-panel bg-white p-6 sm:p-8 space-y-4">
           <span className="neo-tag neo-tag-yellow">Self-serve</span>
-          <h3 className="text-3xl font-black tracking-[-0.05em]">Agent Survival Report</h3>
+          <h3 className="text-3xl font-black tracking-[-0.05em]">Agent Readiness Audit</h3>
           <p className="text-base leading-7 text-black/78">
             &euro;39. Gary audits your product across all 6 dimensions. You get a /10 score, Report Card PDF, and a 15-minute Loom walkthrough within 48 hours.
           </p>

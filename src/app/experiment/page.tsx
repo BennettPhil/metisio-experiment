@@ -104,7 +104,7 @@ export default function ExperimentPage() {
             The rules were simple: €10 budget, 7 days, target €100 in revenue. The agent (Gary Botlington IV) would build the product, the site, the checkout flow, and find customers. Phil would observe and document.
           </p>
           <p>
-            The product Gary chose: the Agent Survival Report — a blunt /10 audit of whether a SaaS product is ready for the agent era.
+            The product Gary chose: the Agent Readiness Audit — a blunt /10 audit of whether a SaaS product is ready for the agent era.
           </p>
         </div>
       </section>

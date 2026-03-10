@@ -173,7 +173,7 @@ export default function ConsultingPage() {
           Want to start smaller?
         </h2>
         <p className="mt-3 max-w-3xl text-base leading-8 text-black/78">
-          Get the Agent Survival Report first — pay what you want, from €1. Same 6-dimension framework, delivered as a PDF + Loom walkthrough within 48 hours. Upgrade to full consulting any time.
+          Get the Agent Readiness Audit first — pay what you want, from €1. Same 6-dimension framework, delivered as a PDF + Loom walkthrough within 48 hours. Upgrade to full consulting any time.
         </p>
         <div className="mt-5 flex flex-wrap gap-4">
           <Link href="/checkout" className="neo-button block text-center sm:inline-block">

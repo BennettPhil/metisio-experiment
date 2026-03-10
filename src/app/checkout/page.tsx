@@ -71,7 +71,7 @@ export default function CheckoutPage() {
         <div className="space-y-5">
           <span className="neo-tag neo-tag-violet">Fixed price</span>
           <h1 className="text-5xl font-black leading-[0.92] tracking-[-0.08em] sm:text-7xl">
-            Agent Survival Report.
+            Agent Readiness Audit.
           </h1>
           <p className="max-w-2xl text-lg leading-8 text-black/76">
             Clear scope. Clear price. {displayPrice} for the full report.
@@ -91,7 +91,7 @@ export default function CheckoutPage() {
             <ul className="space-y-3 text-base leading-7 text-black/78">
               <li>/10 agent-readiness score across API, auth, data, interfaces, permissions, and observability</li>
               <li>Plain-English verdict on where your product stands right now</li>
-              <li>Agent Survival Report PDF — shareable with your team or board</li>
+              <li>Agent Readiness Audit PDF — shareable with your team or board</li>
               <li>15-minute async Loom walkthrough of every finding</li>
               <li>Three specific changes to make next, prioritised by impact</li>
               <li>Delivered to your Stripe checkout email within 48 hours</li>

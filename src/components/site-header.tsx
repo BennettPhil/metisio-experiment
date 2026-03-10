@@ -109,7 +109,7 @@ export function SiteHeader() {
             </nav>
 
             <div className="mt-auto pt-8 text-sm font-bold text-black/70">
-              Agent Survival Report — botlington.com
+              Agent Readiness Audit — botlington.com
             </div>
           </div>
         </div>
