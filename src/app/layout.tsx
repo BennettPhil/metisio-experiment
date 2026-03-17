@@ -42,18 +42,30 @@ export default function RootLayout({
       <body className="bg-background font-sans antialiased">
         <Fathom />
         {/* Launch banner */}
-        <div className="w-full bg-black text-white py-3 px-4 text-center text-sm sm:text-base">
-          <span className="font-bold">🚀 Botlington just launched a new version.</span>{" "}
-          You&apos;re viewing the old experiment site — it&apos;s still here, but the real thing lives at{" "}
-          <a
-            href="https://botlington.com"
-            className="underline font-bold hover:opacity-80"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            botlington.com
-          </a>
-          . Agent token audits, live pricing, the works. Go check it out.
+        <div className="w-full bg-yellow-400 border-b-4 border-black text-black py-4 px-4 text-center">
+          <p className="text-lg sm:text-xl font-black uppercase tracking-tight">
+            ⚠️ You&apos;re on the old version of this site
+          </p>
+          <p className="mt-1 text-sm sm:text-base font-medium">
+            Botlington has launched. The real thing — with live agent token audits and proper pricing — is at{" "}
+            <a
+              href="https://botlington.com"
+              className="font-black underline underline-offset-2 hover:opacity-70"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              botlington.com
+            </a>
+            . This experiment site is archived. &nbsp;
+            <a
+              href="https://botlington.com"
+              className="inline-block bg-black text-yellow-400 font-black text-sm px-3 py-1 ml-1 hover:bg-black/80 transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Go to botlington.com →
+            </a>
+          </p>
         </div>
         <div className="mx-auto flex min-h-screen max-w-7xl flex-col px-4 pb-8 pt-4 sm:px-6 sm:pt-5 lg:px-8">
           <SiteHeader />
