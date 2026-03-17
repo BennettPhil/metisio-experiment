@@ -59,7 +59,7 @@ export default function RootLayout({
             . This experiment site is archived. &nbsp;
             <a
               href="https://botlington.com"
-              className="inline-block bg-black text-yellow-400 font-black text-sm px-3 py-1 ml-1 hover:bg-black/80 transition-colors"
+              className="inline-block bg-black text-yellow-400 font-black text-sm px-3 py-1 ml-1 hover:bg-black/80 transition-colors" style={{color: '#facc15'}}
               target="_blank"
               rel="noopener noreferrer"
             >
