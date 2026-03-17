@@ -41,6 +41,20 @@ export default function RootLayout({
       </head>
       <body className="bg-background font-sans antialiased">
         <Fathom />
+        {/* Launch banner */}
+        <div className="w-full bg-black text-white py-3 px-4 text-center text-sm sm:text-base">
+          <span className="font-bold">🚀 Botlington just launched a new version.</span>{" "}
+          You&apos;re viewing the old experiment site — it&apos;s still here, but the real thing lives at{" "}
+          <a
+            href="https://botlington.com"
+            className="underline font-bold hover:opacity-80"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            botlington.com
+          </a>
+          . Agent token audits, live pricing, the works. Go check it out.
+        </div>
         <div className="mx-auto flex min-h-screen max-w-7xl flex-col px-4 pb-8 pt-4 sm:px-6 sm:pt-5 lg:px-8">
           <SiteHeader />
           <main className="flex-1 py-8 sm:py-10">{children}</main>
